@@ -10,14 +10,13 @@ GameObject:
   m_Component:
   - component: {fileID: 4110699008850111280}
   - component: {fileID: 6798842280610755244}
-  - component: {fileID: 5465287675155924444}
   - component: {fileID: 1933768107711105537}
   - component: {fileID: -6061932051159842245}
   - component: {fileID: 7407228669820754447}
   - component: {fileID: 549248991168424379}
   - component: {fileID: 1021683122007656642}
   - component: {fileID: 8875183963276206883}
-  - component: {fileID: 734392089917358850}
+  - component: {fileID: -6168269560094831002}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -61,32 +60,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
---- !u!61 &5465287675155924444
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3641761164224173358}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.05}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.75, y: 0.85}
-  m_EdgeRadius: 0
 --- !u!96 &1933768107711105537
 TrailRenderer:
   serializedVersion: 2
@@ -199,9 +172,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   input: {fileID: 11400000, guid: eed36fab56470c34393da9614c238f23, type: 2}
-  maxSpeed: 5
+  maxSpeed: 6
   maxAcceleration: 40
-  maxAirAcceleration: 20
+  maxAirAcceleration: 45
   animator: {fileID: 8875183963276206883}
 --- !u!114 &7407228669820754447
 MonoBehaviour:
@@ -306,8 +279,8 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!68 &734392089917358850
-EdgeCollider2D:
+--- !u!61 &-6168269560094831002
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -319,12 +292,16 @@ EdgeCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.5}
-  m_EdgeRadius: 0
-  m_Points:
-  - {x: -0.05, y: 0}
-  - {x: -0.05, y: 0}
-  m_AdjacentStartPoint: {x: 0, y: 0}
-  m_AdjacentEndPoint: {x: 0, y: 0}
-  m_UseAdjacentStartPoint: 0
-  m_UseAdjacentEndPoint: 0
+  m_Offset: {x: 0, y: -0.2}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.65, y: 0.58}
+  m_EdgeRadius: 0.001
