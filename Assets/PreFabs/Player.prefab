@@ -220,6 +220,7 @@ MonoBehaviour:
   maxAirJumps: 0
   downMovementMultiplier: 3
   upMovementMultiplier: 2.5
+  animator: {fileID: 8875183963276206883}
 --- !u!114 &549248991168424379
 MonoBehaviour:
   m_ObjectHideFlags: 0

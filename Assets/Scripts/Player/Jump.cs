@@ -15,10 +15,12 @@ public class Jump : MonoBehaviour
     private Vector2 velocity;
 
     private int jumpPhase;
-    private float defaultGravitScale;
+    private float defaultGravityScale;
 
     private bool desiredJump;
     private bool onGround;
+
+    public Animator animator;
 
 
     
@@ -28,7 +30,7 @@ public class Jump : MonoBehaviour
         body = GetComponent<Rigidbody2D>();
         ground = GetComponent<Ground>();
 
-        defaultGravitScale = 1f;
+        defaultGravityScale = 1f;
 
 
     }
@@ -44,14 +46,19 @@ public class Jump : MonoBehaviour
         onGround = ground.getOnGround();
         velocity = body.velocity;
 
+        animator.SetBool("onGround", onGround);
+        animator.SetBool("jump_down", false);
+
         if(onGround)
         {
             jumpPhase = 0;
+            
         }
         if(desiredJump)
         {
             desiredJump = false;
             JumpAction();
+            animator.SetBool("jump_up", true);
         }
         if(body.velocity.y > 0)
         {
@@ -60,10 +67,12 @@ public class Jump : MonoBehaviour
         else if(body.velocity.y < 0)
         {
             body.gravityScale = downMovementMultiplier;
+            animator.SetBool("jump_up", false);
+            animator.SetBool("jump_down", true);
         }
         else if(body.velocity.y == 0)
         {
-            body.gravityScale = defaultGravitScale;
+            body.gravityScale = defaultGravityScale;
         }
         body.velocity = velocity;
     }
