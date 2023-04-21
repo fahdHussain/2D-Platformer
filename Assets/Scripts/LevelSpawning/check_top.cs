@@ -10,8 +10,7 @@ public class check_top : MonoBehaviour
     public Sprite dirt;
     public bool isHit;
     public bool checkTopFull;
-    private float timer = 0;
-    private int passes = 0;
+
     //private RaycastHit2D hit;
     void Start()
     {
