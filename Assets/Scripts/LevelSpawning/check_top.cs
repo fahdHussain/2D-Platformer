@@ -30,7 +30,7 @@ public class check_top : MonoBehaviour
             //Vector2 point2 = new Vector2(rayPosition.x, rayPosition.y +0.1f);
             //RaycastHit2D hit = Physics2D.Linecast(rayPosition, point2);
             
-            Debug.Log(LevelGenerator.playerSpawned);
+            //Debug.Log(LevelGenerator.playerSpawned);
             //isHit = hit;
             if(hit && checkTopFull)
             {
