@@ -10,39 +10,42 @@ public class check_top : MonoBehaviour
     public Sprite dirt;
     public bool isHit;
     public bool checkTopFull;
+    private float timer = 0;
+    private int passes = 0;
+    //private RaycastHit2D hit;
     void Start()
     {
         LevelGenerator = GameObject.FindGameObjectWithTag("LevelGenerator").GetComponent<LevelGeneration>();
+        //Vector2 rayPosition = new Vector2(transform.position.x, transform.position.y + 0.51f);
+        //hit = Physics2D.Raycast(rayPosition, transform.TransformDirection(Vector2.up), 0.01f);
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        //Vector2 rayPosition = new Vector2(transform.position.x, transform.position.y + 0.6f);
-        //Debug.DrawRay(rayPosition,transform.TransformDirection(Vector2.up), Color.red);
-        //Debug.Log(LevelGenerator.finishedFill);
-
-        if(!LevelGenerator.playerSpawned && LevelGenerator.finishedFill)
+        
+        if(!doneCheck && LevelGenerator.finishedFill)
         {
             Vector2 rayPosition = new Vector2(transform.position.x, transform.position.y + 0.51f);
-            //RaycastHit2D hit = Physics2D.Raycast(rayPosition, transform.TransformDirection(Vector2.up), 0.01f);
-            Vector2 point2 = new Vector2(rayPosition.x, rayPosition.y +0.1f);
-            RaycastHit2D hit = Physics2D.Linecast(rayPosition, point2);
+            RaycastHit2D hit = Physics2D.Raycast(rayPosition, transform.TransformDirection(Vector2.up), 0.01f);
+            //Vector2 point2 = new Vector2(rayPosition.x, rayPosition.y +0.1f);
+            //RaycastHit2D hit = Physics2D.Linecast(rayPosition, point2);
             
+            Debug.Log(LevelGenerator.playerSpawned);
             //isHit = hit;
-            //Debug.Log("checkedTop");
             if(hit && checkTopFull)
             {
                 SpriteRenderer spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
                 spriteRenderer.sprite = dirt;
                 //Debug.Log("checkedTop");
+
             }
             if(!hit && !checkTopFull)
             {
                 SpriteRenderer spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
                 spriteRenderer.sprite = dirt;
             }
-            //doneCheck = true;
+            doneCheck = true;
 
         }
     }
