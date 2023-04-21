@@ -25,7 +25,8 @@ public class LevelGeneration : MonoBehaviour
     private int[,] levelArray = new int[4,4];
     private int levelArray_row = 0;
     private int levelArray_col;
-    private bool finishedFill = false;
+    public bool finishedFill = false;
+    public bool playerSpawned;
 
     void Start()
     {
@@ -180,6 +181,7 @@ public class LevelGeneration : MonoBehaviour
         {
             fillLevel();
             finishedFill = true;
+            //Debug.Log("FinishedFill");
 
             transform.position = startingPositions[startingPos].position;
             Collider2D roomDetection = Physics2D.OverlapCircle(transform.position, 1, roomMask);
