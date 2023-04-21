@@ -28,8 +28,6 @@ public class LevelGeneration : MonoBehaviour
     public bool finishedFill = false;
     public bool playerSpawned;
 
-    private int finalRoom_row;
-    private int finalRoom_col;
 
     void Start()
     {
@@ -139,6 +137,8 @@ public class LevelGeneration : MonoBehaviour
 
             } else {
                 stopGeneration = true;
+                Collider2D roomDetecion = Physics2D.OverlapCircle(transform.position, 1, roomMask);
+                roomDetecion.GetComponent<RoomType>().spawnExit();
             }
         }       
         

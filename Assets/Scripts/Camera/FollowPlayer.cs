@@ -26,7 +26,6 @@ public class FollowPlayer : MonoBehaviour
                 target = player.transform;
                 
                 foundPlayer = true;
-                Debug.Log(target.position);
             }
         }
         else
