@@ -28,6 +28,9 @@ public class LevelGeneration : MonoBehaviour
     public bool finishedFill = false;
     public bool playerSpawned;
 
+    private int finalRoom_row;
+    private int finalRoom_col;
+
     void Start()
     {
         startingPos = Random.Range(0, startingPositions.Length);
