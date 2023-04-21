@@ -6,6 +6,7 @@ public class Ground : MonoBehaviour
 {
     private bool onGround;
     private float friction;
+    public bool onSpike = false;
     
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -27,6 +28,7 @@ public class Ground : MonoBehaviour
 
     private void EvaluateCollision(Collision2D collision)
     {
+       
         for(int i = 0; i < collision.contactCount; i++)
         {
             Vector2 normal = collision.GetContact(i).normal;
