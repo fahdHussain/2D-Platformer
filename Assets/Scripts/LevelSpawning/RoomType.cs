@@ -9,15 +9,21 @@ public class RoomType : MonoBehaviour
     public GameObject exitSpawn;
     public GameObject keySpawn;
     public GameObject carrotSpawn;
+    public GameObject gnomeSpawn;
+    public GameObject beeSpawn;
     public GameObject player;
     public GameObject exit;
     public GameObject key;
     public GameObject carrot;
+    public GameObject gnome;
+    public GameObject bee;
 
     void Start()
     {
         spawnCarrot();
         spawnKey();
+        spawnBees();
+        spawnGnome();
     }
     
     public void destroyRoom()
@@ -47,6 +53,22 @@ public class RoomType : MonoBehaviour
         if(carrotSpawn != null)
         {
             GameObject instance = Instantiate(carrot, carrotSpawn.GetComponent<Transform>().position, carrotSpawn.GetComponent<Transform>().rotation);
+            instance.transform.parent = transform;
+        }
+    }
+    public void spawnGnome()
+    {
+        if(gnomeSpawn != null)
+        {
+            GameObject instance = Instantiate(gnome, gnomeSpawn.GetComponent<Transform>().position, gnomeSpawn.GetComponent<Transform>().rotation);
+            instance.transform.parent = transform;
+        }
+    }
+    public void spawnBees()
+    {
+        if(beeSpawn != null)
+        {
+            GameObject instance = Instantiate(bee, beeSpawn.GetComponent<Transform>().position, beeSpawn.GetComponent<Transform>().rotation);
             instance.transform.parent = transform;
         }
     }
