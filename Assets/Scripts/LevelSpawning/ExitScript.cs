@@ -5,6 +5,7 @@ using UnityEngine;
 public class ExitScript : MonoBehaviour
 {
     public bool reachedExit = false;
+    public Animator animator;
 
     void OnTriggerEnter2D(Collider2D collider)
     //Checks if player has key
@@ -17,6 +18,7 @@ public class ExitScript : MonoBehaviour
             if(collider.gameObject.GetComponent<Status>().hasKey)
             {
                 collider.gameObject.GetComponent<Status>().validExit();
+                animator.SetBool("LevelComplete", true);
             }
             
         }
