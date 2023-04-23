@@ -319,3 +319,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5dd1545ac1e49c14994e1a56ccaeafd9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 5
+  score: 0
+  isAlive: 1
+  hasKey: 0
+  reachedExit: 0
+  valExit: 0
+  bloodSpawn: {fileID: 5940044494946225199, guid: c84f1316d71b4424d901dd9e66512ed5, type: 3}

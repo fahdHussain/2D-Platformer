@@ -6,6 +6,8 @@ TagManager:
   tags:
   - LevelGenerator
   - Spike
+  - ScreenShake
+  - BloodStainArray
   layers:
   - Default
   - TransparentFX
