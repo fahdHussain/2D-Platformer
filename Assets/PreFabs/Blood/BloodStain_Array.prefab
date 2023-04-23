@@ -49,10 +49,8 @@ MonoBehaviour:
   - {fileID: 219035338147021437, guid: 618d009a0d3bc3644a014a7b2bdb298a, type: 3}
   - {fileID: 4883469620698768192, guid: 8cabaee3d36223745908e1358170867a, type: 3}
   - {fileID: 8338209493642121329, guid: a7b6906cf7aa7a046afd576a859f7f54, type: 3}
-  x_ScaleMin: 1
-  x_ScaleMax: 3
-  y_ScaleMin: 1
-  y_ScaleMax: 3
+  scaleMin: 1
+  scaleMax: 1
   y_drop: 1
-  alphaRange_min: 0.6
+  alphaRange_min: 0.7
   alphaRange_max: 0.9

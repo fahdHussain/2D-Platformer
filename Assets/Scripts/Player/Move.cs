@@ -21,6 +21,7 @@ public class Move : MonoBehaviour
     private bool facingRight = true;
 
     public Animator animator;
+    public ParticleSystem dust;
     void Awake()
     {
         body = GetComponent<Rigidbody2D>();
@@ -51,11 +52,20 @@ public class Move : MonoBehaviour
             {
                 transform.localScale *=  new Vector2(-1,1);
                 facingRight = true;
+                if(onGround)
+                {
+                    playDust();
+                }
+                
             }
             else if(velocity.x < 0 && facingRight)
             {
                 transform.localScale *= new Vector2(-1,1);
                 facingRight = false;
+                if(onGround)
+                {
+                    playDust();
+                }
             }
             animator.SetBool("running", true);
 
@@ -67,5 +77,10 @@ public class Move : MonoBehaviour
 
         
 
+    }
+
+    void playDust()
+    {
+        dust.Play();
     }
 }

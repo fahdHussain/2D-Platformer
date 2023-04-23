@@ -21,6 +21,7 @@ public class Jump : MonoBehaviour
     private bool onGround;
 
     public Animator animator;
+    public ParticleSystem dust;
 
 
     
@@ -89,6 +90,12 @@ public class Jump : MonoBehaviour
                 jumpSpeed = Mathf.Max(jumpSpeed - velocity.y, 0f);
             }
             velocity.y += jumpSpeed;
+            PlayDust();
         }
+    }
+
+    void PlayDust()
+    {
+        dust.Play();
     }
 }

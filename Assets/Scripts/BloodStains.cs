@@ -6,11 +6,14 @@ public class BloodStains : MonoBehaviour
 {
     public GameObject[] bloodStains;
     Vector3 scaleChange;
-    public float x_ScaleMin = 1;
-    public float x_ScaleMax = 3;
+    //public float x_ScaleMin = 1;
+    //public float x_ScaleMax = 3;
 
-    public float y_ScaleMin = 1;
-    public float y_ScaleMax = 3;
+    //public float y_ScaleMin = 1;
+    //public float y_ScaleMax = 3;
+
+    public float scaleMin = 1;
+    public float scaleMax = 1;
 
     public float y_drop = -10;
     public float alphaRange_min = 0.8f;
@@ -22,8 +25,8 @@ public class BloodStains : MonoBehaviour
         int rand = Random.Range(0, bloodStains.Length);
         GameObject instance = Instantiate(bloodStains[rand], location.position, location.rotation);
         
-        float x_Scale = Random.Range(x_ScaleMin, x_ScaleMax);
-        float y_Scale = Random.Range(y_ScaleMin, y_ScaleMax);
+        float x_Scale = Random.Range(scaleMin, scaleMax);
+        float y_Scale = Random.Range(scaleMin, scaleMax);
 
         scaleChange = new Vector3(x_Scale, y_Scale, 0);
         Vector3 drop  = new Vector3(0, y_drop, 0); 
@@ -37,7 +40,7 @@ public class BloodStains : MonoBehaviour
         float g = instance.GetComponent<SpriteRenderer>().color.g;
         
         Color transparent = new Vector4(r,g,b,alpha);
-        
+
         instance.GetComponent<SpriteRenderer>().color = transparent;
     }
     
