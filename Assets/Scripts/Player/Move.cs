@@ -19,6 +19,7 @@ public class Move : MonoBehaviour
     private float acceleration;
     private bool onGround;
     private bool facingRight = true;
+    private bool inAir = false;
 
     public Animator animator;
     public ParticleSystem dust;
@@ -40,6 +41,19 @@ public class Move : MonoBehaviour
     {
         onGround = ground.getOnGround();
         velocity = body.velocity;
+
+        if(onGround)
+        {
+            if(inAir)
+            {
+                playDust();
+            }
+            inAir = false;
+        }
+        else if(!onGround)
+        {
+            inAir = true;
+        }
 
         acceleration = onGround ? maxAcceleration : maxAirAcceleration;
         maxSpeedChange = acceleration * Time.deltaTime;

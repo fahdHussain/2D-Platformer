@@ -10,7 +10,7 @@ public class spikeScript : MonoBehaviour
     {
         if(collider.gameObject.CompareTag("Player"))
         {
-            if(collider.attachedRigidbody.velocity.y < 0.25)
+            if(collider.attachedRigidbody.velocity.y < -0.25)
             {
                 GameObject player = GameObject.FindGameObjectWithTag("Player");
 
