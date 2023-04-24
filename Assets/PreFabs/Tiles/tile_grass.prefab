@@ -151,6 +151,15 @@ MonoBehaviour:
   dirt: {fileID: -603068273, guid: f69541835ea4de34b9349f3e25bc09b7, type: 3}
   isHit: 0
   checkTopFull: 1
+  grasses:
+  - {fileID: 6756567959280303294, guid: 09479ecfc06fff74fb54c437ab8341ed, type: 3}
+  - {fileID: 2917011890721500292, guid: 8e2d273912004f4468890361dbafccc9, type: 3}
+  - {fileID: 2278766675102947225, guid: d5bdd40dbcb7d3149af51b93bbc7b928, type: 3}
+  - {fileID: 6574051519882227209, guid: 013af49f31433684891de73e3649d586, type: 3}
+  bushes:
+  - {fileID: 2586752616561871074, guid: 11dc0b26e5b606840bdde44d5b649b14, type: 3}
+  - {fileID: 7343320924550618732, guid: 2a9911079ece2ca42bcd1b38efd83aee, type: 3}
+  - {fileID: 6239473505764531819, guid: 0b4a83fc9a8ec6e47832a6f13e9c945e, type: 3}
 --- !u!331 &2847792641365754171
 SpriteMask:
   m_ObjectHideFlags: 0

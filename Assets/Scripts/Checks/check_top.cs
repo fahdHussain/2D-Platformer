@@ -11,6 +11,9 @@ public class check_top : MonoBehaviour
     public bool isHit;
     public bool checkTopFull;
 
+    public GameObject[] grasses;
+    public GameObject[] bushes;
+
     //private RaycastHit2D hit;
     void Start()
     {
@@ -34,6 +37,7 @@ public class check_top : MonoBehaviour
             //isHit = hit;
             if(hit && checkTopFull)
             {
+                //removes grass
                 SpriteRenderer spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
                 spriteRenderer.sprite = dirt;
                 //Debug.Log("checkedTop");
@@ -41,11 +45,38 @@ public class check_top : MonoBehaviour
             }
             if(!hit && !checkTopFull)
             {
+                //adds grass
                 SpriteRenderer spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
                 spriteRenderer.sprite = dirt;
+                GenerateFoliage();
+            }
+            if(!hit && checkTopFull)
+            {
+                //is grass
+                GenerateFoliage();
             }
             doneCheck = true;
 
         }
     }
+
+    void GenerateFoliage()
+    {
+        Vector2 newPos = new Vector2(transform.position.x, transform.position.y + 1);
+        //bush or grass or nothing
+        int bushOrGrass = Random.Range(0, 7);
+        if(bushOrGrass < 4)
+        {
+            //Grass
+            int rand = Random.Range(0, grasses.Length);
+            Instantiate(grasses[rand], newPos, transform.rotation);
+        }
+        else if(bushOrGrass == 5)
+        {
+            int rand = Random.Range(0, bushes.Length);
+            Instantiate(bushes[rand], newPos, transform.rotation);
+        }
+    }
+
+
 }
