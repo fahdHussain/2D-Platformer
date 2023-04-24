@@ -47,6 +47,10 @@ public class ChasePlayer : MonoBehaviour
             setTargetPos(curTarget);
         }
         desiredVelocity = new Vector2(direction.x * maxSpeed, direction.y * maxSpeed);
+        
+        //Vector2 startPos = new Vector2(transform.position.x*direction.x - 0.3f, transform.position.y*direction.y - 0.3f);
+        //RaycastHit2D hit = Physics2D.Raycast(startPos, direction);
+        //Debug.DrawRay(startPos, direction, Color.red);
     }
 
     void FixedUpdate()
