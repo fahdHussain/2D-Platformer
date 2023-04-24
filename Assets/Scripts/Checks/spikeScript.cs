@@ -14,9 +14,9 @@ public class spikeScript : MonoBehaviour
             {
                 GameObject player = GameObject.FindGameObjectWithTag("Player");
 
-                Vector2 bPos = new Vector2(transform.position.x, transform.position.y + 0.5f);
-                Instantiate(effect, bPos, transform.rotation);
-                player.GetComponent<Status>().takeDamage(5);
+                //Vector2 bPos = new Vector2(transform.position.x, transform.position.y + 0.5f);
+                //Instantiate(effect, bPos, transform.rotation);
+                player.GetComponent<Status>().takeDamage(5,1);
                 animator.SetTrigger("bloody");
             }
         }

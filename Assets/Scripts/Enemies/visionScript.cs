@@ -23,15 +23,33 @@ public class visionScript : MonoBehaviour
 
             if(hit.collider.gameObject.tag == "Player")
             {
-                setTarget(hit.collider.gameObject);
-                transform.parent.gameObject.GetComponentInChildren<ChasePlayer>().setAggro(true);
+                setTarget(ChasePlayer.destination.player, hit.collider.transform);
             }
         }
     }
 
-    public void setTarget(GameObject player)
+    void OnTriggerExit2D(Collider2D collider)
     {
-        target = player;
+        if(collider.gameObject.CompareTag("Bees"))
+        {
+            setTarget(ChasePlayer.destination.home, transform);
+        }
+    }
+
+    public void setTarget(ChasePlayer.destination destination, Transform target)
+    {
+        if(destination == ChasePlayer.destination.player)
+        {
+            transform.parent.gameObject.GetComponentInChildren<ChasePlayer>().returnHome(false);
+            transform.parent.gameObject.GetComponentInChildren<ChasePlayer>().setTargetPos(target);
+        }
+        if(destination == ChasePlayer.destination.home)
+        {
+            transform.parent.gameObject.GetComponentInChildren<ChasePlayer>().returnHome(true);
+            transform.parent.gameObject.GetComponentInChildren<ChasePlayer>().setTargetPos(target);
+        }
+
+        
     }
 
 }

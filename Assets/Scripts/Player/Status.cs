@@ -12,15 +12,17 @@ public class Status : MonoBehaviour
     public bool valExit = false;
     private CamShake camShake;
     public GameObject bloodSpawn;
+    public GameObject bloodEffect;
 
     void Start()
     {
         camShake = GameObject.FindGameObjectWithTag("ScreenShake").GetComponent<CamShake>();
     }
-    public void takeDamage(int damage)
+    public void takeDamage(int damage, int type)
     {
         camShake.shakeCam();
-        bloodSpawn.GetComponent<BloodStains>().SpawnBlood(transform);;
+        bloodSpawn.GetComponent<BloodStains>().SpawnBlood(transform, type);;
+        Instantiate(bloodEffect, transform.position,transform.rotation);
 
         if(damage >= health)
         {

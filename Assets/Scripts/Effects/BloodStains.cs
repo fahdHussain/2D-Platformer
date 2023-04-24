@@ -14,14 +14,15 @@ public class BloodStains : MonoBehaviour
 
     public float scaleMin = 1;
     public float scaleMax = 1;
-
-    public float y_drop = -10;
     public float alphaRange_min = 0.8f;
     public float alphaRange_max = 0.95f;
+    private Vector3 drop;
 
 
-    public void SpawnBlood(Transform location)
+    public void SpawnBlood(Transform location, int type)
     {
+        //Type: 0 == regular damage
+        //Type: 1 == Spike
         int rand = Random.Range(0, bloodStains.Length);
         GameObject instance = Instantiate(bloodStains[rand], location.position, location.rotation);
         
@@ -29,10 +30,20 @@ public class BloodStains : MonoBehaviour
         float y_Scale = Random.Range(scaleMin, scaleMax);
 
         scaleChange = new Vector3(x_Scale, y_Scale, 0);
-        Vector3 drop  = new Vector3(0, y_drop, 0); 
+        if(type == 0)
+        {
+            //Regular
+            drop  = new Vector3(0, 0.5f, 0);  
+        }
+        if(type == 1)
+        {
+            //Spike
+            drop  = new Vector3(0, 0.8f, 0);  
+        }
 
         instance.transform.localScale += scaleChange;
         instance.transform.position -= drop;
+        
 
         float alpha = Random.Range(alphaRange_min, alphaRange_max);
         float r = instance.GetComponent<SpriteRenderer>().color.r;

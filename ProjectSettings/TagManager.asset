@@ -8,6 +8,7 @@ TagManager:
   - Spike
   - ScreenShake
   - BloodStainArray
+  - Bees
   layers:
   - Default
   - TransparentFX
