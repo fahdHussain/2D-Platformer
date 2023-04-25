@@ -20,13 +20,20 @@ public class Move : MonoBehaviour
     private bool onGround;
     private bool facingRight = true;
     private bool inAir = false;
+    public AudioSource moveSoundSource;
+    //public AudioClip moveSoundClip;
 
     public Animator animator;
     public ParticleSystem dust;
+    private SoundEffectController sound;
     void Awake()
     {
         body = GetComponent<Rigidbody2D>();
         ground = GetComponent<Ground>();
+
+        sound = GetComponent<SoundEffectController>();
+        moveSoundSource.volume = 0.4f;
+
 
     }
 
@@ -53,6 +60,10 @@ public class Move : MonoBehaviour
         else if(!onGround)
         {
             inAir = true;
+            if(moveSoundSource.isPlaying)
+            {
+                moveSoundSource.Stop();
+            }
         }
 
         acceleration = onGround ? maxAcceleration : maxAirAcceleration;
@@ -82,11 +93,22 @@ public class Move : MonoBehaviour
                 }
             }
             animator.SetBool("running", true);
+            if(onGround)
+            {
+                if(!moveSoundSource.isPlaying)
+                {
+                    moveSoundSource.Play();
+                }
+            }
 
         }
         else if(Mathf.Abs(velocity.x) == 0)
         {
             animator.SetBool("running", false);
+            if(moveSoundSource.isPlaying)
+            {
+                moveSoundSource.Stop();
+            }
         }
 
         

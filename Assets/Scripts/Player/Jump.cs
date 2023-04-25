@@ -19,9 +19,14 @@ public class Jump : MonoBehaviour
 
     private bool desiredJump;
     private bool onGround;
+    private bool falling = false;
 
     public Animator animator;
     public ParticleSystem dust;
+
+    private SoundEffectController sound;
+    //0: Jump
+    //1: Land
 
 
     
@@ -33,7 +38,7 @@ public class Jump : MonoBehaviour
 
         defaultGravityScale = 1f;
 
-
+        sound = GetComponent<SoundEffectController>();
     }
 
     // Update is called once per frame
@@ -53,7 +58,11 @@ public class Jump : MonoBehaviour
         if(onGround)
         {
             jumpPhase = 0;
-            
+            if(falling)
+            {
+                sound.playSound(1);
+                falling = false;
+            }            
         }
         if(desiredJump)
         {
@@ -64,12 +73,14 @@ public class Jump : MonoBehaviour
         if(body.velocity.y > 0)
         {
             body.gravityScale = upMovementMultiplier;
+            
         }
         else if(body.velocity.y < 0)
         {
             body.gravityScale = downMovementMultiplier;
             animator.SetBool("jump_up", false);
             animator.SetBool("jump_down", true);
+            falling = true;
         }
         else if(body.velocity.y == 0)
         {
@@ -83,6 +94,7 @@ public class Jump : MonoBehaviour
     
         if(onGround || jumpPhase < maxAirJumps)
         {
+            sound.playSound(0);
             jumpPhase += 1;
             float jumpSpeed = Mathf.Sqrt(-2f * Physics2D.gravity.y * jumpHeight);
             if(velocity.y < 0f)

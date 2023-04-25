@@ -9,6 +9,7 @@ TagManager:
   - ScreenShake
   - BloodStainArray
   - Bees
+  - AudioSource
   layers:
   - Default
   - TransparentFX
