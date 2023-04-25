@@ -117,7 +117,11 @@ public class ChasePlayer : MonoBehaviour
     {
         if(collision.gameObject.CompareTag("Player"))
         {
-            collision.gameObject.GetComponent<Status>().takeDamage(1,0);
+            if(collision.gameObject.GetComponent<Rigidbody2D>().bodyType != RigidbodyType2D.Static)
+            {
+                collision.gameObject.GetComponent<Status>().takeDamage(1,0, direction);
+            }
+            
         }
     }
 }

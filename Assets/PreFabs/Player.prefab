@@ -331,6 +331,7 @@ MonoBehaviour:
   valExit: 0
   bloodSpawn: {fileID: 5940044494946225199, guid: c84f1316d71b4424d901dd9e66512ed5, type: 3}
   bloodEffect: {fileID: 5499079015910745877, guid: 86990dd8958a2b24e9f57e8080709f93, type: 3}
+  corpse: {fileID: 644850060808806336, guid: 13da39113fcf590479e9530de7882281, type: 3}
 --- !u!1 &4186635884188513052
 GameObject:
   m_ObjectHideFlags: 0

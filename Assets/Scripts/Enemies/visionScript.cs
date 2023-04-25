@@ -20,11 +20,15 @@ public class visionScript : MonoBehaviour
             Vector2 startPos = new Vector2(transform.position.x, transform.position.y - 0.6f);
             RaycastHit2D hit = Physics2D.Raycast(startPos, rayDirection, tiles);
             //Debug.DrawRay(startPos, rayDirection, Color.red);
-
-            if(hit.collider.gameObject.tag == "Player")
+            if(hit.collider != null)
             {
-                setTarget(ChasePlayer.destination.player, hit.collider.transform);
+                if(hit.collider.gameObject.tag == "Player")
+                {
+                    setTarget(ChasePlayer.destination.player, hit.collider.transform);
+                }
             }
+            
+            
         }
     }
 

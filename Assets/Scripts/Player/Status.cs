@@ -13,6 +13,7 @@ public class Status : MonoBehaviour
     private CamShake camShake;
     public GameObject bloodSpawn;
     public GameObject bloodEffect;
+    public GameObject corpse;
 
     void Start()
     {
@@ -27,11 +28,55 @@ public class Status : MonoBehaviour
         if(damage >= health)
         {
             health = 0;
-            isAlive = false;
+            if(isAlive)
+            {
+                GameObject instance = Instantiate(corpse, transform.position, transform.rotation);
+                instance.GetComponent<CorpseExplode>().explode();
+
+                //Disable movement and sprite;
+                this.GetComponent<Move>().enabled = false;
+                this.GetComponent<Jump>().enabled = false;
+                this.GetComponent<SpriteRenderer>().enabled = false;
+                this.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
+                isAlive = false;
+            }
+            
         } 
         else
         {
             health -= damage;
+        }
+    }
+    public void takeDamage(int damage, int type, Vector2 direction)
+    //Add directional movement
+    {
+        camShake.shakeCam();
+        bloodSpawn.GetComponent<BloodStains>().SpawnBlood(transform, type);;
+        Instantiate(bloodEffect, transform.position,transform.rotation);
+        GetComponent<Rigidbody2D>().velocity += direction;
+
+        if(damage >= health)
+        {
+            health = 0;
+            if(isAlive)
+            {
+                GameObject instance = Instantiate(corpse, transform.position, transform.rotation);
+                instance.GetComponent<CorpseExplode>().explode();
+
+                //Disable movement and sprite;
+                this.GetComponent<Move>().enabled = false;
+                this.GetComponent<Jump>().enabled = false;
+                this.GetComponent<SpriteRenderer>().enabled = false;
+                this.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
+                isAlive = false;
+            }
+        } 
+        else
+        {
+            health -= damage;
+            //multiplier = maxPush/(delta(damage)) + b
+            float movementMultiplier = damage * (3.33f) + 6.66f;
+            this.GetComponent<Rigidbody2D>().AddForce(direction * movementMultiplier, ForceMode2D.Impulse);
         }
     }
 
