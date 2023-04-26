@@ -9,7 +9,11 @@ public class SpawnObject : MonoBehaviour
     {
         int rand = Random.Range(0, objects.Length);
         GameObject instance = Instantiate(objects[rand], transform.position, Quaternion.identity);
-        instance.transform.parent = transform;
+        if(instance.gameObject.tag != "Player")
+        {
+            instance.transform.parent = transform;
+        }
+        
     }
 
 }

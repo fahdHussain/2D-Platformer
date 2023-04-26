@@ -23,8 +23,11 @@ public class GreyScaleEffect_Script : MonoBehaviour
 
     void OnDestroy()
     {
-        RuntimeUtilities.DestroyVolume(grey_volume, true, true);
-    }
+        if(grey_volume != null)
+        {
+            RuntimeUtilities.DestroyVolume(grey_volume, true, true);
+        }
+         }
 
     IEnumerator timer()
     {

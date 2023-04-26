@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: a022e98150fb7e44b9ecc1bef24f5ff4
+guid: 4d44d6c47faca564b80b3bf976fb804a
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -117,7 +117,133 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: gnomeSpriteSheet_0
+      name: gnoome_sprite_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 32
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ebd66245f4ab7f54d818227dba99579c
+      internalID: 544085075
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gnoome_sprite_1
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 32
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 719cca440a4d84b4ba06da078c1a4874
+      internalID: 625886876
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gnoome_sprite_2
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 32
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4a8f3000206d47346a106eb65e78c4be
+      internalID: 1120596861
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gnoome_sprite_3
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 32
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e544c8a49d253334f9175f56d2b776fb
+      internalID: -1645658063
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gnoome_sprite_4
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 32
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aada7447a8ac4d8408a7a5b2fea3b14d
+      internalID: 310971911
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gnoome_sprite_5
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 32
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3f12f8888e264444c90d93ef7dbd6fd7
+      internalID: 1299734324
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gnoome_sprite_6
       rect:
         serializedVersion: 2
         x: 0
@@ -131,14 +257,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8354b0d47f4317f49a7a81f3cb33c486
-      internalID: -2099410562
+      spriteID: 2c070d411dd4bea4ca0251668ed6d2ae
+      internalID: -919003345
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: gnomeSpriteSheet_1
+      name: gnoome_sprite_7
       rect:
         serializedVersion: 2
         x: 16
@@ -152,14 +278,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3cfd6c8720e2b2f4193282cc966a50a5
-      internalID: 2132299801
+      spriteID: d6759922809acbe44a927564f5cf40f6
+      internalID: -484562230
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: gnomeSpriteSheet_2
+      name: gnoome_sprite_8
       rect:
         serializedVersion: 2
         x: 32
@@ -173,14 +299,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f19aa9cefbc89a74c8181ae0075455bd
-      internalID: -1737411328
+      spriteID: badbefaea60379544bbb8f15054c1cb7
+      internalID: -1705448735
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: gnomeSpriteSheet_3
+      name: gnoome_sprite_9
       rect:
         serializedVersion: 2
         x: 48
@@ -194,14 +320,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2abde7d1e3395c649bb9a8779c7993c5
-      internalID: 1907240288
+      spriteID: 431ec2c6e7e77a5459de184a2826230b
+      internalID: -1228015655
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: gnomeSpriteSheet_4
+      name: gnoome_sprite_10
       rect:
         serializedVersion: 2
         x: 64
@@ -215,14 +341,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4116b897bb494ed41bafb3672c95bb00
-      internalID: -114507176
+      spriteID: 61e7be38813be4b47b4c1b3f5ffad0fb
+      internalID: -1114050096
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: gnomeSpriteSheet_5
+      name: gnoome_sprite_11
       rect:
         serializedVersion: 2
         x: 80
@@ -236,14 +362,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: dd3efe7228afbce448156c498532c936
-      internalID: -1957674137
+      spriteID: fdfbe54e2332e07438e1413f8e788ce9
+      internalID: 1367855230
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: gnomeSpriteSheet_6
+      name: gnoome_sprite_12
       rect:
         serializedVersion: 2
         x: 0
@@ -257,14 +383,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 663ef8e1e99ea264bb6c350b16324ae9
-      internalID: -423774930
+      spriteID: 3bc367861c910304fba14ca6e61a910a
+      internalID: -1274816893
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: gnomeSpriteSheet_7
+      name: gnoome_sprite_13
       rect:
         serializedVersion: 2
         x: 16
@@ -278,14 +404,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a70e3faa7139aaf419c0ab401e7b8c95
-      internalID: -1003402031
+      spriteID: b2dc2cbc58ab943409d6d2f41c7e61e1
+      internalID: 1853656267
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: gnomeSpriteSheet_8
+      name: gnoome_sprite_14
       rect:
         serializedVersion: 2
         x: 32
@@ -299,14 +425,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 21d33a6c041a0ea499050a58033d93ff
-      internalID: 1013534799
+      spriteID: 0208f75b9087e704b87ff6ff81800d99
+      internalID: 1506990366
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: gnomeSpriteSheet_9
+      name: gnoome_sprite_15
       rect:
         serializedVersion: 2
         x: 48
@@ -320,14 +446,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 28e060881d5d61d438ef071646cb221d
-      internalID: 2038544440
+      spriteID: 84e8608b0154cb943892241ac791f089
+      internalID: 450137827
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: gnomeSpriteSheet_10
+      name: gnoome_sprite_16
       rect:
         serializedVersion: 2
         x: 64
@@ -341,14 +467,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bbd5cb7b6ba08824287ba2da7c075412
-      internalID: 1560979724
+      spriteID: 8090dc1581b024a4dba5744fad900fde
+      internalID: 1366527219
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: gnomeSpriteSheet_11
+      name: gnoome_sprite_17
       rect:
         serializedVersion: 2
         x: 80
@@ -362,14 +488,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f5e736cdad77cd44385367bc66d3ec18
-      internalID: 1027738904
+      spriteID: d2cdd824ef0023c4582285969e58a68e
+      internalID: -123491681
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: gnomeSpriteSheet_12
+      name: gnoome_sprite_18
       rect:
         serializedVersion: 2
         x: 96
@@ -383,14 +509,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 33e2116d8150d4f41b5540216d683227
-      internalID: -1628571748
+      spriteID: f78b978a18dc05c47a174830ca598ce4
+      internalID: 1369415845
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: gnomeSpriteSheet_13
+      name: gnoome_sprite_19
       rect:
         serializedVersion: 2
         x: 112
@@ -404,8 +530,134 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 099201179d06b9d4782671acab86a71b
-      internalID: -579042832
+      spriteID: d3c636d5a97f3e14caa10ca46c17ab90
+      internalID: -438759991
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gnoome_sprite_20
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2e895db2d72d21c4f81671b46daf97ba
+      internalID: 1111158674
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gnoome_sprite_21
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0660bc1da66b8304d9b42321af0cf67a
+      internalID: -269200535
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gnoome_sprite_22
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1ae5bc60c2ca0584da064ac5020cb3b4
+      internalID: -486765824
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gnoome_sprite_23
+      rect:
+        serializedVersion: 2
+        x: 176
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 858114a7b14f65344aaffc4dfde1170a
+      internalID: -1528311912
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gnoome_sprite_24
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 059268767c7b81242ab020733787b43d
+      internalID: 193421254
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gnoome_sprite_25
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: de443a9b1dd9bbf439f4e4f8f5d2f07c
+      internalID: -276483024
       vertices: []
       indices: 
       edges: []
@@ -421,20 +673,32 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      gnomeSpriteSheet_0: -2099410562
-      gnomeSpriteSheet_1: 2132299801
-      gnomeSpriteSheet_10: 1560979724
-      gnomeSpriteSheet_11: 1027738904
-      gnomeSpriteSheet_12: -1628571748
-      gnomeSpriteSheet_13: -579042832
-      gnomeSpriteSheet_2: -1737411328
-      gnomeSpriteSheet_3: 1907240288
-      gnomeSpriteSheet_4: -114507176
-      gnomeSpriteSheet_5: -1957674137
-      gnomeSpriteSheet_6: -423774930
-      gnomeSpriteSheet_7: -1003402031
-      gnomeSpriteSheet_8: 1013534799
-      gnomeSpriteSheet_9: 2038544440
+      gnoome_sprite_0: 544085075
+      gnoome_sprite_1: 625886876
+      gnoome_sprite_10: -1114050096
+      gnoome_sprite_11: 1367855230
+      gnoome_sprite_12: -1274816893
+      gnoome_sprite_13: 1853656267
+      gnoome_sprite_14: 1506990366
+      gnoome_sprite_15: 450137827
+      gnoome_sprite_16: 1366527219
+      gnoome_sprite_17: -123491681
+      gnoome_sprite_18: 1369415845
+      gnoome_sprite_19: -438759991
+      gnoome_sprite_2: 1120596861
+      gnoome_sprite_20: 1111158674
+      gnoome_sprite_21: -269200535
+      gnoome_sprite_22: -486765824
+      gnoome_sprite_23: -1528311912
+      gnoome_sprite_24: 193421254
+      gnoome_sprite_25: -276483024
+      gnoome_sprite_3: -1645658063
+      gnoome_sprite_4: 310971911
+      gnoome_sprite_5: 1299734324
+      gnoome_sprite_6: -919003345
+      gnoome_sprite_7: -484562230
+      gnoome_sprite_8: -1705448735
+      gnoome_sprite_9: -1228015655
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
