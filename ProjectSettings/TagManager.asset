@@ -11,6 +11,7 @@ TagManager:
   - Bees
   - AudioSource
   - CamFollow
+  - tile
   layers:
   - Default
   - TransparentFX

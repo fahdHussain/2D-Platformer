@@ -45,25 +45,20 @@ public class Jump : MonoBehaviour
     void Update()
     {
         desiredJump |= input.RetrieveJumpInput();
+        onGround = ground.rayGroundCheck();
+        if(onGround)
+        {
+            jumpPhase = 0;
+        }
     }
 
     void FixedUpdate()
     {
-        onGround = ground.getOnGround();
+        //onGround = ground.rayGroundCheck();
         velocity = body.velocity;
-
         animator.SetBool("onGround", onGround);
         animator.SetBool("jump_down", false);
-
-        if(onGround)
-        {
-            jumpPhase = 0;
-            if(falling)
-            {
-                sound.playSound(1);
-                falling = false;
-            }            
-        }
+        
         if(desiredJump)
         {
             desiredJump = false;
@@ -80,28 +75,35 @@ public class Jump : MonoBehaviour
             body.gravityScale = downMovementMultiplier;
             animator.SetBool("jump_up", false);
             animator.SetBool("jump_down", true);
-            falling = true;
         }
         else if(body.velocity.y == 0)
         {
             body.gravityScale = defaultGravityScale;
+        }
+
+        if(body.velocity.y < -0.5f)
+        {
+            falling = true;
         }
         body.velocity = velocity;
     }
 
     private void JumpAction()
     {   
-    
-        if(onGround || jumpPhase < maxAirJumps)
+        Debug.Log(onGround);
+        
+        if(onGround || jumpPhase <= maxAirJumps)
         {
-            sound.playSound(0);
+            
             jumpPhase += 1;
+            Debug.Log(jumpPhase);
             float jumpSpeed = Mathf.Sqrt(-2f * Physics2D.gravity.y * jumpHeight);
             if(velocity.y < 0f)
             {
                 jumpSpeed = Mathf.Max(jumpSpeed - velocity.y, 0f);
             }
             velocity.y += jumpSpeed;
+            sound.playSound(0);
             PlayDust();
         }
     }

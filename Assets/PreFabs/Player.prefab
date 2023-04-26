@@ -215,6 +215,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   onSpike: 0
+  layer:
+    serializedVersion: 2
+    m_Bits: 384
 --- !u!95 &8875183963276206883
 Animator:
   serializedVersion: 5

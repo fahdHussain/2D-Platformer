@@ -22,7 +22,7 @@ public class visionScript : MonoBehaviour
             //Debug.DrawRay(startPos, rayDirection, Color.red);
             if(hit.collider != null)
             {
-                Debug.Log(hit.collider.gameObject.tag);
+                //Debug.Log(hit.collider.gameObject.tag);
                 if(hit.collider.gameObject.tag == "Player")
                 {
                     setTarget(ChasePlayer.destination.player, hit.collider.transform);
