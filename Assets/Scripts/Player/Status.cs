@@ -11,17 +11,24 @@ public class Status : MonoBehaviour
     public bool reachedExit = false;
     public bool valExit = false;
     private CamShake camShake;
+    private FreezeFrame freezeFrame;
+    private GreyScaleEffect_Script greyScaleEffect;
     public GameObject bloodSpawn;
     public GameObject bloodEffect;
     public GameObject corpse;
+    public SoundEffectController soundEffectController;
+
 
     void Start()
     {
-        camShake = GameObject.FindGameObjectWithTag("ScreenShake").GetComponent<CamShake>();
+        camShake = GameObject.FindGameObjectWithTag("CamFollow").GetComponent<CamShake>();
+        freezeFrame = GameObject.FindGameObjectWithTag("CamFollow").GetComponent<FreezeFrame>();
+        greyScaleEffect = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<GreyScaleEffect_Script>();
     }
     public void takeDamage(int damage, int type)
     {
         camShake.shakeCam();
+        
         bloodSpawn.GetComponent<BloodStains>().SpawnBlood(transform, type);;
         Instantiate(bloodEffect, transform.position,transform.rotation);
 
@@ -38,12 +45,18 @@ public class Status : MonoBehaviour
                 this.GetComponent<Jump>().enabled = false;
                 this.GetComponent<SpriteRenderer>().enabled = false;
                 this.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
+                soundEffectController.playSound(5);
+                freezeFrame.setDuration(3);
                 isAlive = false;
+                greyScaleEffect.SpawnGreyScale();
+                freezeFrame.Freeze();
+                
             }
             
         } 
         else
         {
+            soundEffectController.playSound(2);
             health -= damage;
         }
     }
@@ -51,6 +64,7 @@ public class Status : MonoBehaviour
     //Add directional movement
     {
         camShake.shakeCam();
+        
         bloodSpawn.GetComponent<BloodStains>().SpawnBlood(transform, type);;
         Instantiate(bloodEffect, transform.position,transform.rotation);
         GetComponent<Rigidbody2D>().velocity += direction;
@@ -68,11 +82,16 @@ public class Status : MonoBehaviour
                 this.GetComponent<Jump>().enabled = false;
                 this.GetComponent<SpriteRenderer>().enabled = false;
                 this.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
+                soundEffectController.playSound(5);
+                freezeFrame.setDuration(3);
                 isAlive = false;
+                greyScaleEffect.SpawnGreyScale();
+                freezeFrame.Freeze();
             }
         } 
         else
         {
+            soundEffectController.playSound(2);
             health -= damage;
             //multiplier = maxPush/(delta(damage)) + b
             float movementMultiplier = damage * (3.33f) + 6.66f;
@@ -82,11 +101,13 @@ public class Status : MonoBehaviour
 
     public void gotKey()
     {
+        soundEffectController.playSound(3);
         hasKey = true;
     }
 
     public void plusScore(int itemScore)
     {
+        soundEffectController.playSound(4);
         score += itemScore;
     }
 

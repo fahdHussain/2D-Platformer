@@ -10,16 +10,17 @@ TagManager:
   - BloodStainArray
   - Bees
   - AudioSource
+  - CamFollow
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - player
+  - Post-Processing
   - Water
   - UI
+  - player
   - room
   - tiles
-  - 
   - 
   - 
   - 

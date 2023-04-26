@@ -335,6 +335,7 @@ MonoBehaviour:
   bloodSpawn: {fileID: 5940044494946225199, guid: c84f1316d71b4424d901dd9e66512ed5, type: 3}
   bloodEffect: {fileID: 5499079015910745877, guid: 86990dd8958a2b24e9f57e8080709f93, type: 3}
   corpse: {fileID: 644850060808806336, guid: 13da39113fcf590479e9530de7882281, type: 3}
+  soundEffectController: {fileID: -4401997712799440325}
 --- !u!114 &-4401997712799440325
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -347,9 +348,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c39ea0386f6e134abcae82f76e941cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  src: {fileID: 5774726268891067202, guid: b8615878fa8458d44b411dcc88fb4299, type: 3}
   clips:
   - {fileID: 8300000, guid: bec9c69fddf61574b90522cfd43fa57c, type: 3}
   - {fileID: 8300000, guid: 0303672d54c355b47b9e4e8178970194, type: 3}
+  - {fileID: 8300000, guid: 59969eac79d189f43a0ee4dada0a6572, type: 3}
+  - {fileID: 8300000, guid: 58d9aef7bb918b14cb8b2e98d34b4b10, type: 3}
+  - {fileID: 8300000, guid: e98fa4352823141448d643f19a37cbe8, type: 3}
+  - {fileID: 8300000, guid: 9ddd23795c5009a4b9a779cb85853085, type: 3}
 --- !u!82 &6867788273696736519
 AudioSource:
   m_ObjectHideFlags: 0

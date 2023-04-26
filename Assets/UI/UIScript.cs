@@ -7,13 +7,14 @@ public class UIScript : MonoBehaviour
 {
     public int health;
     public int score = 0;
-    public Text healthText;
     public Text scoreText;
     public Text gameOver;
     public Text keyText;
     public Text levelComplete;
     public Text needKey;
     float timerVal = 5;
+
+    public GameObject[] healthChunks;
 
     GameObject player;
     
@@ -26,6 +27,7 @@ public class UIScript : MonoBehaviour
         //health = player.GetComponent<Status>().health;
         gameOver.enabled = false;
         needKey.enabled = false;
+
     }
     void Update()
     {
@@ -35,12 +37,12 @@ public class UIScript : MonoBehaviour
         }
         else
         {  
+            healthFiller();
+            health = player.GetComponent<Status>().health;
             if(player.GetComponent<Status>().isAlive == true)
-            {
-                health = player.GetComponent<Status>().health;
+            { 
                 score = player.GetComponent<Status>().score;
-
-                healthText.text = "HEALTH: " + health.ToString();
+                
                 scoreText.text = "Score: "+ score.ToString();
 
                 if(player.GetComponent<Status>().hasKey == true)
@@ -69,7 +71,6 @@ public class UIScript : MonoBehaviour
 
     void GameOver()
     {
-        Destroy(healthText);
         Destroy(scoreText);
         Destroy(keyText);
 
@@ -78,10 +79,33 @@ public class UIScript : MonoBehaviour
         
     }
 
+    void healthFiller()
+    {
+        for(int i = 0; i < healthChunks.Length; i++)
+        {
+            if(!displayHealth(i))
+            {
+                healthChunks[i].GetComponent<HealthBar_AnimateScript>().triggerAnim();
+            }
+        }
+    }
+
+    private bool displayHealth(int dipslayPoint)
+    {
+        if(health <= dipslayPoint|| health == 0)
+        {
+            return false;
+        }
+        else
+        {
+            return true;
+        }
+    }
+
 
     void LevelComplete()
     {
-        Destroy(healthText);
+        
         Destroy(scoreText);
         Destroy(keyText);
 

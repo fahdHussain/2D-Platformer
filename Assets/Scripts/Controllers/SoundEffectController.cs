@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SoundEffectController : MonoBehaviour
 {
-    private AudioSource src;
+    public AudioSource src;
     public AudioClip[] clips;
 
     void Start()
