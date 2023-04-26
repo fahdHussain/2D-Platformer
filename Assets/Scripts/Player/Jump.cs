@@ -21,9 +21,9 @@ public class Jump : MonoBehaviour
     private bool onGround;
     private bool falling = false;
 
-    public Animator animator;
     public ParticleSystem dust;
 
+    private PlayerAnimator animator;
     private SoundEffectController sound;
     //0: Jump
     //1: Land
@@ -39,6 +39,7 @@ public class Jump : MonoBehaviour
         defaultGravityScale = 1f;
 
         sound = GetComponent<SoundEffectController>();
+        animator = GetComponent<PlayerAnimator>();
     }
 
     // Update is called once per frame
@@ -56,14 +57,23 @@ public class Jump : MonoBehaviour
     {
         //onGround = ground.rayGroundCheck();
         velocity = body.velocity;
-        animator.SetBool("onGround", onGround);
-        animator.SetBool("jump_down", false);
+
+        if(onGround && falling == true)
+        {
+            sound.playSound(1);
+            falling = false;
+            if(!animator.isAttacking())
+            {
+                animator.changeAnimationState(PlayerAnimator.pAnim.PLAYER_LAND);
+            }
+            
+        }
         
         if(desiredJump)
         {
             desiredJump = false;
             JumpAction();
-            animator.SetBool("jump_up", true);
+            //animator.changeAnimationState(PlayerAnimator.pAnim.PLAYER_JUMP_UP);
         }
         if(body.velocity.y > 0)
         {
@@ -73,8 +83,7 @@ public class Jump : MonoBehaviour
         else if(body.velocity.y < 0)
         {
             body.gravityScale = downMovementMultiplier;
-            animator.SetBool("jump_up", false);
-            animator.SetBool("jump_down", true);
+            //animator.changeAnimationState(PlayerAnimator.pAnim.PLAYER_JUMP_DOWN);
         }
         else if(body.velocity.y == 0)
         {
@@ -84,19 +93,40 @@ public class Jump : MonoBehaviour
         if(body.velocity.y < -0.5f)
         {
             falling = true;
+
+            if(animator.isAttacking())
+            {
+                if(animator.getAnimator().GetCurrentAnimatorStateInfo(0).normalizedTime > 1 && !animator.getAnimator().IsInTransition(0))
+                {
+                    animator.changeAnimationState(PlayerAnimator.pAnim.PLAYER_JUMP_DOWN);
+                }
+            }
+            
+
+
+
+            if(!animator.isAttacking())
+            {
+                animator.changeAnimationState(PlayerAnimator.pAnim.PLAYER_JUMP_DOWN);
+            }
+            
         }
         body.velocity = velocity;
     }
 
     private void JumpAction()
     {   
-        Debug.Log(onGround);
+        //Debug.Log(onGround);
         
         if(onGround || jumpPhase <= maxAirJumps)
         {
+            if(!animator.isAttacking())
+            {
+                animator.changeAnimationState(PlayerAnimator.pAnim.PLAYER_JUMP_UP);
+            }
             
             jumpPhase += 1;
-            Debug.Log(jumpPhase);
+            //Debug.Log(jumpPhase);
             float jumpSpeed = Mathf.Sqrt(-2f * Physics2D.gravity.y * jumpHeight);
             if(velocity.y < 0f)
             {

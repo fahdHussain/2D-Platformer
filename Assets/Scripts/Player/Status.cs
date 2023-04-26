@@ -13,10 +13,13 @@ public class Status : MonoBehaviour
     private CamShake camShake;
     private FreezeFrame freezeFrame;
     private GreyScaleEffect_Script greyScaleEffect;
+    private WeaponScript wScript;
+    private WeaponScript.Weapon currentWeapon;
     public GameObject bloodSpawn;
     public GameObject bloodEffect;
     public GameObject corpse;
     public SoundEffectController soundEffectController;
+    public UIScript ui;
 
 
     void Start()
@@ -24,6 +27,11 @@ public class Status : MonoBehaviour
         camShake = GameObject.FindGameObjectWithTag("CamFollow").GetComponent<CamShake>();
         freezeFrame = GameObject.FindGameObjectWithTag("CamFollow").GetComponent<FreezeFrame>();
         greyScaleEffect = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<GreyScaleEffect_Script>();
+        ui = GameObject.FindGameObjectWithTag("UI").GetComponent<UIScript>();
+
+        wScript = GetComponent<WeaponScript>();
+        wScript.SetCurrentWeapon(WeaponScript.Weapon.BASIC);
+        currentWeapon = wScript.GetCurrentWeapon();
     }
     public void takeDamage(int damage, int type)
     {
@@ -40,20 +48,7 @@ public class Status : MonoBehaviour
             health = 0;
             if(isAlive)
             {
-                GameObject instance = Instantiate(corpse, transform.position, transform.rotation);
-                instance.GetComponent<CorpseExplode>().explode();
-
-                //Disable movement and sprite;
-                this.GetComponent<Move>().enabled = false;
-                this.GetComponent<Jump>().enabled = false;
-                this.GetComponent<SpriteRenderer>().enabled = false;
-                this.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
-                soundEffectController.playSound(5);
-                freezeFrame.setDuration(3);
-                isAlive = false;
-                greyScaleEffect.SpawnGreyScale();
-                freezeFrame.Freeze();
-                
+                die();
             }
             
         } 
@@ -77,19 +72,7 @@ public class Status : MonoBehaviour
             health = 0;
             if(isAlive)
             {
-                GameObject instance = Instantiate(corpse, transform.position, transform.rotation);
-                instance.GetComponent<CorpseExplode>().explode();
-
-                //Disable movement and sprite;
-                this.GetComponent<Move>().enabled = false;
-                this.GetComponent<Jump>().enabled = false;
-                this.GetComponent<SpriteRenderer>().enabled = false;
-                this.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
-                soundEffectController.playSound(5);
-                freezeFrame.setDuration(3);
-                isAlive = false;
-                greyScaleEffect.SpawnGreyScale();
-                freezeFrame.Freeze();
+                die();
             }
         } 
         else
@@ -100,6 +83,24 @@ public class Status : MonoBehaviour
             float movementMultiplier = damage * (3.33f) + 6.66f;
             this.GetComponent<Rigidbody2D>().AddForce(direction * movementMultiplier, ForceMode2D.Impulse);
         }
+    }
+
+    private void die()
+    {
+        GameObject instance = Instantiate(corpse, transform.position, transform.rotation);
+        instance.GetComponent<CorpseExplode>().explode();
+
+        //Disable movement and sprite;
+        this.GetComponent<Move>().enabled = false;
+        this.GetComponent<Jump>().enabled = false;
+        this.GetComponent<SpriteRenderer>().enabled = false;
+        this.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
+        soundEffectController.playSound(5);
+        freezeFrame.setDuration(3);
+        isAlive = false;
+        greyScaleEffect.SpawnGreyScale();
+        freezeFrame.Freeze();
+        StartCoroutine(resetTextTimer());
     }
 
     public void gotKey()
@@ -127,5 +128,11 @@ public class Status : MonoBehaviour
     public void validExit()
     {
         valExit = true;
+    }
+
+    IEnumerator resetTextTimer()
+    {
+        yield return new WaitForSecondsRealtime(3);
+        ui.resetGameOverText();
     }
 }

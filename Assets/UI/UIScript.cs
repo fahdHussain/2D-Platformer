@@ -14,6 +14,8 @@ public class UIScript : MonoBehaviour
     public Text needKey;
     float timerVal = 5;
 
+    string gameOverText = "We'll\nbe\nright\nback ";
+
     public GameObject[] healthChunks;
 
     GameObject player;
@@ -75,8 +77,19 @@ public class UIScript : MonoBehaviour
         Destroy(keyText);
 
         gameOver.enabled = true;
-        gameOver.text = "GAME OVER";
+        gameOver.text = gameOverText;
         
+    }
+    public void resetGameOverText()
+    {
+        
+        gameOver.alignment = TextAnchor.MiddleCenter;
+        gameOver.fontStyle = FontStyle.BoldAndItalic;
+        
+        gameOver.color = Color.red;
+        gameOverText = "Game Over";
+        Debug.Log(gameOver.text);
+
     }
 
     void healthFiller()

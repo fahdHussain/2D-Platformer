@@ -14,4 +14,27 @@ public class PlayerController : InputController
     {
         return Input.GetAxisRaw("Horizontal");
     }
+
+    public int RetrieveAttackInput()
+    {
+        if(Input.GetMouseButtonDown(0))
+        {
+            //Debug.Log("Left Click");
+            return 0;
+        }
+        if(Input.GetMouseButtonDown(1))
+        {
+            //Debug.Log("Right Click");
+            return 1;
+        }
+        if(Input.GetMouseButtonDown(2))
+        {
+            //Debug.Log("Middle Click");
+            return 2;
+        }
+        else
+        {
+            return -1;
+        }
+    }
 }

@@ -23,9 +23,10 @@ public class Move : MonoBehaviour
     public AudioSource moveSoundSource;
     //public AudioClip moveSoundClip;
 
-    public Animator animator;
+    
     public ParticleSystem dust;
     private SoundEffectController sound;
+    public PlayerAnimator animator;
     void Awake()
     {
         body = GetComponent<Rigidbody2D>();
@@ -34,7 +35,7 @@ public class Move : MonoBehaviour
         sound = GetComponent<SoundEffectController>();
         moveSoundSource.volume = 0.4f;
 
-
+        animator = GetComponent<PlayerAnimator>();
     }
 
     // Update is called once per frame
@@ -92,9 +93,10 @@ public class Move : MonoBehaviour
                     playDust();
                 }
             }
-            animator.SetBool("running", true);
+            
             if(onGround)
             {
+                OnRunningAnimation();
                 if(!moveSoundSource.isPlaying)
                 {
                     moveSoundSource.Play();
@@ -104,7 +106,13 @@ public class Move : MonoBehaviour
         }
         else if(Mathf.Abs(velocity.x) == 0)
         {
-            animator.SetBool("running", false);
+            if(onGround)
+            {
+                //landing animation
+                OnGroundAnimation();
+
+            }
+
             if(moveSoundSource.isPlaying)
             {
                 moveSoundSource.Stop();
@@ -118,5 +126,49 @@ public class Move : MonoBehaviour
     void playDust()
     {
         dust.Play();
+    }
+
+
+    private void OnRunningAnimation()
+    {
+        if(animator.isAttacking())
+        {
+            if(animator.getAnimator().GetCurrentAnimatorStateInfo(0).normalizedTime > 1 && !animator.getAnimator().IsInTransition(0))
+            {
+                animator.changeAnimationState(PlayerAnimator.pAnim.PLAYER_RUN);
+            }
+        }
+        else
+        {
+            animator.changeAnimationState(PlayerAnimator.pAnim.PLAYER_RUN);
+        }
+
+    }
+    private void OnGroundAnimation()
+    {
+        if(animator.GetcurrentState() == PlayerAnimator.pAnim.PLAYER_JUMP_DOWN)
+        {
+            animator.changeAnimationState(PlayerAnimator.pAnim.PLAYER_LAND);
+        }
+        if(animator.GetcurrentState() == PlayerAnimator.pAnim.PLAYER_LAND)
+        {
+            //Finishes landing animation befor setting to idle
+            if(animator.getAnimator().GetCurrentAnimatorStateInfo(0).normalizedTime > 1 && !animator.getAnimator().IsInTransition(0))
+            {
+                animator.changeAnimationState(PlayerAnimator.pAnim.PLAYER_IDLE);
+            }
+        }
+        // Check if attacking
+        if(animator.isAttacking())
+        {
+            if(animator.getAnimator().GetCurrentAnimatorStateInfo(0).normalizedTime > 1 && !animator.getAnimator().IsInTransition(0))
+            {
+                animator.changeAnimationState(PlayerAnimator.pAnim.PLAYER_IDLE);
+            }
+        }
+        if(body.velocity.x == 0 && animator.GetcurrentState() == PlayerAnimator.pAnim.PLAYER_RUN)
+        {
+            animator.changeAnimationState(PlayerAnimator.pAnim.PLAYER_IDLE);
+        }
     }
 }

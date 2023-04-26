@@ -12,6 +12,7 @@ TagManager:
   - AudioSource
   - CamFollow
   - tile
+  - UI
   layers:
   - Default
   - TransparentFX
