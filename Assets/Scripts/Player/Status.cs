@@ -27,6 +27,9 @@ public class Status : MonoBehaviour
     }
     public void takeDamage(int damage, int type)
     {
+        //0 -- > Regular damage
+        //1 --> SPike
+        //Type used for blood spawn effect
         camShake.shakeCam();
         
         bloodSpawn.GetComponent<BloodStains>().SpawnBlood(transform, type);;
@@ -67,7 +70,7 @@ public class Status : MonoBehaviour
         
         bloodSpawn.GetComponent<BloodStains>().SpawnBlood(transform, type);;
         Instantiate(bloodEffect, transform.position,transform.rotation);
-        GetComponent<Rigidbody2D>().velocity += direction;
+        //GetComponent<Rigidbody2D>().velocity += direction;
 
         if(damage >= health)
         {

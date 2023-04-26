@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 7707207567535942294}
   - component: {fileID: 5340607738953162780}
   - component: {fileID: 2358515677284705445}
+  - component: {fileID: -2160831884525820235}
   m_Layer: 0
   m_Name: mushroom_projectile
   m_TagString: Untagged
@@ -146,4 +147,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3ef40866fddfaa4789f9a2e8255965c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lifeTime: 10
+  lifeTime: 5
+--- !u!114 &-2160831884525820235
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 504570550006691909}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86410dd5e23c72c4991b1b156b84619c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
