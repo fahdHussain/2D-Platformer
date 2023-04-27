@@ -5,7 +5,7 @@ using UnityEngine;
 public class SelfDestruct : MonoBehaviour
 {
     public float lifeTime = 10;
-        void Update()
+    void Update()
     {
         Destroy(gameObject, lifeTime);
     }

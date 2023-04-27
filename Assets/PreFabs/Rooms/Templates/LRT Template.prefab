@@ -47,6 +47,4 @@ MonoBehaviour:
   objects:
   - {fileID: 4168844090051989924, guid: c8bafbef38ff18f4ca1f7f0a3a02d91b, type: 3}
   - {fileID: 6155111538863663323, guid: df7f804400266e940a04a3e1a34af8c6, type: 3}
-  - {fileID: 2413552477606368029, guid: 6eb7e43163b43464bb46190ae886e807, type: 3}
-  - {fileID: 1462013523721450978, guid: 64b687d6ae2fe3846869aad7c0b07c4c, type: 3}
-  - {fileID: 6569967702677333373, guid: 3d4b34ee6791f1d4e98e0f5c889cefa3, type: 3}
+  - {fileID: 7083547542328761465, guid: 517f15cf410ba5d47b563b3d5cb36583, type: 3}
