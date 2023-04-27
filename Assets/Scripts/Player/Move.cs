@@ -146,6 +146,7 @@ public class Move : MonoBehaviour
     }
     private void OnGroundAnimation()
     {
+        //Check if player was falling
         if(animator.GetcurrentState() == PlayerAnimator.pAnim.PLAYER_JUMP_DOWN)
         {
             animator.changeAnimationState(PlayerAnimator.pAnim.PLAYER_LAND);
@@ -166,6 +167,7 @@ public class Move : MonoBehaviour
                 animator.changeAnimationState(PlayerAnimator.pAnim.PLAYER_IDLE);
             }
         }
+        //Check if player was running
         if(body.velocity.x == 0 && animator.GetcurrentState() == PlayerAnimator.pAnim.PLAYER_RUN)
         {
             animator.changeAnimationState(PlayerAnimator.pAnim.PLAYER_IDLE);
