@@ -50,28 +50,31 @@ public class WeaponScript : MonoBehaviour
     {
         if(currentWeapon == Weapon.BASIC && currentLook == Look.FORWARD)
         {
-            Vector2 frontAttackPoint = new Vector2(transform.position.x + 0.75f,transform.position.y);
+            Vector2 frontAttackPoint = new Vector2(transform.position.x + 0.75f*transform.localScale.x,transform.position.y);
             Collider2D[] frontColliderArray = Physics2D.OverlapCircleAll(frontAttackPoint, 0.25f, enemyLayer);
             //Debug.Log("Attak");
             foreach(Collider2D enemy in frontColliderArray)
             {
-                Debug.Log("Hit Enemy");
+                Debug.Log("HIT");
+                enemy.GetComponent<EnemyStats>().takeDamage(1);
             }
-            Vector2 upAttackPoint = new Vector2(transform.position.x + 0.5f,transform.position.y +0.4f);
+            Vector2 upAttackPoint = new Vector2(transform.position.x + 0.5f*transform.localScale.x,transform.position.y +0.4f);
             Collider2D[] upColliderArray = Physics2D.OverlapCircleAll(upAttackPoint, 0.25f, enemyLayer);
             //Debug.Log("Attak");
             foreach(Collider2D enemy in upColliderArray)
             {
-                Debug.Log("Hit Enemy");
+                Debug.Log("HIT");
+                enemy.GetComponent<EnemyStats>().takeDamage(1);
             }   
         }
         if(currentWeapon == Weapon.BASIC && currentLook == Look.UP)
         {
-            Vector2 upAttackPoint = new Vector2(transform.position.x, transform.position.y + 1); 
+            Vector2 upAttackPoint = new Vector2(transform.position.x*transform.localScale.x, transform.position.y + 1); 
             Collider2D[] upColliderArray = Physics2D.OverlapCircleAll(upAttackPoint, 0.3f, enemyLayer);         
             foreach(Collider2D enemy in upColliderArray)
             {
-                Debug.Log("Hit Enemy");
+                Debug.Log("HIT");
+                enemy.GetComponent<EnemyStats>().takeDamage(1);
             }  
         }
     }

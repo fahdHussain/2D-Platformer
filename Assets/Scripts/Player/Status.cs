@@ -16,7 +16,8 @@ public class Status : MonoBehaviour
     private WeaponScript wScript;
     private WeaponScript.Weapon currentWeapon;
     public GameObject bloodSpawn;
-    public GameObject bloodEffect;
+    public GameObject bloodEffectSmall;
+    public GameObject bloodEffectBig;
     public GameObject corpse;
     public SoundEffectController soundEffectController;
     public UIScript ui;
@@ -40,8 +41,8 @@ public class Status : MonoBehaviour
         //Type used for blood spawn effect
         camShake.shakeCam();
         
-        bloodSpawn.GetComponent<BloodStains>().SpawnBlood(transform, type);;
-        Instantiate(bloodEffect, transform.position,transform.rotation);
+        bloodSpawn.GetComponent<BloodStains>().SpawnBlood(transform, type);
+        Instantiate(bloodEffectSmall, transform.position,transform.rotation);
 
         if(damage >= health)
         {
@@ -64,7 +65,7 @@ public class Status : MonoBehaviour
         camShake.shakeCam();
         
         bloodSpawn.GetComponent<BloodStains>().SpawnBlood(transform, type);;
-        Instantiate(bloodEffect, transform.position,transform.rotation);
+        Instantiate(bloodEffectSmall, transform.position,transform.rotation);
         //GetComponent<Rigidbody2D>().velocity += direction;
 
         if(damage >= health)
@@ -95,10 +96,11 @@ public class Status : MonoBehaviour
         this.GetComponent<Jump>().enabled = false;
         this.GetComponent<SpriteRenderer>().enabled = false;
         this.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
-        soundEffectController.playSound(5);
+        soundEffectController.playOneShotSound(5);
         freezeFrame.setDuration(3);
         isAlive = false;
         greyScaleEffect.SpawnGreyScale();
+        Instantiate(bloodEffectBig, transform.position,transform.rotation);
         freezeFrame.Freeze();
         StartCoroutine(resetTextTimer());
         

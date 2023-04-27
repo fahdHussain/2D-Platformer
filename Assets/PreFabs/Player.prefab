@@ -338,7 +338,8 @@ MonoBehaviour:
   reachedExit: 0
   valExit: 0
   bloodSpawn: {fileID: 5940044494946225199, guid: c84f1316d71b4424d901dd9e66512ed5, type: 3}
-  bloodEffect: {fileID: 5499079015910745877, guid: 86990dd8958a2b24e9f57e8080709f93, type: 3}
+  bloodEffectSmall: {fileID: 1281965247741613322, guid: 98640606f9d00f04da84fb18d81995ba, type: 3}
+  bloodEffectBig: {fileID: 5499079015910745877, guid: 86990dd8958a2b24e9f57e8080709f93, type: 3}
   corpse: {fileID: 644850060808806336, guid: 13da39113fcf590479e9530de7882281, type: 3}
   soundEffectController: {fileID: -4401997712799440325}
   ui: {fileID: 0}
@@ -474,8 +475,6 @@ MonoBehaviour:
   enemyLayer:
     serializedVersion: 2
     m_Bits: 512
-  up: 1
-  radius: 0.3
 --- !u!114 &-3185623700369915510
 MonoBehaviour:
   m_ObjectHideFlags: 0

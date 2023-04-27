@@ -16,6 +16,8 @@ public class GnomeController : MonoBehaviour
     public float attack_y = 0.5f;
     public float attackForce = 5;
 
+    
+
 
     private bool waiting = false;
     private bool setStartPosition = false;
@@ -25,11 +27,17 @@ public class GnomeController : MonoBehaviour
     private bool facingRight = true;
     private Rigidbody2D body;
     private GameObject target;
+    private EnemyStats stats;
+    //private SpriteRenderer renderer;
+    
 
     private int throwCount = 0;
     void Start()
     {
         body = GetComponent<Rigidbody2D>();
+        stats = GetComponent<EnemyStats>();
+        stats.setType(EnemyStats.EnemyType.GNOME);
+        //renderer = GetComponent<SpriteRenderer>();
         waitIdle();
     }
 
@@ -154,11 +162,16 @@ public class GnomeController : MonoBehaviour
         waiting = false;
     }
 
+    public void takeDamage(int damage)
+    {
+        stats.takeDamage(damage);
+    }
+
 
 
     public void countThrow()
     {
-        Debug.Log(throwCount);
+    
         if(!vision.getSight())
         {
             throwCount ++;

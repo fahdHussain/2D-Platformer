@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class damageScript : MonoBehaviour
+public class DamageScript : MonoBehaviour
 {
     public int damage = 1;
     public float multiplier = 0.3f;
@@ -14,5 +14,4 @@ public class damageScript : MonoBehaviour
             collision.gameObject.GetComponent<Status>().takeDamage(damage, 0, GetComponent<Rigidbody2D>().velocity*multiplier);
         }
     }
-
 }

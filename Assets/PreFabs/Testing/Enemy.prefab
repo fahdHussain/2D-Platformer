@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &504570550006691909
+--- !u!1 &1488821176791379110
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,41 +8,41 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 504570550006691908}
-  - component: {fileID: 5413450513884450636}
-  - component: {fileID: 7707207567535942294}
-  - component: {fileID: 5340607738953162780}
-  - component: {fileID: 2358515677284705445}
-  - component: {fileID: 1517013484049116947}
-  m_Layer: 0
-  m_Name: mushroom_projectile
+  - component: {fileID: 1488821176791379114}
+  - component: {fileID: 1488821176791379115}
+  - component: {fileID: 1488821176791379108}
+  - component: {fileID: 1488821176791379109}
+  - component: {fileID: 1488821176791379113}
+  - component: {fileID: 1488821176791379112}
+  m_Layer: 9
+  m_Name: Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &504570550006691908
+--- !u!4 &1488821176791379114
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 504570550006691909}
+  m_GameObject: {fileID: 1488821176791379110}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -2.89, y: -10.71, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &5413450513884450636
+--- !u!212 &1488821176791379115
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 504570550006691909}
+  m_GameObject: {fileID: 1488821176791379110}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -77,26 +77,52 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: c9edb44dc9dcc284b91863111e44b88c, type: 3}
+  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.3125, y: 0.3125}
+  m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!50 &7707207567535942294
+--- !u!61 &1488821176791379108
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1488821176791379110}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
+--- !u!50 &1488821176791379109
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 504570550006691909}
-  m_BodyType: 0
+  m_GameObject: {fileID: 1488821176791379110}
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -109,56 +135,37 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!61 &5340607738953162780
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 504570550006691909}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.3125, y: 0.3125}
-    newSize: {x: 0.3125, y: 0.3125}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.3125, y: 0.3125}
-  m_EdgeRadius: 0
---- !u!114 &2358515677284705445
+--- !u!114 &1488821176791379113
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 504570550006691909}
+  m_GameObject: {fileID: 1488821176791379110}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a3ef40866fddfaa4789f9a2e8255965c, type: 3}
+  m_Script: {fileID: 11500000, guid: d96888a33536fa84a8e3b657718dbd83, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lifeTime: 5
---- !u!114 &1517013484049116947
+  health: 3
+  flashTime: 0.1
+  bloodSpawn: {fileID: 5940044494946225199, guid: c84f1316d71b4424d901dd9e66512ed5, type: 3}
+  bloodEffectBig: {fileID: 5499079015910745877, guid: 86990dd8958a2b24e9f57e8080709f93, type: 3}
+  bloodEffectSmall: {fileID: 1281965247741613322, guid: 98640606f9d00f04da84fb18d81995ba, type: 3}
+  sound: {fileID: 1488821176791379112}
+  type: 2
+--- !u!114 &1488821176791379112
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 504570550006691909}
+  m_GameObject: {fileID: 1488821176791379110}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cf7b6247ea7698f49969b85e1092e7bc, type: 3}
+  m_Script: {fileID: 11500000, guid: 2c39ea0386f6e134abcae82f76e941cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 1
-  multiplier: 0.3
+  src: {fileID: 5774726268891067202, guid: b8615878fa8458d44b411dcc88fb4299, type: 3}
+  clips:
+  - {fileID: 8300000, guid: 08211bbc71599f340a3e9fb36ea11258, type: 3}

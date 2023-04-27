@@ -9,7 +9,11 @@ public class SoundEffectController : MonoBehaviour
     private bool playing = false;
 
     void Start()
-    {
+    {  
+        if(src == null)
+        {
+            src = GameObject.FindGameObjectWithTag("AudioSource").GetComponent<AudioSource>();src = GameObject.FindGameObjectWithTag("AudioSource").GetComponent<AudioSource>();
+        }
         src = GameObject.FindGameObjectWithTag("AudioSource").GetComponent<AudioSource>();
     }
     public void playOneShotSound(int sound)
