@@ -18,7 +18,8 @@ public class PlayerAnimator : MonoBehaviour
         PLAYER_JUMP_UP,
         PLAYER_JUMP_DOWN,
         PLAYER_LAND,
-        PLAYER_BASIC_ATTACK_1
+        PLAYER_BASIC_ATTACK_1,
+        PLAYER_BASIC_ATTACK_2
 
     }
 
@@ -50,6 +51,11 @@ public class PlayerAnimator : MonoBehaviour
         {
             return "basic_attack";
         }
+        if(state == pAnim.PLAYER_BASIC_ATTACK_2)
+        {
+            return "basic_attack_up";
+        }
+
         else
         {
             Debug.Log("Missing Animation");
@@ -83,6 +89,10 @@ public class PlayerAnimator : MonoBehaviour
     public bool isAttacking()
     {
         if(currentState == pAnim.PLAYER_BASIC_ATTACK_1)
+        {
+            return true;
+        }
+        else if(currentState == pAnim.PLAYER_BASIC_ATTACK_2)
         {
             return true;
         }

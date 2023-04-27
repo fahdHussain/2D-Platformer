@@ -101,6 +101,7 @@ public class Status : MonoBehaviour
         greyScaleEffect.SpawnGreyScale();
         freezeFrame.Freeze();
         StartCoroutine(resetTextTimer());
+        
     }
 
     public void gotKey()
@@ -133,6 +134,7 @@ public class Status : MonoBehaviour
     IEnumerator resetTextTimer()
     {
         yield return new WaitForSecondsRealtime(3);
+        
         ui.resetGameOverText();
     }
 }

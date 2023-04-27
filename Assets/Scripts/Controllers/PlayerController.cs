@@ -36,5 +36,10 @@ public class PlayerController : InputController
         {
             return -1;
         }
+
+    }
+    public float RetrieveLookUp()
+    {
+        return Input.GetAxisRaw("Vertical");
     }
 }

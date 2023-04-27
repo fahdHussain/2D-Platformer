@@ -6,14 +6,23 @@ public class SoundEffectController : MonoBehaviour
 {
     public AudioSource src;
     public AudioClip[] clips;
+    private bool playing = false;
 
     void Start()
     {
         src = GameObject.FindGameObjectWithTag("AudioSource").GetComponent<AudioSource>();
     }
-    public void playSound(int sound)
+    public void playOneShotSound(int sound)
     {
         src.PlayOneShot(clips[sound]);
+    }
+    public void playSound(int sound)
+    {
+        if(!playing)
+        {
+            StartCoroutine(soundCoroutine(clips[sound]));
+        }
+        
     }
     public void stopSound()
     {
@@ -22,6 +31,19 @@ public class SoundEffectController : MonoBehaviour
     public AudioSource getSrc()
     {
         return src;
+    }
+
+    IEnumerator soundCoroutine(AudioClip clip)
+    {
+        src.clip = clip;
+        
+        playing = true;
+        src.Play();
+        yield return new WaitForSeconds(clip.length);
+            
+        playing = false;
+        
+        
     }
 
 }

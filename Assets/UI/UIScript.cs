@@ -17,6 +17,9 @@ public class UIScript : MonoBehaviour
     string gameOverText = "We'll\nbe\nright\nback ";
 
     public GameObject[] healthChunks;
+    private Color gameOverColor = Color.white;
+    private FontStyle gameOverFontStyle = FontStyle.Bold;
+    private TextAnchor gameOverAlignment = TextAnchor.UpperLeft;
 
     GameObject player;
     
@@ -77,18 +80,21 @@ public class UIScript : MonoBehaviour
         Destroy(keyText);
 
         gameOver.enabled = true;
+        gameOver.color = gameOverColor;
+        gameOver.fontStyle = gameOverFontStyle;
+        gameOver.alignment = gameOverAlignment;
         gameOver.text = gameOverText;
         
     }
     public void resetGameOverText()
     {
         
-        gameOver.alignment = TextAnchor.MiddleCenter;
-        gameOver.fontStyle = FontStyle.BoldAndItalic;
+        gameOverAlignment = TextAnchor.MiddleCenter;
+        gameOverFontStyle = FontStyle.BoldAndItalic;
         
-        gameOver.color = Color.red;
+        gameOverColor = Color.red;
         gameOverText = "Game Over";
-        Debug.Log(gameOver.text);
+        //Debug.Log(gameOver.text);
 
     }
 

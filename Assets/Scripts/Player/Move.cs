@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEditor;
 
 public class Move : MonoBehaviour
 {
@@ -43,7 +44,13 @@ public class Move : MonoBehaviour
     {
         direction.x = input.RetrieveMoveInput();
         desiredVelocity = new Vector2(direction.x, 0f) * Mathf.Max(maxSpeed - ground.getFriction(), 0f);
+
     }
+  
+  
+
+  
+  
 
     void FixedUpdate()
     {
