@@ -43,7 +43,7 @@ public class AttackScript : MonoBehaviour
                 
                 animator.changeAnimationState(PlayerAnimator.pAnim.PLAYER_BASIC_ATTACK_1);
                 wScript.attack();
-                sound.playSound(6);
+                //sound.playSound(6);
                 
    
             }
@@ -51,7 +51,7 @@ public class AttackScript : MonoBehaviour
             {
                 animator.changeAnimationState(PlayerAnimator.pAnim.PLAYER_BASIC_ATTACK_2);
                 wScript.attack();
-                sound.playSound(6);
+                //sound.playSound(6);
             }
         }
     }

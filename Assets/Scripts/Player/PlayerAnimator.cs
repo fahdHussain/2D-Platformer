@@ -24,6 +24,7 @@ public class PlayerAnimator : MonoBehaviour
     }
 
     private pAnim currentState;
+    //private bool playing;
 
     string getAnimation(pAnim state)
     {
@@ -101,5 +102,18 @@ public class PlayerAnimator : MonoBehaviour
             return false;
         }
     }
+
+    // public void isPlaying()
+    // {
+    //     playing = true;
+    // }
+    // public void notPlaying()
+    // {
+    //     playing = false;
+    // }
+    // public bool getIsPlaying()
+    // {
+    //     return playing;
+    // }
 
 }

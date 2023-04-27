@@ -106,13 +106,13 @@ public class Status : MonoBehaviour
 
     public void gotKey()
     {
-        soundEffectController.playSound(3);
+        soundEffectController.playOneShotSound(3);
         hasKey = true;
     }
 
     public void plusScore(int itemScore)
     {
-        soundEffectController.playSound(4);
+        soundEffectController.playOneShotSound(4);
         score += itemScore;
     }
 

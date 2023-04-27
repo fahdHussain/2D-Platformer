@@ -20,9 +20,14 @@ public class WeaponScript : MonoBehaviour
 
     private Weapon currentWeapon;
     private Look currentLook;
+    private SoundEffectController sound;
+    
     public LayerMask enemyLayer;
-    public float up = 1;
-    public float radius = 0.3f;
+
+    void Start()
+    {
+        sound = GetComponent<SoundEffectController>();
+    }
 
     public void SetCurrentWeapon(Weapon weapon)
     {
@@ -80,6 +85,12 @@ public class WeaponScript : MonoBehaviour
     //     Gizmos.DrawSphere(pos, radius);
     // }
 
-
+    public void playAttackSound()
+    {
+        if(currentWeapon == Weapon.BASIC)
+        {
+            sound.playSound(6);
+        }
+    }
 
 }
