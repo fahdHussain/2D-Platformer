@@ -21,7 +21,8 @@ public class EnemyStats : MonoBehaviour
     {
         BEE,
         BEEHIVE,
-        GNOME
+        GNOME,
+        FROG
     }
 
     void Start()

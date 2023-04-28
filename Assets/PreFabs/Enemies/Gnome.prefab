@@ -122,6 +122,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc97b846e79dc5c4daab1617466af82e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  xRange: 0.5
+  yRange: -0.5
 --- !u!212 &3617994178848846264
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -367,11 +369,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 5565550558482897361}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 73a2cf46612398d42b269fa21df22748, type: 3}
+  m_Script: {fileID: 11500000, guid: 00a8803dde203d144b1525760df58a8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 3641761164224173358, guid: ffc44ee143d79224795e9d4aefba244f, type: 3}
-  gnomeController: {fileID: 7614080754692589932}
+  controller: {fileID: 7614080754692589932}
   inLineOfSight: 0
 --- !u!60 &299483321555083218
 PolygonCollider2D:

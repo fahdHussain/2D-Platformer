@@ -1,60 +1,46 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEditor;
 
-public class visionScript : MonoBehaviour
+public class VisionScript : MonoBehaviour
 {
-    private Vector2 rayDirection;
-    public GameObject target;
-    
-    void OnTriggerStay2D(Collider2D collider)
+   private Vector2 rayDirection;
+   public GameObject target;
+   public EnemyController controller;
+   public bool inLineOfSight = false;
+
+   void OnTriggerStay2D(Collider2D collider)
+   {
+    if(collider.gameObject.CompareTag("Player"))
     {
-        if(collider.gameObject.CompareTag("Player"))
-        {
-            
-            rayDirection = new Vector2(collider.transform.position.x - transform.position.x, collider.transform.position.y - transform.position.y);
-            
-            LayerMask tiles = LayerMask.GetMask("tiles");
-
-            Vector2 startPos = new Vector2(transform.position.x, transform.position.y - 0.6f);
-            RaycastHit2D hit = Physics2D.Raycast(startPos, rayDirection, tiles);
-            //Debug.DrawRay(startPos, rayDirection, Color.red);
-            if(hit.collider != null)
-            {
-                //Debug.Log(hit.collider.gameObject.tag);
-                if(hit.collider.gameObject.tag == "Player")
-                {
-                    setTarget(ChasePlayer.destination.player, hit.collider.transform);
-                }
-            }
-            
-            
-        }
-    }
-
-    void OnTriggerExit2D(Collider2D collider)
-    {
-        if(collider.gameObject.CompareTag("Bees"))
-        {
-            setTarget(ChasePlayer.destination.home, transform);
-        }
-    }
-
-    public void setTarget(ChasePlayer.destination destination, Transform target)
-    {
-        if(destination == ChasePlayer.destination.player)
-        {
-            transform.parent.gameObject.GetComponentInChildren<ChasePlayer>().returnHome(false);
-            transform.parent.gameObject.GetComponentInChildren<ChasePlayer>().setTargetPos(target);
-        }
-        if(destination == ChasePlayer.destination.home)
-        {
-            transform.parent.gameObject.GetComponentInChildren<ChasePlayer>().returnHome(true);
-            transform.parent.gameObject.GetComponentInChildren<ChasePlayer>().setTargetPos(target);
-        }
-
+        rayDirection = new Vector2(collider.transform.position.x - transform.position.x,collider.transform.position.y -transform.position.y);
+        Vector2 startPos = new Vector2(transform.position.x + 0.6f * transform.parent.localScale.x, transform.position.y);
+        RaycastHit2D hit = Physics2D.Raycast(startPos, rayDirection);
+        Debug.DrawRay(startPos, rayDirection, Color.red);
         
+        if(hit.collider != null)
+        {
+            if(hit.collider.gameObject.tag == "Player")
+            {
+                inLineOfSight = true;
+                target = hit.collider.gameObject;
+                controller.SetAggro(true);
+            }
+            else
+            {
+                inLineOfSight = false;
+            }
+        }
     }
+   }
 
+   public GameObject getTarget()
+   {
+    return target;
+   }
+
+   public bool getSight()
+   {
+    return inLineOfSight;
+   }
 }

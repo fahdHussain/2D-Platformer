@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GnomeController : MonoBehaviour
+public class GnomeController : EnemyController
 {
     public GameObject projectile;
     public float waitTime = 2;
@@ -11,7 +11,7 @@ public class GnomeController : MonoBehaviour
     public CheckAhead checkAhead;
     public float maxSpeed = 5;
 
-    public GnomeVision vision;
+    public VisionScript vision;
     public float attack_x = 1;
     public float attack_y = 0.5f;
     public float attackForce = 5;
@@ -32,7 +32,7 @@ public class GnomeController : MonoBehaviour
     
 
     private int throwCount = 0;
-    void Start()
+    protected override void Start()
     {
         body = GetComponent<Rigidbody2D>();
         stats = GetComponent<EnemyStats>();
@@ -41,12 +41,12 @@ public class GnomeController : MonoBehaviour
         waitIdle();
     }
 
-    void Update()
+    protected override void Update()
     {
         
     }
 
-    void FixedUpdate()
+    protected override void FixedUpdate()
     {
         //Non aggro state
         if(aggro == false)
@@ -131,12 +131,12 @@ public class GnomeController : MonoBehaviour
 
         instance.GetComponent<Rigidbody2D>().AddForce(attackAngle*attackForce*direction, ForceMode2D.Impulse);
     }
-    public void SetAggro(bool state)
+    public override void SetAggro(bool state)
     {
         aggro = state;
     }
 
-    private void changeDirection()
+    protected override void changeDirection()
     {
         this.GetComponentInParent<Transform>().GetComponentInParent<Transform>().localScale *= new Vector2(-1,1);
         if(facingRight)
@@ -149,7 +149,7 @@ public class GnomeController : MonoBehaviour
         }
     }
 
-    IEnumerator waitIdle()
+    protected override IEnumerator waitIdle()
     {
         waiting = true;
         animator.SetBool("running", false);
@@ -162,7 +162,7 @@ public class GnomeController : MonoBehaviour
         waiting = false;
     }
 
-    public void takeDamage(int damage)
+    public override void takeDamage(int damage)
     {
         stats.takeDamage(damage);
     }

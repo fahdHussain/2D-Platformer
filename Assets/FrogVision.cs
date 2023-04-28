@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GnomeVision : MonoBehaviour
+public class FrogVision : MonoBehaviour
 {
    private Vector2 rayDirection;
    public GameObject target;
@@ -44,3 +44,4 @@ public class GnomeVision : MonoBehaviour
     return inLineOfSight;
    }
 }
+

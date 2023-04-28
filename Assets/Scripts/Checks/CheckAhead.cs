@@ -5,6 +5,8 @@ using UnityEngine;
 public class CheckAhead : MonoBehaviour
 {
     private bool groundAhead = false;
+    [SerializeField, Range(0,10)] private float xRange;
+    [SerializeField, Range(-10,10)] private float yRange;
 
     void Update()
     {
