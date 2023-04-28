@@ -7,6 +7,8 @@ public class EnemyStats : MonoBehaviour
     [SerializeField, Range(1,10)] private int health;
     [SerializeField, Range(0,2)] private float flashTime;
     private bool isAlive;
+    private CamShake camShake;
+    private FreezeFrame freezeFrame;
     private SpriteRenderer spriteRenderer;
     public GameObject bloodSpawn;
     public GameObject bloodEffectBig;
@@ -25,6 +27,8 @@ public class EnemyStats : MonoBehaviour
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
+        camShake = GameObject.FindGameObjectWithTag("CamFollow").GetComponent<CamShake>();
+        freezeFrame = GameObject.FindGameObjectWithTag("CamFollow").GetComponent<FreezeFrame>();
         isAlive = true;
     }
 
@@ -37,8 +41,9 @@ public class EnemyStats : MonoBehaviour
     {
         if(type == EnemyType.GNOME)
         {
-            Debug.Log("TOOK DAMAGE");
+            //Debug.Log("TOOK DAMAGE");
             flash();
+            freezeFrame.Freeze(0.05f);
             sound.playSound(0);
             genericDamage(damage);
             bloodSpawn.GetComponent<BloodStains>().SpawnBlood(transform, 0);
@@ -55,6 +60,7 @@ public class EnemyStats : MonoBehaviour
     }
     public void die()
     {
+        camShake.shakeCam();
         Destroy(gameObject);
     }
 

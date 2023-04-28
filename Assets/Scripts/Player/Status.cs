@@ -97,11 +97,11 @@ public class Status : MonoBehaviour
         this.GetComponent<SpriteRenderer>().enabled = false;
         this.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
         soundEffectController.playOneShotSound(5);
-        freezeFrame.setDuration(3);
+        //freezeFrame.setDuration(3);
         isAlive = false;
         greyScaleEffect.SpawnGreyScale();
         Instantiate(bloodEffectBig, transform.position,transform.rotation);
-        freezeFrame.Freeze();
+        freezeFrame.Freeze(3);
         StartCoroutine(resetTextTimer());
         
     }

@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class FreezeFrame : MonoBehaviour
 {
-
-    public float duration = 1f;
+    private float freezeDuration;
     private float _pendingFreezeDuration;
     public bool _isFrozen = false;
     void Update()
@@ -16,15 +15,16 @@ public class FreezeFrame : MonoBehaviour
         }
     }
 
-    public void Freeze()
+    public void Freeze(float duration)
     {
+        freezeDuration = duration;
         _pendingFreezeDuration = duration;
     }
 
-    public void setDuration(float val)
-    {
-        duration = val;
-    }
+    // public void setDuration(float val)
+    // {
+    //     duration = val;
+    // }
 
     IEnumerator DoFreeze()
     {
@@ -32,7 +32,7 @@ public class FreezeFrame : MonoBehaviour
         var original = Time.timeScale;
         Time.timeScale = 0f;
         
-        yield return new WaitForSecondsRealtime(duration);
+        yield return new WaitForSecondsRealtime(freezeDuration);
 
         Time.timeScale = original;
         _pendingFreezeDuration = 0;
