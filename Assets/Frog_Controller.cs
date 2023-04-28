@@ -8,9 +8,13 @@ public class Frog_Controller : EnemyController
     public Frog_Animator animator;
     public float waitTime = 2;
     public float maxSpeed = 3;
+    public Vector2 jumpPower = new Vector2(5,7);
+    public Ground ground;
+    public VisionScript vision;
 
 
     private bool canJump;
+    private bool inAir;
     private bool waiting = false;
     private bool aggro = false;
     private bool facingRight = true;
@@ -19,17 +23,20 @@ public class Frog_Controller : EnemyController
     private int distance;
     private Rigidbody2D body;
     private Vector2 velocity;
+    private GameObject target;
     protected override void Start()
     {   
         animator = GetComponent<Frog_Animator>();
         body = GetComponent<Rigidbody2D>();
+        //vision = GetComponent<VisionScript>();
         StartCoroutine(waitIdle());
     }
 
     // Update is called once per frame
     protected override void Update()
     {
-        
+        testJump();
+        stickTheLanding();
     }
 
     protected override void FixedUpdate()
@@ -69,6 +76,74 @@ public class Frog_Controller : EnemyController
             }
 
         }
+        if(aggro)
+        {
+            target = vision.getTarget();
+            if(target.transform.position.x > transform.position.x && !facingRight)
+            {
+                changeDirection();
+            }
+            if(target.transform.position.x < transform.position.x && facingRight)
+            {
+                changeDirection();
+            }
+            if(Mathf.Abs(target.transform.position.x - transform.position.x) > 5)
+            {
+                if(checkJumpGround())
+                {
+                    jump();
+                }
+            }
+        }
+    }
+    public void testJump()
+    {
+        if(Input.GetKeyDown(KeyCode.L))
+        {
+            jump();
+            //Debug.Log("JUMP");
+        }
+        
+    }
+    void OnDrawGizmos()
+    {        
+        Vector2 pos = new Vector2(transform.position.x + 5f*transform.localScale.x, transform.position.y - 0.5f);
+        Gizmos.color = Color.red;
+        Gizmos.DrawSphere(pos, 0.3f);
+    }
+    private bool checkJumpGround()
+    {
+        checkAhead.setRange(5, -0.5f);
+        bool isGround = checkAhead.getGroundAhead();
+        checkAhead.reset();
+        return isGround;
+    }
+    private void stickTheLanding()
+    {
+        //Debug.Log(ground.rayGroundCheck());
+        if(inAir)
+        {
+            if(body.velocity.y < 0)
+            {
+                animator.changeAnimationState(Frog_Animator.fAnim.FROG_JUMP_DOWN);
+            }
+            if(ground.rayGroundCheck())
+            {
+                //Debug.Log("CHECK GROUND");
+                body.velocity = new Vector2(0,0);
+                inAir = false;
+            }
+        }
+    }
+    public void landAnimation()
+    {
+        animator.changeAnimationState(Frog_Animator.fAnim.FROG_IDLE);
+    }
+    private void jump()
+    {
+        StartCoroutine(waitCheckAir());
+        animator.changeAnimationState(Frog_Animator.fAnim.FROG_JUMP_UP);
+        body.velocity = new Vector2(jumpPower.x*transform.localScale.x,jumpPower.y);  
     }
 
     public override void SetAggro(bool state)
@@ -90,6 +165,11 @@ public class Frog_Controller : EnemyController
         {
             facingRight = true;
         }
+    }
+    IEnumerator waitCheckAir()
+    {
+        yield return new WaitForSeconds(0.1f);
+        inAir = true;
     }
 
     protected override IEnumerator waitIdle()

@@ -20,10 +20,12 @@ public class VisionScript : MonoBehaviour
         
         if(hit.collider != null)
         {
+            
             if(hit.collider.gameObject.tag == "Player")
             {
                 inLineOfSight = true;
                 target = hit.collider.gameObject;
+                Debug.Log("TEST2");
                 controller.SetAggro(true);
             }
             else

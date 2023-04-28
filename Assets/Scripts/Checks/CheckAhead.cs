@@ -8,6 +8,10 @@ public class CheckAhead : MonoBehaviour
     [SerializeField, Range(0,10)] private float xRange;
     [SerializeField, Range(-10,10)] private float yRange;
 
+    private float originalXRange;
+    private float originalYRange;
+
+
     void Update()
     {
         checkAhead();
@@ -34,6 +38,16 @@ public class CheckAhead : MonoBehaviour
     public bool getGroundAhead()
     {
         return groundAhead;
+    }
+    public void setRange(float x, float y)
+    {
+        xRange = x;
+        yRange = y;
+    }
+    public void reset()
+    {
+        xRange = originalXRange;
+        yRange = originalYRange;
     }
 
 }

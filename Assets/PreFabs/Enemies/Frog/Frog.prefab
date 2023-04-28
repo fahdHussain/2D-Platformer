@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5202643517049968345}
   - component: {fileID: 7520062099111669505}
-  - component: {fileID: 5827786418770470558}
+  - component: {fileID: 2730180256535804612}
   m_Layer: 2
   m_Name: Frog_Vision
   m_TagString: Untagged
@@ -43,7 +43,7 @@ PolygonCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -58,12 +58,10 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 0, y: 1}
-      - {x: -0.95105654, y: 0.30901697}
-      - {x: -0.5877852, y: -0.80901706}
-      - {x: 0.58778536, y: -0.80901694}
-      - {x: 0.9510565, y: 0.30901712}
---- !u!114 &5827786418770470558
+    - - {x: 12, y: 4}
+      - {x: -2.5, y: 0}
+      - {x: 12, y: -4}
+--- !u!114 &2730180256535804612
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -72,9 +70,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 3289893985990746722}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c741ce5c1025ccc44b3ff43b5692558c, type: 3}
+  m_Script: {fileID: 11500000, guid: 00a8803dde203d144b1525760df58a8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  target: {fileID: 3641761164224173358, guid: ffc44ee143d79224795e9d4aefba244f, type: 3}
+  controller: {fileID: 5826908810098514932}
+  inLineOfSight: 0
 --- !u!1 &4286610072023189052
 GameObject:
   m_ObjectHideFlags: 0
@@ -91,7 +92,8 @@ GameObject:
   - component: {fileID: 5826908810098514932}
   - component: {fileID: 4618747630516543312}
   - component: {fileID: 1055393152373253782}
-  m_Layer: 0
+  - component: {fileID: 1794688448969199633}
+  m_Layer: 9
   m_Name: Frog
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -122,7 +124,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4286610072023189052}
-  m_BodyType: 1
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -250,6 +252,9 @@ MonoBehaviour:
   animator: {fileID: 4618747630516543312}
   waitTime: 3
   maxSpeed: 3
+  jumpPower: {x: 5, y: 5}
+  ground: {fileID: 1794688448969199633}
+  vision: {fileID: 2730180256535804612}
 --- !u!114 &4618747630516543312
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -277,3 +282,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   xRange: 0.5
   yRange: -0.5
+--- !u!114 &1794688448969199633
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4286610072023189052}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2de2701e7198e8247bbebb620032c196, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onSpike: 0
+  layer:
+    serializedVersion: 2
+    m_Bits: 128
