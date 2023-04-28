@@ -252,7 +252,6 @@ MonoBehaviour:
   animator: {fileID: 4618747630516543312}
   waitTime: 3
   maxSpeed: 3
-  jumpPower: {x: 5, y: 5}
   ground: {fileID: 1794688448969199633}
   vision: {fileID: 2730180256535804612}
 --- !u!114 &4618747630516543312

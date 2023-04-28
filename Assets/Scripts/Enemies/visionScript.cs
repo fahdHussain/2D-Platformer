@@ -16,7 +16,7 @@ public class VisionScript : MonoBehaviour
         rayDirection = new Vector2(collider.transform.position.x - transform.position.x,collider.transform.position.y -transform.position.y);
         Vector2 startPos = new Vector2(transform.position.x + 0.6f * transform.parent.localScale.x, transform.position.y);
         RaycastHit2D hit = Physics2D.Raycast(startPos, rayDirection);
-        Debug.DrawRay(startPos, rayDirection, Color.red);
+        //Debug.DrawRay(startPos, rayDirection, Color.red);
         
         if(hit.collider != null)
         {
@@ -25,7 +25,7 @@ public class VisionScript : MonoBehaviour
             {
                 inLineOfSight = true;
                 target = hit.collider.gameObject;
-                Debug.Log("TEST2");
+                //Debug.Log("TEST2");
                 controller.SetAggro(true);
             }
             else
