@@ -40,7 +40,7 @@ public class EnemyStats : MonoBehaviour
 
     public void takeDamage(int damage)
     {
-        if(type == EnemyType.GNOME)
+        if(type == EnemyType.GNOME  || type == EnemyType.FROG)
         {
             //Debug.Log("TOOK DAMAGE");
             flash();

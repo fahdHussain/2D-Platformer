@@ -93,6 +93,8 @@ GameObject:
   - component: {fileID: 4618747630516543312}
   - component: {fileID: 1055393152373253782}
   - component: {fileID: 1794688448969199633}
+  - component: {fileID: 6957808327581072414}
+  - component: {fileID: 122603116588941584}
   m_Layer: 9
   m_Name: Frog
   m_TagString: Untagged
@@ -297,3 +299,37 @@ MonoBehaviour:
   layer:
     serializedVersion: 2
     m_Bits: 128
+--- !u!114 &6957808327581072414
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4286610072023189052}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d96888a33536fa84a8e3b657718dbd83, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 3
+  flashTime: 0.1
+  bloodSpawn: {fileID: 5940044494946225199, guid: c84f1316d71b4424d901dd9e66512ed5, type: 3}
+  bloodEffectBig: {fileID: 5499079015910745877, guid: 86990dd8958a2b24e9f57e8080709f93, type: 3}
+  bloodEffectSmall: {fileID: 1281965247741613322, guid: 98640606f9d00f04da84fb18d81995ba, type: 3}
+  sound: {fileID: 122603116588941584}
+  type: 3
+--- !u!114 &122603116588941584
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4286610072023189052}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c39ea0386f6e134abcae82f76e941cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  src: {fileID: 5774726268891067202, guid: b8615878fa8458d44b411dcc88fb4299, type: 3}
+  clips:
+  - {fileID: 8300000, guid: f3533a9211845fa4cb6a283fa93b10c4, type: 3}

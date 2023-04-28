@@ -24,7 +24,7 @@ TagManager:
   - room
   - tiles
   - enemy
-  - 
+  - Background
   - 
   - 
   - 
@@ -47,9 +47,15 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Background
+    uniqueID: 2044262261
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
   - name: CameraSortingLayer
     uniqueID: 4254026989
+    locked: 0
+  - name: New Layer 2
+    uniqueID: 284393341
     locked: 0
