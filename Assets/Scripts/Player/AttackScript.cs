@@ -30,8 +30,8 @@ public class AttackScript : MonoBehaviour
         
         if(mouseClick == 0)
         {
-            if(animator.GetcurrentState() != PlayerAnimator.pAnim.PLAYER_ATTACK_1 || animator.GetcurrentState() != PlayerAnimator.pAnim.PLAYER_ATTACK_2)
-            {
+            // if(animator.GetcurrentState() != PlayerAnimator.pAnim.PLAYER_ATTACK_1 || animator.GetcurrentState() != PlayerAnimator.pAnim.PLAYER_ATTACK_2)
+            // {
                 if(look.GetCurrentLook() == LookScript.Look.FORWARD)
                 {
                     animator.changeAnimationState(PlayerAnimator.pAnim.PLAYER_ATTACK_1);
@@ -40,8 +40,8 @@ public class AttackScript : MonoBehaviour
                 {
                     animator.changeAnimationState(PlayerAnimator.pAnim.PLAYER_ATTACK_2);
                 }
-                wScript.attack();
-            }
+                //wScript.attack();
+           // }
             
 
         }

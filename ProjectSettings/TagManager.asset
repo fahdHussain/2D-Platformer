@@ -13,6 +13,7 @@ TagManager:
   - CamFollow
   - tile
   - UI
+  - enemy
   layers:
   - Default
   - TransparentFX
@@ -25,7 +26,7 @@ TagManager:
   - tiles
   - enemy
   - Background
-  - 
+  - Projectiles
   - 
   - 
   - 

@@ -117,7 +117,7 @@ public class GnomeController : EnemyController
     {
 
         Vector2 spawnPosition = new Vector2(this.transform.position.x,this.transform.position.y + 0.5f);
-        Vector2 attackAngle = new Vector2(attack_x, attack_y);
+        
         GameObject instance = Instantiate(projectile, spawnPosition, transform.rotation);
         int direction = 1;
         if(target.transform.position.x > transform.position.x)
@@ -128,8 +128,8 @@ public class GnomeController : EnemyController
         {
             direction = -1;
         }
-
-        instance.GetComponent<Rigidbody2D>().AddForce(attackAngle*attackForce*direction, ForceMode2D.Impulse);
+        Vector2 attackAngle = new Vector2(attack_x*direction, attack_y);
+        instance.GetComponent<Rigidbody2D>().AddForce(attackAngle*attackForce, ForceMode2D.Impulse);
     }
     public override void SetAggro(bool state)
     {
