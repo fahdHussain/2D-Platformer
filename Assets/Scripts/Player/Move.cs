@@ -21,8 +21,10 @@ public class Move : MonoBehaviour
     private bool onGround;
     private bool facingRight = true;
     private bool inAir = false;
+    private WeaponScript weaponScript;
     public AudioSource moveSoundSource;
     //public AudioClip moveSoundClip;
+    public Status status;
 
     
     public ParticleSystem dust;
@@ -37,6 +39,11 @@ public class Move : MonoBehaviour
         moveSoundSource.volume = 0.4f;
 
         animator = GetComponent<PlayerAnimator>();
+        status = GetComponent<Status>();
+
+        weaponScript = GetComponent<WeaponScript>();
+
+
     }
 
     // Update is called once per frame
@@ -45,6 +52,18 @@ public class Move : MonoBehaviour
         direction.x = input.RetrieveMoveInput();
         desiredVelocity = new Vector2(direction.x, 0f) * Mathf.Max(maxSpeed - ground.getFriction(), 0f);
 
+    }
+
+    void UpdateMovementType()
+    {
+        switch(status.GetCurrentWeapon())
+        {
+            case(WeaponScript.Weapon.PISTOL):
+                //SET pistol movement modifiers
+            default:
+                //Set default movement modifiers
+                break;
+        }
     }
   
   
@@ -81,7 +100,7 @@ public class Move : MonoBehaviour
         body.velocity = velocity;
 
         if(Mathf.Abs(velocity.x) > 0){
-            if(velocity.x > 0 && !facingRight)
+            if(velocity.x > 0 && !facingRight && direction.x > 0)
             {
                 transform.localScale *=  new Vector2(-1,1);
                 facingRight = true;
@@ -91,7 +110,7 @@ public class Move : MonoBehaviour
                 }
                 
             }
-            else if(velocity.x < 0 && facingRight)
+            else if(velocity.x < 0 && facingRight && direction.x < 0)
             {
                 transform.localScale *= new Vector2(-1,1);
                 facingRight = false;
@@ -138,7 +157,7 @@ public class Move : MonoBehaviour
 
     private void OnRunningAnimation()
     {
-        if(animator.isAttacking())
+        if(animator.isAttacking() || animator.isChangingLook())
         {
             if(animator.getAnimator().GetCurrentAnimatorStateInfo(0).normalizedTime > 1 && !animator.getAnimator().IsInTransition(0))
             {

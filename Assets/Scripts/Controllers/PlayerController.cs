@@ -42,4 +42,9 @@ public class PlayerController : InputController
     {
         return Input.GetAxisRaw("Vertical");
     }
+
+    public bool RetrieveWeaponSwitch()
+    {
+        return Input.GetKeyDown(KeyCode.Q);
+    }
 }

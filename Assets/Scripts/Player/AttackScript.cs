@@ -5,54 +5,50 @@ using UnityEngine;
 public class AttackScript : MonoBehaviour
 {
     [SerializeField] private PlayerController input = null;
+    private Status status;
     private WeaponScript wScript;
     private int mouseClick;
-    private float up;
-    private WeaponScript.Look direction;
+    private LookScript look;
     private PlayerAnimator animator;
     private SoundEffectController sound;
     //private WeaponScript.Weapon currentWeapon;
 
-    void Start()
+    void Awake()
     {
         wScript = GetComponent<WeaponScript>();
         //currentWeapon = wScript.GetCurrentWeapon();
         animator = GetComponent<PlayerAnimator>();
         sound = GetComponent<SoundEffectController>();
+        status = GetComponent<Status>();
+        look = GetComponent<LookScript>();
     }
 
     // Update is called once per frame
     void Update()
     {
         mouseClick = input.RetrieveAttackInput();
-        up = input.RetrieveLookUp();
-        if(up > 0)
-        {
-            wScript.SetCurrentLook(WeaponScript.Look.UP);
-        }
-        else
-        {
-            wScript.SetCurrentLook(WeaponScript.Look.FORWARD);
-        }
         
         if(mouseClick == 0)
         {
-            //BASIC ATTACKS
-            if(wScript.GetCurrentWeapon() == WeaponScript.Weapon.BASIC && wScript.GetCurrentLook() == WeaponScript.Look.FORWARD)
+            if(animator.GetcurrentState() != PlayerAnimator.pAnim.PLAYER_ATTACK_1 || animator.GetcurrentState() != PlayerAnimator.pAnim.PLAYER_ATTACK_2)
             {
-                
-                animator.changeAnimationState(PlayerAnimator.pAnim.PLAYER_BASIC_ATTACK_1);
+                if(look.GetCurrentLook() == LookScript.Look.FORWARD)
+                {
+                    animator.changeAnimationState(PlayerAnimator.pAnim.PLAYER_ATTACK_1);
+                }
+                else
+                {
+                    animator.changeAnimationState(PlayerAnimator.pAnim.PLAYER_ATTACK_2);
+                }
                 wScript.attack();
-                //sound.playSound(6);
-                
-   
             }
-            if(wScript.GetCurrentWeapon() == WeaponScript.Weapon.BASIC && wScript.GetCurrentLook() == WeaponScript.Look.UP)
-            {
-                animator.changeAnimationState(PlayerAnimator.pAnim.PLAYER_BASIC_ATTACK_2);
-                wScript.attack();
-                //sound.playSound(6);
-            }
+            
+
+        }
+
+        if(input.RetrieveWeaponSwitch())
+        {
+            status.switchWeapon();
         }
     }
 

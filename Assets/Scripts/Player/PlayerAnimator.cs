@@ -5,21 +5,31 @@ using UnityEngine;
 public class PlayerAnimator : MonoBehaviour
 {
     public Animator animator;
+    public WeaponScript wScript;
+    private WeaponScript.Weapon currentWeapon;
+    private LookScript look;
+    private bool switchedWeapon = false;
+    private Status status;
 
-    void Start()
+    void Awake()
     {
         animator = GetComponent<Animator>();
+        wScript = GetComponent<WeaponScript>();
+        look = GetComponent<LookScript>();
+        status = GetComponent<Status>();
     }
 
     public enum pAnim 
     {
         PLAYER_IDLE,
         PLAYER_RUN,
+        PLAYER_LOOKUP,
+        PLAYER_LOOKDOWN,
         PLAYER_JUMP_UP,
         PLAYER_JUMP_DOWN,
         PLAYER_LAND,
-        PLAYER_BASIC_ATTACK_1,
-        PLAYER_BASIC_ATTACK_2
+        PLAYER_ATTACK_1,
+        PLAYER_ATTACK_2,
 
     }
 
@@ -27,46 +37,162 @@ public class PlayerAnimator : MonoBehaviour
     //private bool playing;
 
     string getAnimation(pAnim state)
+    //Manages transitions, for each state, checks weapon and look
     {
-        if(state == pAnim.PLAYER_IDLE)
+        switch(state)
         {
-            return "idle";
-        }
-        if(state == pAnim.PLAYER_RUN)
-        {
-            return "running";
-        }
-        if(state == pAnim.PLAYER_JUMP_UP)
-        {
-            return "jump_up";
-        }
-        if(state == pAnim.PLAYER_JUMP_DOWN)
-        {
-            return "jump_down";
-        }
-        if(state == pAnim.PLAYER_LAND)
-        {
-            return "player_land";
-        }
-        if(state == pAnim.PLAYER_BASIC_ATTACK_1)
-        {
-            return "basic_attack";
-        }
-        if(state == pAnim.PLAYER_BASIC_ATTACK_2)
-        {
-            return "basic_attack_up";
-        }
+            case pAnim.PLAYER_IDLE:
+                switch(wScript.GetCurrentWeapon())
+                {
+                    case WeaponScript.Weapon.BASIC:
+                        return "idle";
+                    case WeaponScript.Weapon.PISTOL:
+                        if(look.GetCurrentLook() == LookScript.Look.FORWARD)
+                            {
+                               // Debug.Log("pistol idle");
+                                return "idle_pistol";
+                            }
+                            else
+                            {
+                                return "idle_pistol_up";
+                            }
+                    default:
+                        return null;
+                }
+                
+            
+            case pAnim.PLAYER_RUN:
+                switch(wScript.GetCurrentWeapon())
+                    {
+                        case WeaponScript.Weapon.BASIC:
+                            return "running";
+                        case WeaponScript.Weapon.PISTOL:
+                            if(look.GetCurrentLook() == LookScript.Look.FORWARD)
+                            {
+                                return "running_pistol_f";
+                            }
+                            else
+                            {
+                                return "running_pistol_u";
+                            }
+                            
+                        default:
+                            return null;
+                    }
+                
+            case pAnim.PLAYER_LOOKUP:
+                switch(wScript.GetCurrentWeapon())
+                    {
+                        case WeaponScript.Weapon.PISTOL:
+                            return "look_up_pistol";
+                        default:
+                            return null;
+                    }
 
-        else
-        {
-            Debug.Log("Missing Animation");
-            return null;
+            case pAnim.PLAYER_LOOKDOWN:
+                switch(wScript.GetCurrentWeapon())
+                {
+                    case WeaponScript.Weapon.PISTOL:
+                        return "look_down_pistol";
+                    default:
+                        return null;
+                }
+             
+
+            case pAnim.PLAYER_JUMP_UP:
+                switch(wScript.GetCurrentWeapon())
+                    {
+                        case WeaponScript.Weapon.BASIC:
+                            return "jump_up";
+                        case WeaponScript.Weapon.PISTOL:
+                            if(look.GetCurrentLook() == LookScript.Look.FORWARD)
+                            {
+                                return "jump_up_pistol";
+                            }
+                            else
+                            {
+                                return "jump_up_pistol_up";
+                            }
+                        default:
+                            return null;
+                    }            
+            case pAnim.PLAYER_JUMP_DOWN:
+                switch(wScript.GetCurrentWeapon())
+                    {
+                        case WeaponScript.Weapon.BASIC:
+                            return "jump_down";
+                        case WeaponScript.Weapon.PISTOL:
+                        if(look.GetCurrentLook() == LookScript.Look.FORWARD)
+                            {
+                                return "jump_down_pistol";
+                            }
+                            else
+                            {
+                                return "jump_down_pistol_up";
+                            }
+                        default:
+                            return null;
+                    }
+
+            case pAnim.PLAYER_LAND:
+                switch(wScript.GetCurrentWeapon())
+                    {
+                        case WeaponScript.Weapon.BASIC:
+                            return "player_land";
+                        case WeaponScript.Weapon.PISTOL:
+                            if(look.GetCurrentLook() == LookScript.Look.FORWARD)
+                            {
+                                return "jump_down_pistol";
+                            }
+                            else
+                            {
+                                return "jump_down_pistol_up";
+                            }
+                        default:
+                            return null;
+                    }
+
+
+            case pAnim.PLAYER_ATTACK_1:
+                switch(wScript.GetCurrentWeapon())
+                    {
+                        case WeaponScript.Weapon.BASIC:
+                            return "basic_attack";
+                        case WeaponScript.Weapon.PISTOL:
+                            return "pistol_attack";
+                        default:
+                            return null;
+                    }
+            
+            case pAnim.PLAYER_ATTACK_2:
+                switch(wScript.GetCurrentWeapon())
+                    {
+                        case WeaponScript.Weapon.BASIC:
+                            return "basic_attack_up";
+                        case WeaponScript.Weapon.PISTOL:
+                            return "pistol_attack_up";
+                        default:
+                            return null;
+                    }
+            
+            default:
+                Debug.Log("MISSING ANIMATION");
+                return null;
         }
+        
     }
 
 
     public void changeAnimationState(pAnim newState)
     {
+        
+        if(currentState == newState && switchedWeapon == true)
+        //Checks if weapon was switched
+        {
+            switchedWeapon = false;
+            animator.Play(getAnimation(newState));
+
+        }
         //stop anim from repeating
         if(currentState == newState) return;
 
@@ -89,11 +215,12 @@ public class PlayerAnimator : MonoBehaviour
 
     public bool isAttacking()
     {
-        if(currentState == pAnim.PLAYER_BASIC_ATTACK_1)
+        //Stops attack spamming
+        if(currentState == pAnim.PLAYER_ATTACK_1)
         {
             return true;
         }
-        else if(currentState == pAnim.PLAYER_BASIC_ATTACK_2)
+        else if(currentState == pAnim.PLAYER_ATTACK_2)
         {
             return true;
         }
@@ -101,6 +228,29 @@ public class PlayerAnimator : MonoBehaviour
         {
             return false;
         }
+    }
+
+    public bool isChangingLook()
+    {
+        if(currentState == pAnim.PLAYER_LOOKUP || currentState == pAnim.PLAYER_LOOKDOWN)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    public void returnToIdle()
+    {
+        //trigger from end of lookup, lookdown animation
+        changeAnimationState(pAnim.PLAYER_IDLE);
+    }
+
+    public void setSwitchWeapon(bool state)
+    {
+        switchedWeapon = state;
     }
 
     // public void isPlaying()

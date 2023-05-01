@@ -15,6 +15,8 @@ public class Status : MonoBehaviour
     private GreyScaleEffect_Script greyScaleEffect;
     private WeaponScript wScript;
     private WeaponScript.Weapon currentWeapon;
+    private List<WeaponScript.Weapon> weapons = new List<WeaponScript.Weapon>();
+    private PlayerAnimator animator;
     public GameObject bloodSpawn;
     public GameObject bloodEffectSmall;
     public GameObject bloodEffectBig;
@@ -29,9 +31,11 @@ public class Status : MonoBehaviour
         freezeFrame = GameObject.FindGameObjectWithTag("CamFollow").GetComponent<FreezeFrame>();
         greyScaleEffect = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<GreyScaleEffect_Script>();
         ui = GameObject.FindGameObjectWithTag("UI").GetComponent<UIScript>();
+        animator = GetComponent<PlayerAnimator>();
 
         wScript = GetComponent<WeaponScript>();
         wScript.SetCurrentWeapon(WeaponScript.Weapon.BASIC);
+        weapons.Add(WeaponScript.Weapon.BASIC);
         currentWeapon = wScript.GetCurrentWeapon();
     }
     public void takeDamage(int damage, int type)
@@ -103,6 +107,60 @@ public class Status : MonoBehaviour
         Instantiate(bloodEffectBig, transform.position,transform.rotation);
         freezeFrame.Freeze(3);
         StartCoroutine(resetTextTimer());
+        
+    }
+    public void pickUpWeapon(WeaponScript.Weapon weapon)
+    {
+        soundEffectController.playOneShotSound(7);
+        //Add weapon limit
+        if(!weapons.Contains(weapon))
+        {
+            weapons.Add(weapon);
+        }
+    }
+    public void switchWeapon()
+    {
+        int i = weapons.IndexOf(currentWeapon);
+        if(i + 1 > weapons.Count - 1)
+        {
+            wScript.SetCurrentWeapon(weapons[0]);          
+        }
+        else
+        {
+            wScript.SetCurrentWeapon(weapons[i + 1]);
+        }
+        currentWeapon = wScript.GetCurrentWeapon();
+        animator.setSwitchWeapon(true);
+        animator.changeAnimationState(PlayerAnimator.pAnim.PLAYER_IDLE);
+        if(currentWeapon != WeaponScript.Weapon.BASIC)
+        {
+            //Debug.Log("change size");
+            SetBoxColliderSize(true);
+        }
+        
+    }
+
+    public WeaponScript.Weapon GetCurrentWeapon()
+    {
+        return currentWeapon;
+    }
+
+    public void SetBoxColliderSize(bool toStanding)
+    {
+        //TO-DO
+        //Update collider size to mathc thhe animation
+        //FOR STANDING
+        BoxCollider2D collider = GetComponent<BoxCollider2D>();
+        if(toStanding)
+        {        
+            collider.size = new Vector2(0.375f, 0.875f);
+            collider.offset = new Vector2(-0.015f, -0.125f);
+        }
+        else
+        {
+            collider.size = new Vector2(0.65f, 0.58f);
+            collider.offset = new Vector2(0, -0.2f);
+        }
         
     }
 

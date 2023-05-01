@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 949592025899272744}
   - component: {fileID: -3185623700369915510}
   - component: {fileID: 667435776733324403}
+  - component: {fileID: 9205465816026633006}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -184,6 +185,7 @@ MonoBehaviour:
   maxAcceleration: 75
   maxAirAcceleration: 50
   moveSoundSource: {fileID: 6867788273696736519}
+  status: {fileID: 0}
   dust: {fileID: 6318705879842624500}
   animator: {fileID: 667435776733324403}
 --- !u!114 &7407228669820754447
@@ -307,7 +309,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 459347065, guid: 0a9db59c9a7bb3743b0ce33bdc79400d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -364,6 +366,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: e98fa4352823141448d643f19a37cbe8, type: 3}
   - {fileID: 8300000, guid: 9ddd23795c5009a4b9a779cb85853085, type: 3}
   - {fileID: 8300000, guid: 7ef0e99f7b82b904c9d93fdd59705f4d, type: 3}
+  - {fileID: 8300000, guid: 79d686dc7f909834691f6923ed48c64d, type: 3}
 --- !u!82 &6867788273696736519
 AudioSource:
   m_ObjectHideFlags: 0
@@ -472,6 +475,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4609d66a245278241acddb3240421939, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  projectiles:
+  - {fileID: 1239254998461357543, guid: fc33f347a33c0374fb84605b1b2efda1, type: 3}
   enemyLayer:
     serializedVersion: 2
     m_Bits: 512
@@ -501,6 +506,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 8875183963276206883}
+  wScript: {fileID: 0}
+--- !u!114 &9205465816026633006
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3641761164224173358}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72072843cf4c75246b6bebf7fc842359, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  input: {fileID: 11400000, guid: eed36fab56470c34393da9614c238f23, type: 2}
 --- !u!1 &4186635884188513052
 GameObject:
   m_ObjectHideFlags: 0

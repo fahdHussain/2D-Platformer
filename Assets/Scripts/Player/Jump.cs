@@ -142,4 +142,10 @@ public class Jump : MonoBehaviour
     {
         dust.Play();
     }
+
+    void UpdateJumpModifiers()
+    {
+        //TO-DO
+        //update modifiers for different weapon
+    }
 }
