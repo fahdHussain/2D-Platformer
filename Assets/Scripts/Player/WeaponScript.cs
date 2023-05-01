@@ -100,7 +100,15 @@ public class WeaponScript : MonoBehaviour
         foreach(Collider2D enemy in frontColliderArray)
         {
             //Debug.Log("HIT");
-            enemy.GetComponent<EnemyStats>().takeDamage(1);
+            if(enemy.GetComponent<EnemyStats>() != null)
+            {
+                enemy.GetComponent<EnemyStats>().takeDamage(1);
+            }
+            if(enemy.GetComponent<BreakCrateScript>() != null)
+            {
+                enemy.GetComponent<BreakCrateScript>().destroyCrate();
+            }
+            
         }
     }
     public void basicAttackUp()
@@ -110,7 +118,14 @@ public class WeaponScript : MonoBehaviour
         foreach(Collider2D enemy in upColliderArray)
         {
             //Debug.Log("HIT");
-            enemy.GetComponent<EnemyStats>().takeDamage(1);
+            if(enemy.GetComponent<EnemyStats>() != null)
+            {
+                enemy.GetComponent<EnemyStats>().takeDamage(1);
+            }
+            if(enemy.GetComponent<BreakCrateScript>() != null)
+            {
+                enemy.GetComponent<BreakCrateScript>().destroyCrate();
+            }
         }
     }
     public void pistolBulletForward()
@@ -122,6 +137,7 @@ public class WeaponScript : MonoBehaviour
         instance.GetComponent<Rigidbody2D>().velocity = new Vector2(15f*transform.localScale.x, 0);
         //Recoil
         GetComponent<Rigidbody2D>().AddForce(10*Vector2.left*transform.localScale.x, ForceMode2D.Impulse);
+        playAttackSound();
     }
 
     public void pistolBulletUp()
@@ -134,6 +150,7 @@ public class WeaponScript : MonoBehaviour
         instance.GetComponent<Rigidbody2D>().velocity = direction*15f;
         //Recoil
         GetComponent<Rigidbody2D>().AddForce(Vector2.down, ForceMode2D.Impulse);
+        playAttackSound();
     }
 
     public void playAttackSound()
@@ -142,7 +159,7 @@ public class WeaponScript : MonoBehaviour
         switch(currentWeapon)
         {
             case Weapon.BASIC:
-                sound.playOneShotSound(6);
+                sound.playSound(6);
                 break;
             case Weapon.PISTOL:
                 sound.playOneShotSound(8);

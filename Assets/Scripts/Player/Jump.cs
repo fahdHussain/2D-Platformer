@@ -5,11 +5,14 @@ using UnityEngine;
 public class Jump : MonoBehaviour
 {
     [SerializeField] private InputController input = null;
-    [SerializeField, Range(0f,10f)] private float jumpHeight = 3f;
-    [SerializeField, Range(0, 5)] private int maxAirJumps = 0;
-    [SerializeField, Range(0f, 5f)] private float downMovementMultiplier = 3f;
-    [SerializeField, Range(0f, 5f)] private float upMovementMultiplier = 1.7f;
-
+    // [SerializeField, Range(0f,10f)] private float jumpHeight = 3f;
+    private float jumpHeight;
+    // [SerializeField, Range(0, 5)] private int maxAirJumps = 0;
+    private int maxAirJumps;
+    // [SerializeField, Range(0f, 5f)] private float downMovementMultiplier = 3f;
+    private float downMovementMultiplier;
+    // [SerializeField, Range(0f, 5f)] private float upMovementMultiplier = 1.7f;
+    private float upMovementMultiplier;
     private Rigidbody2D body;
     private Ground ground;
     private Vector2 velocity;
@@ -27,6 +30,7 @@ public class Jump : MonoBehaviour
     private SoundEffectController sound;
     //0: Jump
     //1: Land
+    private Status status;
 
 
     
@@ -40,6 +44,8 @@ public class Jump : MonoBehaviour
 
         sound = GetComponent<SoundEffectController>();
         animator = GetComponent<PlayerAnimator>();
+        status = GetComponent<Status>();
+        UpdateJumpModifiers();
     }
 
     // Update is called once per frame
@@ -143,9 +149,23 @@ public class Jump : MonoBehaviour
         dust.Play();
     }
 
-    void UpdateJumpModifiers()
+    public void UpdateJumpModifiers()
     {
         //TO-DO
-        //update modifiers for different weapon
+        switch(status.GetCurrentWeapon())
+        {
+            case WeaponScript.Weapon.PISTOL:
+                jumpHeight = 5;
+                maxAirJumps = 1;
+                downMovementMultiplier = 6;
+                upMovementMultiplier = 2.5f;
+                break;
+            default:
+                jumpHeight = 7;
+                maxAirJumps = 1;
+                downMovementMultiplier = 4;
+                upMovementMultiplier = 3.5f;
+                break;
+        }
     }
 }

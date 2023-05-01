@@ -6,9 +6,12 @@ using UnityEditor;
 public class Move : MonoBehaviour
 {
     [SerializeField] private InputController input = null;
-    [SerializeField, Range(0f,100f)] private float maxSpeed = 4f;
-    [SerializeField, Range(0f,100f)] private float maxAcceleration = 35f;
-    [SerializeField, Range(0f,100f)] private float maxAirAcceleration = 20f;
+    //[SerializeField, Range(0f,100f)] private float maxSpeed = 4f;
+    private float maxSpeed;
+    //[SerializeField, Range(0f,100f)] private float maxAcceleration = 35f;
+    private float maxAcceleration;
+    //[SerializeField, Range(0f,100f)] private float maxAirAcceleration = 20f;
+    private float maxAirAcceleration;
 
     private Vector2 direction;
     private Vector2 desiredVelocity;
@@ -42,7 +45,7 @@ public class Move : MonoBehaviour
         status = GetComponent<Status>();
 
         weaponScript = GetComponent<WeaponScript>();
-
+        UpdateMovementType();
 
     }
 
@@ -54,14 +57,22 @@ public class Move : MonoBehaviour
 
     }
 
-    void UpdateMovementType()
+
+
+    public void UpdateMovementType()
     {
         switch(status.GetCurrentWeapon())
         {
             case(WeaponScript.Weapon.PISTOL):
                 //SET pistol movement modifiers
+                maxSpeed = 5f;
+                maxAcceleration = 75;
+                maxAirAcceleration = 50;
+                break;
             default:
-                //Set default movement modifiers
+                maxSpeed = 7.5f;
+                maxAcceleration = 75;
+                maxAirAcceleration = 50;
                 break;
         }
     }

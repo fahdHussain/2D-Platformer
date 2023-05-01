@@ -14,6 +14,7 @@ TagManager:
   - tile
   - UI
   - enemy
+  - breakable
   layers:
   - Default
   - TransparentFX

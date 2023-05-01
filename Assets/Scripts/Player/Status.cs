@@ -17,6 +17,8 @@ public class Status : MonoBehaviour
     private WeaponScript.Weapon currentWeapon;
     private List<WeaponScript.Weapon> weapons = new List<WeaponScript.Weapon>();
     private PlayerAnimator animator;
+    private Move move;
+    private Jump jump;
     public GameObject bloodSpawn;
     public GameObject bloodEffectSmall;
     public GameObject bloodEffectBig;
@@ -25,7 +27,7 @@ public class Status : MonoBehaviour
     public UIScript ui;
 
 
-    void Start()
+    void Awake()
     {
         camShake = GameObject.FindGameObjectWithTag("CamFollow").GetComponent<CamShake>();
         freezeFrame = GameObject.FindGameObjectWithTag("CamFollow").GetComponent<FreezeFrame>();
@@ -37,6 +39,9 @@ public class Status : MonoBehaviour
         wScript.SetCurrentWeapon(WeaponScript.Weapon.BASIC);
         weapons.Add(WeaponScript.Weapon.BASIC);
         currentWeapon = wScript.GetCurrentWeapon();
+
+        move = GetComponent<Move>();
+        jump = GetComponent<Jump>();
     }
     public void takeDamage(int damage, int type)
     {
@@ -137,6 +142,8 @@ public class Status : MonoBehaviour
             //Debug.Log("change size");
             SetBoxColliderSize(true);
         }
+        move.UpdateMovementType();
+        jump.UpdateJumpModifiers();
         
     }
 
