@@ -13,7 +13,6 @@ public class UIScript : MonoBehaviour
     public Text levelComplete;
     public Text needKey;
     float timerVal = 5;
-
     string gameOverText = "We'll\nbe\nright\nback ";
 
     public GameObject[] healthChunks;
@@ -23,8 +22,12 @@ public class UIScript : MonoBehaviour
 
     GameObject player;
     
+    private WeaponScript.Weapon weapon_1;
+    public GameObject basicWeaponSlot;
+    public GameObject weaponSlotOne;
+    private int currentWeaponSlot = 0;
 
-    
+    //int numberOfWeapons --> if < max, add to slot else bring up discard prompt then switch
     
     void Start()
     {
@@ -32,6 +35,8 @@ public class UIScript : MonoBehaviour
         //health = player.GetComponent<Status>().health;
         gameOver.enabled = false;
         needKey.enabled = false;
+        basicWeaponSlot.GetComponent<BasicWeaponUIScript>().basicSelect(); 
+        weaponSlotOne.GetComponent<WeaponUIScript>().weaponDrop();
 
     }
     void Update()
@@ -96,6 +101,31 @@ public class UIScript : MonoBehaviour
         gameOverText = "Game Over";
         //Debug.Log(gameOver.text);
 
+    }
+    public void addWeapon(WeaponScript.Weapon weapon)
+    {
+        //TO-DO
+        //Update for 3 slots
+        weaponSlotOne.GetComponent<WeaponUIScript>().weaponDeselect(weapon);
+        weapon_1 = weapon;
+    }
+
+    public void switchWeapon()
+    {
+        //TO-DO 
+        //Update for 3 slots
+        if(currentWeaponSlot == 1)
+        {
+            currentWeaponSlot = 0;
+            weaponSlotOne.GetComponent<WeaponUIScript>().weaponDeselect(weapon_1);
+            basicWeaponSlot.GetComponent<BasicWeaponUIScript>().basicSelect();
+        }
+        else
+        {
+            currentWeaponSlot = 1;
+            weaponSlotOne.GetComponent<WeaponUIScript>().weaponSelect(weapon_1);
+            basicWeaponSlot.GetComponent<BasicWeaponUIScript>().basicDeselect();
+        }
     }
 
     void healthFiller()

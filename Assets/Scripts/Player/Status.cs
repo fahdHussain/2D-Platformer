@@ -121,6 +121,8 @@ public class Status : MonoBehaviour
         if(!weapons.Contains(weapon))
         {
             weapons.Add(weapon);
+            //update ui
+            ui.addWeapon(weapon);
         }
     }
     public void switchWeapon()
@@ -142,6 +144,11 @@ public class Status : MonoBehaviour
             //Debug.Log("change size");
             SetBoxColliderSize(true);
         }
+        if(weapons.Count > 1)
+        {
+            ui.switchWeapon();
+        }
+        
         move.UpdateMovementType();
         jump.UpdateJumpModifiers();
         

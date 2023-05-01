@@ -28,8 +28,8 @@ TagManager:
   - enemy
   - Background
   - Projectiles
-  - 
-  - 
+  - PickUps
+  - IgnorePlayer
   - 
   - 
   - 

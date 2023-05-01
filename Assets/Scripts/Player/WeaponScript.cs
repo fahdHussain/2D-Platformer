@@ -108,6 +108,10 @@ public class WeaponScript : MonoBehaviour
             {
                 enemy.GetComponent<BreakCrateScript>().destroyCrate();
             }
+            if(enemy.GetComponent<PotDestroyScript>() != null)
+            {
+                enemy.GetComponent<PotDestroyScript>().destroyPot();
+            }
             
         }
     }
@@ -125,6 +129,10 @@ public class WeaponScript : MonoBehaviour
             if(enemy.GetComponent<BreakCrateScript>() != null)
             {
                 enemy.GetComponent<BreakCrateScript>().destroyCrate();
+            }
+            if(enemy.GetComponent<PotDestroyScript>() != null)
+            {
+                enemy.GetComponent<PotDestroyScript>().destroyPot();
             }
         }
     }

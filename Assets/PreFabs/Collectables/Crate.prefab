@@ -43,7 +43,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2789326914914123828}
-  m_BodyType: 0
+  m_BodyType: 2
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -66,7 +66,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: -0.1}
@@ -149,4 +149,3 @@ MonoBehaviour:
   brokenCrate: {fileID: 4426496523295313977, guid: c19efdaf9e90a1a43b254b33e270454d, type: 3}
   item: {fileID: 7248828754535659052, guid: 7b3c8a6673147a94db9d53138c92e862, type: 3}
   crateParticles: {fileID: 9140812357720801083, guid: 6f52046480c535548b0e70208c259bcb, type: 3}
-  pickupLaser: {fileID: 7138038651582018151, guid: 436b727758c5adb4389fc2620ecf544b, type: 3}
