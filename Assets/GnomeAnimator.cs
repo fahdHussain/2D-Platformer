@@ -29,6 +29,11 @@ public class GnomeAnimator : MonoBehaviour
         currentState = newState;
     }
 
+    public gAnim getCurrentState()
+    {
+        return currentState;
+    }
+
     string getAnimation(gAnim state)
     {
         switch(state)
@@ -40,6 +45,8 @@ public class GnomeAnimator : MonoBehaviour
                         return "gnome_idle";
                     case GnomeController.GnomeType.ARCHER:
                         return "gnome_archer_idle";
+                    case GnomeController.GnomeType.KNIGHT:
+                        return "gnome_knight_idle";
                     default:
                         return null;
                 }
@@ -50,6 +57,8 @@ public class GnomeAnimator : MonoBehaviour
                         return "gnome_run";
                     case GnomeController.GnomeType.ARCHER:
                         return "gnome_archer_run";
+                    case GnomeController.GnomeType.KNIGHT:
+                        return "gnome_knight_run";
                     default:
                         return null;
                 }
@@ -60,6 +69,8 @@ public class GnomeAnimator : MonoBehaviour
                         return "gnome_attack";
                     case GnomeController.GnomeType.ARCHER:
                         return "gnome_archer_attack";
+                    case GnomeController.GnomeType.KNIGHT:
+                        return "gnome_knight_attack";
                     default:
                         return null;
                 }

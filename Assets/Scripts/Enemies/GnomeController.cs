@@ -30,6 +30,11 @@ public class GnomeController : EnemyController
     private Rigidbody2D body;
     private GameObject target;
     private EnemyStats stats;
+    private Vector2 attackStartPosition;
+    private bool setAttackPosCheck = false;
+    private bool meleeWaiting = false;
+    private bool meleeAttacking = false;
+    private bool chargingMelee = false;
     //private SpriteRenderer renderer;
     
 
@@ -38,7 +43,8 @@ public class GnomeController : EnemyController
     public enum GnomeType
     {
         MUSHROOM,
-        ARCHER
+        ARCHER,
+        KNIGHT
     }
 
     public GnomeType gnomeType;
@@ -99,9 +105,54 @@ public class GnomeController : EnemyController
         if(aggro)
         {
             //Attack State
+            if(gnomeType == GnomeType.KNIGHT)
+            {
+                if(animator.getCurrentState() == GnomeAnimator.gAnim.ATTACK)
+                {
+                    if(chargingMelee)
+                    {
+                        body.velocity = new Vector2(0,0);
+                    }
+                    //For knight attack movement
+                    if(!setAttackPosCheck)
+                    {
+                        setAttackStartPosition();
+                        setAttackPosCheck = true;
+                    }
+                    if(setAttackPosCheck)
+                    {
+                        //Attack move distance
+                        if(Mathf.Abs(attackStartPosition.x - this.transform.position.x) > 4)
+                        {
+                            body.velocity = new Vector2(0,body.velocity.y);
+                            setAttackPosCheck = false;
+                        }
+                    }
+                }
+            }
             waitTime = 3;
-            body.velocity = new Vector2(0,0);
-            animator.changeAnimationState(GnomeAnimator.gAnim.ATTACK);
+            if(gnomeType == GnomeType.KNIGHT && !meleeWaiting)
+            {
+                animator.changeAnimationState(GnomeAnimator.gAnim.ATTACK);
+            }
+            if(gnomeType != GnomeType.KNIGHT)
+            {
+                body.velocity = new Vector2(0,0);
+                animator.changeAnimationState(GnomeAnimator.gAnim.ATTACK);
+            }    
+            //Knight logic
+            if(gnomeType == GnomeType.KNIGHT && meleeAttacking)
+            {
+                Vector2 startPos = new Vector2(transform.position.x + 1*transform.localScale.x, transform.position.y); 
+                Collider2D[] colliderArray = Physics2D.OverlapBoxAll(startPos, new Vector2(2,0.5f), 0);
+                foreach(Collider2D hit in colliderArray)
+                {
+                    if(hit.gameObject.CompareTag("Player"))
+                    {
+                        hit.gameObject.GetComponent<Status>().takeDamage(1,0);
+                    }
+                }
+            }
             target = vision.getTarget();
             if(target.transform.position.x > transform.position.x && !facingRight)
             {
@@ -165,10 +216,40 @@ public class GnomeController : EnemyController
         }
 
     }
+
+    public void meleeAttack()
+    {
+        body.velocity = new Vector2(25*transform.localScale.x, 0);
+        chargingMelee = false;
+        meleeAttacking = true;
+        
+    }
+    // void OnDrawGizmos()
+    // {
+        
+    //     Vector2 pos = new Vector2(transform.position.x + 1f*transform.localScale.x, transform.position.y);
+    //     Gizmos.color = Color.red;
+    //     Gizmos.DrawCube(pos, new Vector3(2,0.5f,1));
+    // }
+    public void meleeWait()
+    {
+        StartCoroutine(waitIdle(1));
+    }
+
+    public void setAttackStartPosition()
+    {
+        attackStartPosition = this.transform.position;
+    }
     public override void SetAggro(bool state)
     {
         aggro = state;
     }
+    public void ChargingMelee()
+    {
+        chargingMelee = true;
+    }
+    
+
 
     protected override void changeDirection()
     {
@@ -183,17 +264,16 @@ public class GnomeController : EnemyController
         }
     }
 
-    protected override IEnumerator waitIdle()
+    protected  IEnumerator waitIdle(float aTime)
     {
-        waiting = true;
+        meleeWaiting = true;
+        meleeAttacking = false;
         animator.changeAnimationState(GnomeAnimator.gAnim.IDLE);
         
-        yield return new WaitForSeconds(waitTime);
+        yield return new WaitForSeconds(aTime);
 
         //Debug.Log("Changing direction");
-        changeDirection();
-        setStartPosition = false;
-        waiting = false;
+        meleeWaiting = false;
     }
 
     public override void takeDamage(int damage)
@@ -220,5 +300,16 @@ public class GnomeController : EnemyController
         }
     }
 
+    protected override IEnumerator waitIdle()
+    {
+        waiting = true;
+        animator.changeAnimationState(GnomeAnimator.gAnim.IDLE);
+        
+        yield return new WaitForSeconds(waitTime);
 
+        //Debug.Log("Changing direction");
+        changeDirection();
+        setStartPosition = false;
+        waiting = false;
+    }
 }
