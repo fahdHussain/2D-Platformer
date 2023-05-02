@@ -6,7 +6,7 @@ public class GnomeController : EnemyController
 {
     public GameObject projectile;
     public float waitTime = 2;
-    public Animator animator;
+    //public Animator animator;
     public bool aggro = false;
     public CheckAhead checkAhead;
     public float maxSpeed = 5;
@@ -15,6 +15,8 @@ public class GnomeController : EnemyController
     public float attack_x = 1;
     public float attack_y = 0.5f;
     public float attackForce = 5;
+    public float arrowSpeed = 10;
+    public GnomeAnimator animator;
 
     
 
@@ -32,6 +34,14 @@ public class GnomeController : EnemyController
     
 
     private int throwCount = 0;
+
+    public enum GnomeType
+    {
+        MUSHROOM,
+        ARCHER
+    }
+
+    public GnomeType gnomeType;
     protected override void Start()
     {
         body = GetComponent<Rigidbody2D>();
@@ -53,7 +63,7 @@ public class GnomeController : EnemyController
         {
             if(waiting == false)
             {
-                animator.SetBool("running", true);
+                animator.changeAnimationState(GnomeAnimator.gAnim.RUN);
                 
                 if(!setStartPosition)
                 {
@@ -91,7 +101,7 @@ public class GnomeController : EnemyController
             //Attack State
             waitTime = 3;
             body.velocity = new Vector2(0,0);
-            animator.SetBool("running", false);
+            animator.changeAnimationState(GnomeAnimator.gAnim.ATTACK);
             target = vision.getTarget();
             if(target.transform.position.x > transform.position.x && !facingRight)
             {
@@ -101,12 +111,12 @@ public class GnomeController : EnemyController
             {
                 changeDirection();
             }
-            animator.SetBool("attacking", true);
+            //animator.SetBool("attacking", true);
             if(throwCount == 3)
             {
                 throwCount = 0;
                 SetAggro(false);
-                animator.SetBool("attacking", false);
+                animator.changeAnimationState(GnomeAnimator.gAnim.IDLE);
             }
 
         }
@@ -115,10 +125,6 @@ public class GnomeController : EnemyController
 
     public void SpawnProjectile()
     {
-
-        Vector2 spawnPosition = new Vector2(this.transform.position.x,this.transform.position.y + 0.5f);
-        
-        GameObject instance = Instantiate(projectile, spawnPosition, transform.rotation);
         int direction = 1;
         if(target.transform.position.x > transform.position.x)
         {
@@ -128,8 +134,36 @@ public class GnomeController : EnemyController
         {
             direction = -1;
         }
-        Vector2 attackAngle = new Vector2(attack_x*direction, attack_y);
-        instance.GetComponent<Rigidbody2D>().AddForce(attackAngle*attackForce, ForceMode2D.Impulse);
+        switch(gnomeType)
+        {
+            
+            case GnomeType.MUSHROOM:
+                Vector2 mushSpawnPosition = new Vector2(this.transform.position.x,this.transform.position.y + 0.5f);
+            
+                GameObject mushInstance = Instantiate(projectile, mushSpawnPosition, transform.rotation);
+                
+                Vector2 attackAngle = new Vector2(attack_x*direction, attack_y);
+                mushInstance.GetComponent<Rigidbody2D>().AddForce(attackAngle*attackForce, ForceMode2D.Impulse);
+                break;
+            
+            case GnomeType.ARCHER:
+                Vector2 arrowSpawnPosition = new Vector2(this.transform.position.x + 1*transform.localScale.x, this.transform.position.y);
+                GameObject instance;
+                if(transform.localScale.x > 0)
+                {
+                     instance = Instantiate(projectile, arrowSpawnPosition, transform.rotation);
+                }
+                else
+                {
+                    instance = Instantiate(projectile, arrowSpawnPosition, Quaternion.AngleAxis(180,Vector3.back));
+                }
+                Vector2 arrowVector = new Vector2(arrowSpeed*direction, 0);       
+                instance.GetComponent<Rigidbody2D>().velocity = arrowVector;
+
+                //projectile.GetComponent<Rigidbody2D>().velocity = arrowSpeed*transform.localScale.x;
+                break;
+        }
+
     }
     public override void SetAggro(bool state)
     {
@@ -152,7 +186,7 @@ public class GnomeController : EnemyController
     protected override IEnumerator waitIdle()
     {
         waiting = true;
-        animator.SetBool("running", false);
+        animator.changeAnimationState(GnomeAnimator.gAnim.IDLE);
         
         yield return new WaitForSeconds(waitTime);
 
@@ -165,6 +199,10 @@ public class GnomeController : EnemyController
     public override void takeDamage(int damage)
     {
         stats.takeDamage(damage);
+    }
+    public GnomeType GetGnomeType()
+    {
+        return gnomeType;
     }
 
 

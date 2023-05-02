@@ -139,8 +139,18 @@ public class WeaponScript : MonoBehaviour
     public void pistolBulletForward()
     {
         GameObject bullet = projectiles[0];
+        float direction = transform.localScale.x;
         Vector2 spawnPosition = new Vector2(transform.position.x + 0.5f*transform.localScale.x, transform.position.y);
-        GameObject instance = Instantiate(bullet, spawnPosition , transform.rotation);
+        GameObject instance;
+        if(transform.localScale.x > 0)
+        {
+            instance = Instantiate(bullet, spawnPosition , transform.rotation);
+        }
+        else
+        {
+            instance = Instantiate(bullet, spawnPosition , Quaternion.AngleAxis(180, Vector3.back));
+        }
+        
         //StartCoroutine(canShootTimer(0.25f));
         instance.GetComponent<Rigidbody2D>().velocity = new Vector2(15f*transform.localScale.x, 0);
         //Recoil
