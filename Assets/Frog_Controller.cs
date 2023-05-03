@@ -127,7 +127,7 @@ public class Frog_Controller : EnemyController
         Vector2 startPos = new Vector2(transform.position.x + 0.5f*transform.localScale.x, transform.position.y); 
         RaycastHit2D hit = Physics2D.Raycast(startPos, Vector2.right*transform.localScale.x,2.5f);
         Vector2 rayPos = new Vector2(transform.position.x+0.5f, transform.position.y);
-        Debug.DrawRay(rayPos, Vector2.right*transform.localScale.x*2.5f, Color.green, 0.1f);
+        //Debug.DrawRay(rayPos, Vector2.right*transform.localScale.x*2.5f, Color.green, 0.1f);
         if(hit.collider != null && toungeOut && !hitPlayer)
         {
             if(hit.transform.gameObject.CompareTag("Player"))

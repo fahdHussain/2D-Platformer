@@ -167,7 +167,7 @@ public class GnomeController : EnemyController
             {
                 throwCount = 0;
                 SetAggro(false);
-                animator.changeAnimationState(GnomeAnimator.gAnim.IDLE);
+                StartCoroutine(waitIdle());
             }
 
         }
