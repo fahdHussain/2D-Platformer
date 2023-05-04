@@ -361,6 +361,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 7ef0e99f7b82b904c9d93fdd59705f4d, type: 3}
   - {fileID: 8300000, guid: 79d686dc7f909834691f6923ed48c64d, type: 3}
   - {fileID: 8300000, guid: 132f502e03330844293c60b2ea839b8b, type: 3}
+  - {fileID: 8300000, guid: f54f660e53159b540a1ef84f45be74cc, type: 3}
 --- !u!82 &6867788273696736519
 AudioSource:
   m_ObjectHideFlags: 0
@@ -472,6 +473,7 @@ MonoBehaviour:
   projectiles:
   - {fileID: 1239254998461357543, guid: fc33f347a33c0374fb84605b1b2efda1, type: 3}
   - {fileID: 7162932846518291884, guid: 6c7d28664d285ee48a10deea64a435e0, type: 3}
+  - {fileID: 8649876542229512086, guid: 1f9268befd65765488d8e3d4cc372a8f, type: 3}
   enemyLayer:
     serializedVersion: 2
     m_Bits: 512

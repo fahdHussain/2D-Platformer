@@ -8,6 +8,7 @@ public class PotDestroyScript : MonoBehaviour
     public GameObject brokenPot;
     public GameObject item;
     public GameObject potParticles;
+    private bool broken = false;
     //public GameObject pickupLaser;
 
     public void setItem(GameObject newItem)
@@ -18,17 +19,22 @@ public class PotDestroyScript : MonoBehaviour
 
     public void destroyPot()
     {
-        if(item != null)
+        if(!broken)
+        {
+            if(item != null)
         {
             Instantiate(item, transform.position, transform.rotation);
         }
         
-        GameObject instance = Instantiate(brokenPot, transform.position, transform.rotation);
-        instance.GetComponent<CorpseExplode>().explode();
-        Vector2 particlePos = new Vector2(transform.position.x, transform.position.y + 0.5f);
-        Instantiate(potParticles, particlePos, transform.rotation);
-        //Vector2 laserPos = new Vector2(transform.position.x, transform.position.y + 0.3f);
-        //Instantiate(pickupLaser, laserPos, transform.rotation);
-        Destroy(gameObject);
+            GameObject instance = Instantiate(brokenPot, transform.position, transform.rotation);
+            instance.GetComponent<CorpseExplode>().explode();
+            Vector2 particlePos = new Vector2(transform.position.x, transform.position.y + 0.5f);
+            Instantiate(potParticles, particlePos, transform.rotation);
+            //Vector2 laserPos = new Vector2(transform.position.x, transform.position.y + 0.3f);
+            //Instantiate(pickupLaser, laserPos, transform.rotation);
+            broken = true;
+            Destroy(gameObject);
+        }
+        
     }
 }

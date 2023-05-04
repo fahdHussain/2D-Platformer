@@ -208,6 +208,117 @@ public class WeaponScript : MonoBehaviour
         instance.GetComponent<Rigidbody2D>().AddForce(force, ForceMode2D.Impulse);
         instance.GetComponent<GrenadeScript>().startTimer();
     }
+    public void shotgunAttackForward()
+    {
+        GameObject shotgunPellet = projectiles[2];
+        float[] segments = new float[19];
+        Vector2[] vectors = new Vector2[19];
+        float segmentSize = 4.5f;
+        float speed = 30f;
+        
+        calcAngles();
+        calcVectors();
+
+        for(int i = 0; i < 19; i++)
+        {
+            
+            if(transform.localScale.x > 0)
+            {
+                Vector2 spawnPos = new Vector2(transform.position.x + 0.5f, transform.position.y);
+                GameObject instance = Instantiate(projectiles[2], spawnPos, Quaternion.AngleAxis(Mathf.Acos(vectors[i].x)*Mathf.Rad2Deg, Vector3.forward));
+                instance.GetComponent<Rigidbody2D>().velocity = new Vector2(vectors[i].x*speed,vectors[i].y*speed);
+            }
+            else
+            {
+                Vector2 spawnPos = new Vector2(transform.position.x - 0.5f, transform.position.y);
+                GameObject instance = Instantiate(projectiles[2], spawnPos, Quaternion.AngleAxis(Mathf.Acos(vectors[i].x)*Mathf.Rad2Deg, Vector3.back));
+                instance.GetComponent<Rigidbody2D>().velocity = new Vector2(vectors[i].x*speed*-1,vectors[i].y*speed);
+            }
+            
+            
+        }
+        GetComponent<Rigidbody2D>().AddForce(15*Vector2.left*transform.localScale.x, ForceMode2D.Impulse);
+        playAttackSound();
+
+
+
+        void calcAngles()
+        {
+            float curStartAngle = -45;
+            for(int i =0; i < 19; i++)
+            {
+                float rand = Random.Range(curStartAngle, curStartAngle + segmentSize);
+                segments[i] = rand;
+                curStartAngle += segmentSize;
+            }
+        }
+        void calcVectors()
+        {
+            for(int i = 0; i < 19; i++)
+            {
+                float x = Mathf.Cos(segments[i] * Mathf.Deg2Rad);
+                float y = Mathf.Sin(segments[i] * Mathf.Deg2Rad);
+
+                vectors[i] = new Vector2(x,y);
+            }
+        }
+        
+    }
+    public void shotgunAttackUp()
+    {
+        GameObject shotgunPellet = projectiles[2];
+        float[] segments = new float[19];
+        Vector2[] vectors = new Vector2[19];
+        float segmentSize = 4.5f;
+        float speed = 30f;
+        
+        calcAngles();
+        calcVectors();
+
+        for(int i = 0; i < 19; i++)
+        {
+            
+            if(transform.localScale.x > 0)
+            {
+                Vector2 spawnPos = new Vector2(transform.position.x+0.1f, transform.position.y+0.5f);
+                GameObject instance = Instantiate(projectiles[2], spawnPos, Quaternion.AngleAxis(Mathf.Acos(vectors[i].x)*Mathf.Rad2Deg, Vector3.forward));
+                instance.GetComponent<Rigidbody2D>().velocity = new Vector2(vectors[i].x*speed,vectors[i].y*speed);
+            }
+            else
+            {
+                Vector2 spawnPos = new Vector2(transform.position.x-0.1f, transform.position.y+0.5f);
+                GameObject instance = Instantiate(projectiles[2], spawnPos, Quaternion.AngleAxis(Mathf.Acos(vectors[i].x)*Mathf.Rad2Deg, Vector3.back));
+                instance.GetComponent<Rigidbody2D>().velocity = new Vector2(vectors[i].x*speed*-1,vectors[i].y*speed);
+            }
+            
+            
+        }
+        GetComponent<Rigidbody2D>().AddForce(15*Vector2.down, ForceMode2D.Impulse);
+        playAttackSound();
+
+
+
+        void calcAngles()
+        {
+            float curStartAngle = 45;
+            for(int i =0; i < 19; i++)
+            {
+                float rand = Random.Range(curStartAngle, curStartAngle + segmentSize);
+                segments[i] = rand;
+                curStartAngle += segmentSize;
+            }
+        }
+        void calcVectors()
+        {
+            for(int i = 0; i < 19; i++)
+            {
+                float x = Mathf.Cos(segments[i] * Mathf.Deg2Rad);
+                float y = Mathf.Sin(segments[i] * Mathf.Deg2Rad);
+
+                vectors[i] = new Vector2(x,y);
+            }
+        }
+    }
 
     public void playAttackSound()
     {
@@ -219,6 +330,9 @@ public class WeaponScript : MonoBehaviour
                 break;
             case Weapon.PISTOL:
                 sound.playOneShotSound(8);
+                break;
+            case Weapon.SHOTGUN:
+                sound.playOneShotSound(9);
                 break;
         }
     }
