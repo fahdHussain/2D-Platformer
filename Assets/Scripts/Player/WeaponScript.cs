@@ -10,6 +10,7 @@ public class WeaponScript : MonoBehaviour
     {
         BASIC,
         PISTOL,
+        GRENADE,
         SHOTGUN
     }
 
@@ -169,6 +170,43 @@ public class WeaponScript : MonoBehaviour
         //Recoil
         GetComponent<Rigidbody2D>().AddForce(Vector2.down, ForceMode2D.Impulse);
         playAttackSound();
+    }
+
+    public void grenadeAttackForward()
+    {
+        GameObject grenade = projectiles[1];
+        Vector2 spawnPosition = new Vector2(transform.position.x + 0.75f*transform.localScale.x, transform.position.y + 0.75f);
+
+        GameObject instance;
+        if(transform.localScale.x > 0)
+        {
+            instance = Instantiate(grenade, spawnPosition, transform.rotation);
+        }
+        else
+        {
+            instance = Instantiate(grenade, spawnPosition, Quaternion.AngleAxis(180, Vector3.back));
+        }
+        Vector2 force = new Vector2(8*transform.localScale.x, 6);
+        instance.GetComponent<Rigidbody2D>().AddForce(force, ForceMode2D.Impulse);
+        instance.GetComponent<GrenadeScript>().startTimer();
+    }
+    public void grenadeAttackUp()
+    {
+        GameObject grenade = projectiles[1];
+        Vector2 spawnPosition = new Vector2(transform.position.x + 0.75f*transform.localScale.x, transform.position.y + 0.75f);
+
+        GameObject instance;
+        if(transform.localScale.x > 0)
+        {
+            instance = Instantiate(grenade, spawnPosition, transform.rotation);
+        }
+        else
+        {
+            instance = Instantiate(grenade, spawnPosition, Quaternion.AngleAxis(180, Vector3.back));
+        }
+        Vector2 force = new Vector2(4*transform.localScale.x, 15);
+        instance.GetComponent<Rigidbody2D>().AddForce(force, ForceMode2D.Impulse);
+        instance.GetComponent<GrenadeScript>().startTimer();
     }
 
     public void playAttackSound()

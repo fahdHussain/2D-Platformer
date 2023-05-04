@@ -181,9 +181,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   input: {fileID: 11400000, guid: eed36fab56470c34393da9614c238f23, type: 2}
-  maxSpeed: 7.5
-  maxAcceleration: 75
-  maxAirAcceleration: 50
   moveSoundSource: {fileID: 6867788273696736519}
   status: {fileID: 0}
   dust: {fileID: 6318705879842624500}
@@ -201,10 +198,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   input: {fileID: 11400000, guid: eed36fab56470c34393da9614c238f23, type: 2}
-  jumpHeight: 7
-  maxAirJumps: 1
-  downMovementMultiplier: 4
-  upMovementMultiplier: 3.5
   dust: {fileID: 1433909370127542474}
 --- !u!114 &549248991168424379
 MonoBehaviour:
@@ -478,6 +471,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectiles:
   - {fileID: 1239254998461357543, guid: fc33f347a33c0374fb84605b1b2efda1, type: 3}
+  - {fileID: 7162932846518291884, guid: 6c7d28664d285ee48a10deea64a435e0, type: 3}
   enemyLayer:
     serializedVersion: 2
     m_Bits: 512

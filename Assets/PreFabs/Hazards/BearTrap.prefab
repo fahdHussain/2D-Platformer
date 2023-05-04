@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3960621572498346103}
   - component: {fileID: -2968225766097613380}
   - component: {fileID: 1181918995334005444}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: BearTrap
   m_TagString: Untagged
   m_Icon: {fileID: 0}

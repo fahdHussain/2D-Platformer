@@ -44,8 +44,6 @@ public class PlayerAnimator : MonoBehaviour
             case pAnim.PLAYER_IDLE:
                 switch(wScript.GetCurrentWeapon())
                 {
-                    case WeaponScript.Weapon.BASIC:
-                        return "idle";
                     case WeaponScript.Weapon.PISTOL:
                         if(look.GetCurrentLook() == LookScript.Look.FORWARD)
                             {
@@ -57,15 +55,13 @@ public class PlayerAnimator : MonoBehaviour
                                 return "idle_pistol_up";
                             }
                     default:
-                        return null;
+                        return "idle";
                 }
                 
             
             case pAnim.PLAYER_RUN:
                 switch(wScript.GetCurrentWeapon())
                     {
-                        case WeaponScript.Weapon.BASIC:
-                            return "running";
                         case WeaponScript.Weapon.PISTOL:
                             if(look.GetCurrentLook() == LookScript.Look.FORWARD)
                             {
@@ -77,7 +73,7 @@ public class PlayerAnimator : MonoBehaviour
                             }
                             
                         default:
-                            return null;
+                            return "running";;
                     }
                 
             case pAnim.PLAYER_LOOKUP:
@@ -102,8 +98,6 @@ public class PlayerAnimator : MonoBehaviour
             case pAnim.PLAYER_JUMP_UP:
                 switch(wScript.GetCurrentWeapon())
                     {
-                        case WeaponScript.Weapon.BASIC:
-                            return "jump_up";
                         case WeaponScript.Weapon.PISTOL:
                             if(look.GetCurrentLook() == LookScript.Look.FORWARD)
                             {
@@ -114,13 +108,11 @@ public class PlayerAnimator : MonoBehaviour
                                 return "jump_up_pistol_up";
                             }
                         default:
-                            return null;
+                            return "jump_up";
                     }            
             case pAnim.PLAYER_JUMP_DOWN:
                 switch(wScript.GetCurrentWeapon())
                     {
-                        case WeaponScript.Weapon.BASIC:
-                            return "jump_down";
                         case WeaponScript.Weapon.PISTOL:
                         if(look.GetCurrentLook() == LookScript.Look.FORWARD)
                             {
@@ -131,14 +123,12 @@ public class PlayerAnimator : MonoBehaviour
                                 return "jump_down_pistol_up";
                             }
                         default:
-                            return null;
+                            return "jump_down";
                     }
 
             case pAnim.PLAYER_LAND:
                 switch(wScript.GetCurrentWeapon())
                     {
-                        case WeaponScript.Weapon.BASIC:
-                            return "player_land";
                         case WeaponScript.Weapon.PISTOL:
                             if(look.GetCurrentLook() == LookScript.Look.FORWARD)
                             {
@@ -149,30 +139,31 @@ public class PlayerAnimator : MonoBehaviour
                                 return "jump_down_pistol_up";
                             }
                         default:
-                            return null;
+                            return "player_land";;
                     }
 
 
             case pAnim.PLAYER_ATTACK_1:
                 switch(wScript.GetCurrentWeapon())
                     {
-                        case WeaponScript.Weapon.BASIC:
-                            return "basic_attack";
+                            
                         case WeaponScript.Weapon.PISTOL:
                             return "pistol_attack";
+                        case WeaponScript.Weapon.GRENADE:
+                            return "grenade_attack";
                         default:
-                            return null;
+                            return "basic_attack";;
                     }
             
             case pAnim.PLAYER_ATTACK_2:
                 switch(wScript.GetCurrentWeapon())
                     {
-                        case WeaponScript.Weapon.BASIC:
-                            return "basic_attack_up";
                         case WeaponScript.Weapon.PISTOL:
                             return "pistol_attack_up";
+                        case WeaponScript.Weapon.GRENADE:
+                            return "grenade_attack_up";
                         default:
-                            return null;
+                            return "basic_attack_up";
                     }
             
             default:

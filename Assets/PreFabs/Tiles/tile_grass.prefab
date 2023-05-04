@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 6447061031697118761}
   - component: {fileID: 2847792641365754171}
   - component: {fileID: 2813535754311562208}
+  - component: {fileID: -7716301997479694812}
   m_Layer: 7
   m_Name: tile_grass
   m_TagString: tile
@@ -234,3 +235,15 @@ EdgeCollider2D:
   m_AdjacentEndPoint: {x: 0, y: 0}
   m_UseAdjacentStartPoint: 0
   m_UseAdjacentEndPoint: 0
+--- !u!114 &-7716301997479694812
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8562404394298412270}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 055cf56c7af06fe43a71c7d3de8ab6ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
