@@ -501,7 +501,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 8875183963276206883}
-  wScript: {fileID: 0}
+  wScript: {fileID: 949592025899272744}
 --- !u!114 &9205465816026633006
 MonoBehaviour:
   m_ObjectHideFlags: 0
