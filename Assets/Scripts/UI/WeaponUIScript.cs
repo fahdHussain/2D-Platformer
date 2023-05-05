@@ -5,6 +5,7 @@ using UnityEngine;
 public class WeaponUIScript : MonoBehaviour
 {
     private Animator animator;
+    private bool hasWeapon = false;
 
     void Start()
     {
@@ -17,6 +18,9 @@ public class WeaponUIScript : MonoBehaviour
         {
             case WeaponScript.Weapon.PISTOL:
                 animator.Play("pistol_deselct");
+                break;
+            case WeaponScript.Weapon.SHOTGUN:
+                animator.Play("shotgun_deselect");
                 break;
             default:
                 break;
@@ -34,6 +38,9 @@ public class WeaponUIScript : MonoBehaviour
             case WeaponScript.Weapon.PISTOL:
                 animator.Play("pistol_select");
                 break;
+            case WeaponScript.Weapon.SHOTGUN:
+                animator.Play("shotgun_select");
+                break;
             default:
                 break;
         }
@@ -45,9 +52,21 @@ public class WeaponUIScript : MonoBehaviour
             case WeaponScript.Weapon.PISTOL:
                 animator.Play("pistol_deselect");
                 break;
+            case WeaponScript.Weapon.SHOTGUN:
+                animator.Play("shotgun_deselect");
+                break;
             default:
                 break;
         }
+    }
+
+    public bool getHasWeapon()
+    {
+        return hasWeapon;
+    }
+    public void setHasWeapon(bool state)
+    {
+        hasWeapon = state;
     }
     
 }

@@ -6,6 +6,22 @@ public class PickupWeapon : MonoBehaviour
 {
     public WeaponScript.Weapon weapon;
     public GameObject pickupLaser;
+    private Animator animator;
+ 
+    void Start()
+    {
+        animator = GetComponent<Animator>();
+        switch(weapon)
+        {
+            case WeaponScript.Weapon.PISTOL:
+                animator.Play("PistolPickUp");
+                break;
+            case WeaponScript.Weapon.SHOTGUN:
+                animator.Play("ShotgunPickUp");
+                break;
+        }
+    }
+
     void OnTriggerEnter2D(Collider2D collider)
     {
         if(collider.gameObject.CompareTag("Player"))

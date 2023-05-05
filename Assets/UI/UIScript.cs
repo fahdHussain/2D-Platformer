@@ -23,8 +23,10 @@ public class UIScript : MonoBehaviour
     GameObject player;
     
     private WeaponScript.Weapon weapon_1;
+    private WeaponScript.Weapon weapon_2;
     public GameObject basicWeaponSlot;
     public GameObject weaponSlotOne;
+    public GameObject weaponSlotTwo;
     private int currentWeaponSlot = 0;
 
     //int numberOfWeapons --> if < max, add to slot else bring up discard prompt then switch
@@ -37,6 +39,7 @@ public class UIScript : MonoBehaviour
         needKey.enabled = false;
         basicWeaponSlot.GetComponent<BasicWeaponUIScript>().basicSelect(); 
         weaponSlotOne.GetComponent<WeaponUIScript>().weaponDrop();
+        weaponSlotTwo.GetComponent<WeaponUIScript>().weaponDrop();
 
     }
     void Update()
@@ -106,26 +109,72 @@ public class UIScript : MonoBehaviour
     {
         //TO-DO
         //Update for 3 slots
-        weaponSlotOne.GetComponent<WeaponUIScript>().weaponDeselect(weapon);
-        weapon_1 = weapon;
+        if(!weaponSlotOne.GetComponent<WeaponUIScript>().getHasWeapon())
+        {
+            weaponSlotOne.GetComponent<WeaponUIScript>().weaponDeselect(weapon);
+            weaponSlotOne.GetComponent<WeaponUIScript>().setHasWeapon(true);
+            weapon_1 = weapon;
+        }
+        else if(!weaponSlotTwo.GetComponent<WeaponUIScript>().getHasWeapon())
+        {
+            weaponSlotTwo.GetComponent<WeaponUIScript>().weaponDeselect(weapon);
+            weaponSlotTwo.GetComponent<WeaponUIScript>().setHasWeapon(true);
+            weapon_2 = weapon;
+        }
+        
     }
 
     public void switchWeapon()
     {
         //TO-DO 
         //Update for 3 slots
-        if(currentWeaponSlot == 1)
+        switch(currentWeaponSlot)
         {
-            currentWeaponSlot = 0;
-            weaponSlotOne.GetComponent<WeaponUIScript>().weaponDeselect(weapon_1);
-            basicWeaponSlot.GetComponent<BasicWeaponUIScript>().basicSelect();
+            case 0:
+            //BASIC weapon
+                if(weaponSlotOne.GetComponent<WeaponUIScript>().getHasWeapon())
+                {
+                    basicWeaponSlot.GetComponent<BasicWeaponUIScript>().basicDeselect();
+                    weaponSlotOne.GetComponent<WeaponUIScript>().weaponSelect(weapon_1);
+                    currentWeaponSlot = 1;
+                }
+                break;
+            case 1:
+            //Weapon slot one
+                if(weaponSlotTwo.GetComponent<WeaponUIScript>().getHasWeapon())
+                {
+                    weaponSlotOne.GetComponent<WeaponUIScript>().weaponDeselect(weapon_1);
+                    weaponSlotTwo.GetComponent<WeaponUIScript>().weaponSelect(weapon_2);
+                    currentWeaponSlot = 2;
+                }
+                else
+                {
+                    weaponSlotOne.GetComponent<WeaponUIScript>().weaponDeselect(weapon_1);
+                    basicWeaponSlot.GetComponent<BasicWeaponUIScript>().basicSelect();
+                    currentWeaponSlot = 0;
+                }
+                break;
+            case 2:
+            //Weapon slot two
+                weaponSlotTwo.GetComponent<WeaponUIScript>().weaponDeselect(weapon_2);
+                basicWeaponSlot.GetComponent<BasicWeaponUIScript>().basicSelect();
+                currentWeaponSlot = 0;
+                break;
         }
-        else
-        {
-            currentWeaponSlot = 1;
-            weaponSlotOne.GetComponent<WeaponUIScript>().weaponSelect(weapon_1);
-            basicWeaponSlot.GetComponent<BasicWeaponUIScript>().basicDeselect();
-        }
+
+
+        // if(currentWeaponSlot == 1)
+        // {
+        //     currentWeaponSlot = 0;
+        //     weaponSlotOne.GetComponent<WeaponUIScript>().weaponDeselect(weapon_1);
+        //     basicWeaponSlot.GetComponent<BasicWeaponUIScript>().basicSelect();
+        // }
+        // else
+        // {
+        //     currentWeaponSlot = 1;
+        //     weaponSlotOne.GetComponent<WeaponUIScript>().weaponSelect(weapon_1);
+        //     basicWeaponSlot.GetComponent<BasicWeaponUIScript>().basicDeselect();
+        // }
     }
 
     void healthFiller()
