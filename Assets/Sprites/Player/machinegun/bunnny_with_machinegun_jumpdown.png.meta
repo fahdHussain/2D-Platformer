@@ -1,0 +1,519 @@
+fileFormatVersion: 2
+guid: fa85afca92af8e644970a7181f8fc140
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 16
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: bunnny_with_machinegun_jumpdown_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 19
+        width: 20
+        height: 19
+      alignment: 9
+      pivot: {x: 0.27, y: 0.46}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3aad4bcdf0ed18a4489e260063d0c80f
+      internalID: 1369235594
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bunnny_with_machinegun_jumpdown_1
+      rect:
+        serializedVersion: 2
+        x: 20
+        y: 19
+        width: 20
+        height: 19
+      alignment: 9
+      pivot: {x: 0.27, y: 0.46}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ff349b4b481cc864c806bc4dbfd08e66
+      internalID: 708952736
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bunnny_with_machinegun_jumpdown_2
+      rect:
+        serializedVersion: 2
+        x: 40
+        y: 19
+        width: 20
+        height: 19
+      alignment: 9
+      pivot: {x: 0.27, y: 0.46}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5396ec716183c3840bdacdd7c9ae7c33
+      internalID: 1645174355
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bunnny_with_machinegun_jumpdown_3
+      rect:
+        serializedVersion: 2
+        x: 60
+        y: 19
+        width: 20
+        height: 19
+      alignment: 9
+      pivot: {x: 0.27, y: 0.46}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0b79d6bf5a5dec34f8e419e951b55ebc
+      internalID: -1217222701
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bunnny_with_machinegun_jumpdown_4
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 19
+        width: 20
+        height: 19
+      alignment: 9
+      pivot: {x: 0.27, y: 0.46}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 33410ad349505154da03c978f69c4342
+      internalID: -822128019
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bunnny_with_machinegun_jumpdown_5
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 19
+        width: 20
+        height: 19
+      alignment: 9
+      pivot: {x: 0.27, y: 0.46}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4d1de3bf3eb49654387fdb0e7a8d75ae
+      internalID: -1549928129
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bunnny_with_machinegun_jumpdown_6
+      rect:
+        serializedVersion: 2
+        x: 120
+        y: 19
+        width: 20
+        height: 19
+      alignment: 9
+      pivot: {x: 0.27, y: 0.46}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6439bf07035860143810b252fca7e0f3
+      internalID: -270667602
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bunnny_with_machinegun_jumpdown_7
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 20
+        height: 19
+      alignment: 9
+      pivot: {x: 0.27, y: 0.46}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 33637610f5c93af4783b974afe35369f
+      internalID: -377690100
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bunnny_with_machinegun_jumpdown_8
+      rect:
+        serializedVersion: 2
+        x: 20
+        y: 0
+        width: 20
+        height: 19
+      alignment: 9
+      pivot: {x: 0.27, y: 0.46}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3b76e5d7e7254b54ca9ab4ecb552899e
+      internalID: 1656160638
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bunnny_with_machinegun_jumpdown_9
+      rect:
+        serializedVersion: 2
+        x: 40
+        y: 0
+        width: 20
+        height: 19
+      alignment: 9
+      pivot: {x: 0.27, y: 0.46}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e78dcb6cdd164474cb453a32d0811ce1
+      internalID: -1537197334
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bunnny_with_machinegun_jumpdown_10
+      rect:
+        serializedVersion: 2
+        x: 60
+        y: 0
+        width: 20
+        height: 19
+      alignment: 9
+      pivot: {x: 0.27, y: 0.46}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a8d015eeb5b620b40b3969656a1d83df
+      internalID: 408633367
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bunnny_with_machinegun_jumpdown_11
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 0
+        width: 20
+        height: 19
+      alignment: 9
+      pivot: {x: 0.27, y: 0.46}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 83c5fad36573e3f4187f8b9d09fde55f
+      internalID: 242291291
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bunnny_with_machinegun_jumpdown_12
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 0
+        width: 20
+        height: 19
+      alignment: 9
+      pivot: {x: 0.27, y: 0.46}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 660ddf95706f4b74998ff931a4446ded
+      internalID: -1396747818
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bunnny_with_machinegun_jumpdown_13
+      rect:
+        serializedVersion: 2
+        x: 120
+        y: 0
+        width: 20
+        height: 19
+      alignment: 9
+      pivot: {x: 0.27, y: 0.46}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 56a674c11a316e745aab1c31cdd0d0a7
+      internalID: -1106502851
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bunnny_with_machinegun_jumpdown_14
+      rect:
+        serializedVersion: 2
+        x: 140
+        y: 0
+        width: 20
+        height: 19
+      alignment: 9
+      pivot: {x: 0.27, y: 0.46}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b2cd194d3433fb449ac61376fe5daee8
+      internalID: 312610878
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bunnny_with_machinegun_jumpdown_15
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 0
+        width: 20
+        height: 19
+      alignment: 9
+      pivot: {x: 0.27, y: 0.46}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e87a3cf4e53213d4b80d3e39657cb310
+      internalID: 667662385
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bunnny_with_machinegun_jumpdown_16
+      rect:
+        serializedVersion: 2
+        x: 180
+        y: 0
+        width: 20
+        height: 19
+      alignment: 9
+      pivot: {x: 0.27, y: 0.46}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 376845664b70fba48b8dfec7e5d6a9d6
+      internalID: -819281299
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bunnny_with_machinegun_jumpdown_17
+      rect:
+        serializedVersion: 2
+        x: 200
+        y: 0
+        width: 20
+        height: 19
+      alignment: 9
+      pivot: {x: 0.27, y: 0.46}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1cd66d38ac392274f97afb9c8e54eda3
+      internalID: -215524580
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      bunnny_with_machinegun_jumpdown_0: 1369235594
+      bunnny_with_machinegun_jumpdown_1: 708952736
+      bunnny_with_machinegun_jumpdown_10: 408633367
+      bunnny_with_machinegun_jumpdown_11: 242291291
+      bunnny_with_machinegun_jumpdown_12: -1396747818
+      bunnny_with_machinegun_jumpdown_13: -1106502851
+      bunnny_with_machinegun_jumpdown_14: 312610878
+      bunnny_with_machinegun_jumpdown_15: 667662385
+      bunnny_with_machinegun_jumpdown_16: -819281299
+      bunnny_with_machinegun_jumpdown_17: -215524580
+      bunnny_with_machinegun_jumpdown_2: 1645174355
+      bunnny_with_machinegun_jumpdown_3: -1217222701
+      bunnny_with_machinegun_jumpdown_4: -822128019
+      bunnny_with_machinegun_jumpdown_5: -1549928129
+      bunnny_with_machinegun_jumpdown_6: -270667602
+      bunnny_with_machinegun_jumpdown_7: -377690100
+      bunnny_with_machinegun_jumpdown_8: 1656160638
+      bunnny_with_machinegun_jumpdown_9: -1537197334
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -63,6 +63,15 @@ public class PlayerAnimator : MonoBehaviour
                             {
                                 return "idle_shotgun_up";
                             }
+                    case WeaponScript.Weapon.MACHINEGUN:
+                        if(look.GetCurrentLook() == LookScript.Look.FORWARD)
+                            {
+                                return "idle_machinegun";
+                            }
+                            else
+                            {
+                                return "idle_machinegun_up";
+                            }
                     default:
                         return "idle";
                 }
@@ -89,6 +98,15 @@ public class PlayerAnimator : MonoBehaviour
                             {
                                 return "running_shotgun_u";
                             }
+                        case WeaponScript.Weapon.MACHINEGUN:
+                        if(look.GetCurrentLook() == LookScript.Look.FORWARD)
+                            {
+                                return "running_machinegun_f";
+                            }
+                            else
+                            {
+                                return "running_machinegun_u";
+                            }
                             
                         default:
                             return "running";;
@@ -101,6 +119,8 @@ public class PlayerAnimator : MonoBehaviour
                             return "look_up_pistol";
                         case WeaponScript.Weapon.SHOTGUN:
                             return "look_up_shotgun";
+                        case WeaponScript.Weapon.MACHINEGUN:
+                            return "look_up_machinegun";
                         default:
                             return null;
                     }
@@ -112,6 +132,8 @@ public class PlayerAnimator : MonoBehaviour
                         return "look_down_pistol";
                     case WeaponScript.Weapon.SHOTGUN:
                         return "look_down_shotgun";
+                    case WeaponScript.Weapon.MACHINEGUN:
+                        return "look_down_machinegun";
                     default:
                         return null;
                 }
@@ -138,6 +160,15 @@ public class PlayerAnimator : MonoBehaviour
                             {
                                 return "jump_up_shotgun_up";
                             }
+                        case WeaponScript.Weapon.MACHINEGUN:
+                            if(look.GetCurrentLook() == LookScript.Look.FORWARD)
+                            {
+                                return "jump_up_machinegun";
+                            }
+                            else
+                            {
+                                return "jump_up_machinegun_up";
+                            }
                         default:
                             return "jump_up";
                     }            
@@ -162,6 +193,15 @@ public class PlayerAnimator : MonoBehaviour
                             {
                                 return "jump_down_shotgun_up";
                             }
+                         case WeaponScript.Weapon.MACHINEGUN:
+                            if(look.GetCurrentLook() == LookScript.Look.FORWARD)
+                            {
+                                return "jump_down_machinegun";
+                            }
+                            else
+                            {
+                                return "jump_down_machinegun_up";
+                            }
                         default:
                             return "jump_down";
                     }
@@ -185,7 +225,16 @@ public class PlayerAnimator : MonoBehaviour
                             }
                             else
                             {
-                                return "shotgun_down_up";
+                                return "jump_down_shotgun_up";
+                            }
+                        case WeaponScript.Weapon.MACHINEGUN:
+                            if(look.GetCurrentLook() == LookScript.Look.FORWARD)
+                            {
+                                return "jump_down_machinegun";
+                            }
+                            else
+                            {
+                                return "jump_down_machinegun_up";
                             }
                         default:
                             return "player_land";;
@@ -202,6 +251,8 @@ public class PlayerAnimator : MonoBehaviour
                             return "grenade_attack";
                         case WeaponScript.Weapon.SHOTGUN:
                             return "shotgun_attack";
+                        case WeaponScript.Weapon.MACHINEGUN:
+                            return "machinegun_attack";
                         default:
                             return "basic_attack";;
                     }
@@ -215,6 +266,8 @@ public class PlayerAnimator : MonoBehaviour
                             return "grenade_attack_up";
                         case WeaponScript.Weapon.SHOTGUN:
                             return "shotgun_attack_up";
+                        case WeaponScript.Weapon.MACHINEGUN:
+                            return "machinegun_attack_up";
                         default:
                             return "basic_attack_up";
                     }

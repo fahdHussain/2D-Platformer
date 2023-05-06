@@ -19,6 +19,9 @@ public class PickupWeapon : MonoBehaviour
             case WeaponScript.Weapon.SHOTGUN:
                 animator.Play("ShotgunPickUp");
                 break;
+            case WeaponScript.Weapon.MACHINEGUN:
+                animator.Play("MachinegunPickUp");
+                break;
         }
     }
 

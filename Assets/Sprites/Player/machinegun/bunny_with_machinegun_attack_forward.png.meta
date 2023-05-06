@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: d66dffd8e0ad26844a12534f3f6362d4
+guid: 14a2c1b317664db40919fe3c5cf4d168
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -105,253 +105,148 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: shotgun_pickup_spritesheet_0
+      name: bunny_with_machinegun_attack_forward_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 32
+        height: 19
+      alignment: 9
+      pivot: {x: 0.17, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7d5cd6fbc3a419c469f93bea4a326eb3
-      internalID: -1630895747
+      spriteID: 0511b76761c534f4cbadb6ffbaa34865
+      internalID: -164889119
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: shotgun_pickup_spritesheet_1
-      rect:
-        serializedVersion: 2
-        x: 16
-        y: 0
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 39ef65e92984df0439669fec7fa5e46a
-      internalID: 909052541
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: shotgun_pickup_spritesheet_2
+      name: bunny_with_machinegun_attack_forward_1
       rect:
         serializedVersion: 2
         x: 32
         y: 0
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 32
+        height: 19
+      alignment: 9
+      pivot: {x: 0.17, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 20701f4312e26a849bf6a8f21419f722
-      internalID: -1540467121
+      spriteID: 9a3ec5c02200dc74fb96e75eb6da2e86
+      internalID: 136677391
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: shotgun_pickup_spritesheet_3
-      rect:
-        serializedVersion: 2
-        x: 48
-        y: 0
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 809dd831611ab4347b68a4ee7040f796
-      internalID: -1387007718
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: shotgun_pickup_spritesheet_4
+      name: bunny_with_machinegun_attack_forward_2
       rect:
         serializedVersion: 2
         x: 64
         y: 0
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 32
+        height: 19
+      alignment: 9
+      pivot: {x: 0.17, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3a66e999694674e42a1c68b78f426ab7
-      internalID: 1612926795
+      spriteID: a48520cb37129984893b5a5ce68a097c
+      internalID: 2097358159
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: shotgun_pickup_spritesheet_5
-      rect:
-        serializedVersion: 2
-        x: 80
-        y: 0
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: fb9365e62706f30499573cd9711be55a
-      internalID: -651261101
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: shotgun_pickup_spritesheet_6
+      name: bunny_with_machinegun_attack_forward_3
       rect:
         serializedVersion: 2
         x: 96
         y: 0
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 32
+        height: 19
+      alignment: 9
+      pivot: {x: 0.17, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 310b79bf02dd6a04c8d1a0ee52b9ef49
-      internalID: 685389214
+      spriteID: 3f884fdcdb538a04794466bc930707c5
+      internalID: 1881606344
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: shotgun_pickup_spritesheet_7
-      rect:
-        serializedVersion: 2
-        x: 112
-        y: 0
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 59b615f7e64e6934aa22be4fd5e1de6c
-      internalID: -1839130536
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: shotgun_pickup_spritesheet_8
+      name: bunny_with_machinegun_attack_forward_4
       rect:
         serializedVersion: 2
         x: 128
         y: 0
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 32
+        height: 19
+      alignment: 9
+      pivot: {x: 0.17, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3be3742c6728c7444bcf6e438fbcb810
-      internalID: 1220045053
+      spriteID: f9d899ccb8d8c834686927bea070b047
+      internalID: 2023451820
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: shotgun_pickup_spritesheet_9
-      rect:
-        serializedVersion: 2
-        x: 144
-        y: 0
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 5eb2be2413a90154da40e73e14042ef7
-      internalID: -2089241192
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: shotgun_pickup_spritesheet_10
+      name: bunny_with_machinegun_attack_forward_5
       rect:
         serializedVersion: 2
         x: 160
         y: 0
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 32
+        height: 19
+      alignment: 9
+      pivot: {x: 0.17, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8599a85e7d07bf34db143b8e9ab8b07d
-      internalID: 2128783087
+      spriteID: 87dddfe256c0dcb49b9aacd4b3fe92c2
+      internalID: -1118280997
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: shotgun_pickup_spritesheet_11
+      name: bunny_with_machinegun_attack_forward_6
       rect:
         serializedVersion: 2
-        x: 176
+        x: 192
         y: 0
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 32
+        height: 19
+      alignment: 9
+      pivot: {x: 0.17, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 49a583d9f8e4bcb4cb49f6eb32f6c170
-      internalID: -583016268
+      spriteID: 1d08baeb54dd095439b871f1ce33b24c
+      internalID: 1051019651
       vertices: []
       indices: 
       edges: []
@@ -367,18 +262,13 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      shotgun_pickup_spritesheet_0: -1630895747
-      shotgun_pickup_spritesheet_1: 909052541
-      shotgun_pickup_spritesheet_10: 2128783087
-      shotgun_pickup_spritesheet_11: -583016268
-      shotgun_pickup_spritesheet_2: -1540467121
-      shotgun_pickup_spritesheet_3: -1387007718
-      shotgun_pickup_spritesheet_4: 1612926795
-      shotgun_pickup_spritesheet_5: -651261101
-      shotgun_pickup_spritesheet_6: 685389214
-      shotgun_pickup_spritesheet_7: -1839130536
-      shotgun_pickup_spritesheet_8: 1220045053
-      shotgun_pickup_spritesheet_9: -2089241192
+      bunny_with_machinegun_attack_forward_0: -164889119
+      bunny_with_machinegun_attack_forward_1: 136677391
+      bunny_with_machinegun_attack_forward_2: 2097358159
+      bunny_with_machinegun_attack_forward_3: 1881606344
+      bunny_with_machinegun_attack_forward_4: 2023451820
+      bunny_with_machinegun_attack_forward_5: -1118280997
+      bunny_with_machinegun_attack_forward_6: 1051019651
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

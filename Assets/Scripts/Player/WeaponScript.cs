@@ -11,7 +11,8 @@ public class WeaponScript : MonoBehaviour
         BASIC,
         PISTOL,
         GRENADE,
-        SHOTGUN
+        SHOTGUN,
+        MACHINEGUN
     }
 
     // public enum Look
@@ -19,7 +20,6 @@ public class WeaponScript : MonoBehaviour
     //     UP,
     //     FORWARD
     // }
-
     public GameObject[] projectiles;
     private Weapon currentWeapon;
     private LookScript look;
@@ -34,6 +34,7 @@ public class WeaponScript : MonoBehaviour
         look = GetComponent<LookScript>();
         currentLook = look.GetCurrentLook();
         animator = GetComponent<PlayerAnimator>();
+        
     }
 
 
@@ -164,11 +165,11 @@ public class WeaponScript : MonoBehaviour
         GameObject bullet = projectiles[0];
         Vector2 spawnPosition = new Vector2(transform.position.x + 0.2f*transform.localScale.x, transform.position.y+0.75f);
         //StartCoroutine(canShootTimer(0.25f));
-        GameObject instance = Instantiate(bullet, spawnPosition , Quaternion.AngleAxis(-90, Vector3.back));
-        Vector2 direction = new Vector2(Mathf.Sin(20*Mathf.PI/180)*transform.localScale.x, Mathf.Cos(20*Mathf.PI/180));
+        GameObject instance = Instantiate(bullet, spawnPosition , Quaternion.AngleAxis(-90+(15*transform.localScale.x), Vector3.back));
+        Vector2 direction = new Vector2(Mathf.Sin(15*Mathf.PI/180)*transform.localScale.x, Mathf.Cos(20*Mathf.PI/180));
         instance.GetComponent<Rigidbody2D>().velocity = direction*15f;
         //Recoil
-        GetComponent<Rigidbody2D>().AddForce(Vector2.down, ForceMode2D.Impulse);
+        GetComponent<Rigidbody2D>().AddForce(10*Vector2.down, ForceMode2D.Impulse);
         playAttackSound();
     }
 
@@ -320,6 +321,43 @@ public class WeaponScript : MonoBehaviour
         }
     }
 
+    public void machinegunAttackForward()
+    {
+        GameObject bullet = projectiles[3];
+        float direction = transform.localScale.x;
+        float rand = Random.Range(-0.1f,0.1f);
+        Vector2 spawnPosition = new Vector2(transform.position.x + 1.18f*transform.localScale.x, transform.position.y - 0.25f + rand);
+        GameObject instance;
+        if(transform.localScale.x > 0)
+        {
+            instance = Instantiate(bullet, spawnPosition , transform.rotation);
+        }
+        else
+        {
+            instance = Instantiate(bullet, spawnPosition , Quaternion.AngleAxis(180, Vector3.back));
+        }
+        
+        //StartCoroutine(canShootTimer(0.25f));
+        instance.GetComponent<Rigidbody2D>().velocity = new Vector2(15f*transform.localScale.x, 0);
+        //Recoil
+        GetComponent<Rigidbody2D>().AddForce(7*Vector2.left*transform.localScale.x, ForceMode2D.Impulse);
+        playAttackSound();
+    }
+
+    public void machinegunAttackUp()
+    {
+        GameObject bullet = projectiles[3];
+        float rand = Random.Range(-0.1f,0.1f);
+        Vector2 spawnPosition = new Vector2(transform.position.x + 0.45f*transform.localScale.x, transform.position.y+1f);
+        //StartCoroutine(canShootTimer(0.25f));
+        GameObject instance = Instantiate(bullet, spawnPosition , Quaternion.AngleAxis(-90+(15*transform.localScale.x), Vector3.back));
+        Vector2 direction = new Vector2(Mathf.Sin(15*Mathf.PI/180)*transform.localScale.x, Mathf.Cos(20*Mathf.PI/180));
+        instance.GetComponent<Rigidbody2D>().velocity = direction*15f;
+        //Recoil
+        GetComponent<Rigidbody2D>().AddForce(7*Vector2.down, ForceMode2D.Impulse);
+        playAttackSound();
+    }
+
     public void playAttackSound()
     {
         //Played on animation
@@ -334,6 +372,16 @@ public class WeaponScript : MonoBehaviour
             case Weapon.SHOTGUN:
                 sound.playOneShotSound(9);
                 break;
+            case Weapon.MACHINEGUN:
+                sound.playOneShotSound(10);
+                break;
+        }
+    }
+    private void stopMachineGunSound()
+    {
+        if(Input.GetMouseButton(0) == false)
+        {
+            sound.stopSound();
         }
     }
 

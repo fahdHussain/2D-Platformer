@@ -5,7 +5,7 @@ using UnityEditor;
 
 public class Move : MonoBehaviour
 {
-    [SerializeField] private InputController input = null;
+    [SerializeField] private PlayerController input = null;
     //[SerializeField, Range(0f,100f)] private float maxSpeed = 4f;
     private float maxSpeed;
     //[SerializeField, Range(0f,100f)] private float maxAcceleration = 35f;
@@ -170,9 +170,19 @@ public class Move : MonoBehaviour
     {
         if(animator.isAttacking() || animator.isChangingLook())
         {
-            if(animator.getAnimator().GetCurrentAnimatorStateInfo(0).normalizedTime > 1 && !animator.getAnimator().IsInTransition(0))
+            if(status.GetCurrentWeapon() != WeaponScript.Weapon.MACHINEGUN)
             {
-                animator.changeAnimationState(PlayerAnimator.pAnim.PLAYER_RUN);
+                if(animator.getAnimator().GetCurrentAnimatorStateInfo(0).normalizedTime > 1 && !animator.getAnimator().IsInTransition(0))
+                {
+                    animator.changeAnimationState(PlayerAnimator.pAnim.PLAYER_RUN);
+                }
+            }
+            else if(status.GetCurrentWeapon() == WeaponScript.Weapon.MACHINEGUN)
+            {
+                if(!input.RetrieveAttackInputHold())
+                {
+                    animator.changeAnimationState(PlayerAnimator.pAnim.PLAYER_RUN);
+                }
             }
         }
         else
@@ -199,10 +209,21 @@ public class Move : MonoBehaviour
         // Check if attacking
         if(animator.isAttacking())
         {
-            if(animator.getAnimator().GetCurrentAnimatorStateInfo(0).normalizedTime > 1 && !animator.getAnimator().IsInTransition(0))
+            if(status.GetCurrentWeapon()!= WeaponScript.Weapon.MACHINEGUN)
             {
-                animator.changeAnimationState(PlayerAnimator.pAnim.PLAYER_IDLE);
+                if(animator.getAnimator().GetCurrentAnimatorStateInfo(0).normalizedTime > 1 && !animator.getAnimator().IsInTransition(0))
+                {  
+                    animator.changeAnimationState(PlayerAnimator.pAnim.PLAYER_IDLE);
+                }
             }
+            else if(status.GetCurrentWeapon()== WeaponScript.Weapon.MACHINEGUN)
+            {
+                if(!input.RetrieveAttackInputHold())
+                {
+                    animator.changeAnimationState(PlayerAnimator.pAnim.PLAYER_IDLE);
+                }
+            }
+            
         }
         //Check if player was running
         if(body.velocity.x == 0 && animator.GetcurrentState() == PlayerAnimator.pAnim.PLAYER_RUN)

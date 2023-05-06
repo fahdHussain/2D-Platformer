@@ -8,6 +8,7 @@ public class AttackScript : MonoBehaviour
     private Status status;
     private WeaponScript wScript;
     private int mouseClick;
+    private bool mouseClickHold;
     private LookScript look;
     private PlayerAnimator animator;
     private SoundEffectController sound;
@@ -26,12 +27,33 @@ public class AttackScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        mouseClick = input.RetrieveAttackInput();
-        
-        if(mouseClick == 0)
+        if(status.GetCurrentWeapon() != WeaponScript.Weapon.MACHINEGUN)
         {
-            // if(animator.GetcurrentState() != PlayerAnimator.pAnim.PLAYER_ATTACK_1 || animator.GetcurrentState() != PlayerAnimator.pAnim.PLAYER_ATTACK_2)
-            // {
+            mouseClick = input.RetrieveAttackInput();
+        
+            if(mouseClick == 0) 
+            {
+                // if(animator.GetcurrentState() != PlayerAnimator.pAnim.PLAYER_ATTACK_1 || animator.GetcurrentState() != PlayerAnimator.pAnim.PLAYER_ATTACK_2)
+                // {
+                    if(look.GetCurrentLook() == LookScript.Look.FORWARD)
+                    {
+                        animator.changeAnimationState(PlayerAnimator.pAnim.PLAYER_ATTACK_1);
+                    }
+                    else
+                    {
+                        animator.changeAnimationState(PlayerAnimator.pAnim.PLAYER_ATTACK_2);
+                    }
+                    //wScript.attack();
+            // }
+                
+
+            }
+        }
+        if(status.GetCurrentWeapon() == WeaponScript.Weapon.MACHINEGUN)
+        {
+            mouseClickHold = input.RetrieveAttackInputHold();
+            if(mouseClickHold)
+            {
                 if(look.GetCurrentLook() == LookScript.Look.FORWARD)
                 {
                     animator.changeAnimationState(PlayerAnimator.pAnim.PLAYER_ATTACK_1);
@@ -40,11 +62,10 @@ public class AttackScript : MonoBehaviour
                 {
                     animator.changeAnimationState(PlayerAnimator.pAnim.PLAYER_ATTACK_2);
                 }
-                //wScript.attack();
-           // }
+            }
             
-
         }
+        
 
         if(input.RetrieveWeaponSwitch())
         {

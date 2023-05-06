@@ -12,7 +12,7 @@ public class SoundEffectController : MonoBehaviour
     {  
         if(src == null)
         {
-            src = GameObject.FindGameObjectWithTag("AudioSource").GetComponent<AudioSource>();src = GameObject.FindGameObjectWithTag("AudioSource").GetComponent<AudioSource>();
+            src = GameObject.FindGameObjectWithTag("AudioSource").GetComponent<AudioSource>();
         }
         src = GameObject.FindGameObjectWithTag("AudioSource").GetComponent<AudioSource>();
     }

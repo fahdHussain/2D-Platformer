@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Jump : MonoBehaviour
 {
-    [SerializeField] private InputController input = null;
+    [SerializeField] private PlayerController input = null;
     // [SerializeField, Range(0f,10f)] private float jumpHeight = 3f;
     private float jumpHeight;
     // [SerializeField, Range(0, 5)] private int maxAirJumps = 0;
@@ -102,10 +102,21 @@ public class Jump : MonoBehaviour
 
             if(animator.isAttacking())
             {
-                if(animator.getAnimator().GetCurrentAnimatorStateInfo(0).normalizedTime > 1 && !animator.getAnimator().IsInTransition(0))
+                if(status.GetCurrentWeapon() != WeaponScript.Weapon.MACHINEGUN)
                 {
-                    animator.changeAnimationState(PlayerAnimator.pAnim.PLAYER_JUMP_DOWN);
+                    if(animator.getAnimator().GetCurrentAnimatorStateInfo(0).normalizedTime > 1 && !animator.getAnimator().IsInTransition(0))
+                    {
+                        animator.changeAnimationState(PlayerAnimator.pAnim.PLAYER_JUMP_DOWN);
+                    }
                 }
+                else if (status.GetCurrentWeapon() == WeaponScript.Weapon.MACHINEGUN)
+                {
+                    if(!input.RetrieveAttackInputHold())
+                    {
+                        animator.changeAnimationState(PlayerAnimator.pAnim.PLAYER_JUMP_DOWN);
+                    }
+                }
+               
             }
             
 

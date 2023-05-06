@@ -38,6 +38,14 @@ public class PlayerController : InputController
         }
 
     }
+    public bool RetrieveAttackInputHold()
+    {
+        if(Input.GetMouseButton(0))
+        {
+            return true;
+        }
+        return false;
+    }
     public float RetrieveLookUp()
     {
         return Input.GetAxisRaw("Vertical");

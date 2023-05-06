@@ -22,6 +22,9 @@ public class WeaponUIScript : MonoBehaviour
             case WeaponScript.Weapon.SHOTGUN:
                 animator.Play("shotgun_deselect");
                 break;
+            case WeaponScript.Weapon.MACHINEGUN:
+                animator.Play("machinegun_deselect");
+                break;
             default:
                 break;
         }
@@ -41,6 +44,9 @@ public class WeaponUIScript : MonoBehaviour
             case WeaponScript.Weapon.SHOTGUN:
                 animator.Play("shotgun_select");
                 break;
+            case WeaponScript.Weapon.MACHINEGUN:
+                animator.Play("machinegun_select");
+                break;
             default:
                 break;
         }
@@ -54,6 +60,9 @@ public class WeaponUIScript : MonoBehaviour
                 break;
             case WeaponScript.Weapon.SHOTGUN:
                 animator.Play("shotgun_deselect");
+                break;
+             case WeaponScript.Weapon.MACHINEGUN:
+                animator.Play("machinegun_deselect");
                 break;
             default:
                 break;
