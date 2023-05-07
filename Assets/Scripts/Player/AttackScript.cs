@@ -5,6 +5,7 @@ using UnityEngine;
 public class AttackScript : MonoBehaviour
 {
     [SerializeField] private PlayerController input = null;
+    public UIScript ui;
     private Status status;
     private WeaponScript wScript;
     private int mouseClick;
@@ -22,6 +23,7 @@ public class AttackScript : MonoBehaviour
         sound = GetComponent<SoundEffectController>();
         status = GetComponent<Status>();
         look = GetComponent<LookScript>();
+        ui = GameObject.FindGameObjectWithTag("UI").GetComponent<UIScript>();
     }
 
     // Update is called once per frame
@@ -70,6 +72,32 @@ public class AttackScript : MonoBehaviour
         if(input.RetrieveWeaponSwitch())
         {
             status.switchWeapon();
+        }
+
+        if(input.RetrieveGrenadeInput())
+        {
+            throwGrenade();
+        }
+        if(input.RetrieveWeaponDrop())
+        {
+            status.dropWeapon();
+        }
+    }
+
+    private void throwGrenade()
+    {
+        if(status.grenades != 0)
+        {
+            if(look.GetCurrentLook() == LookScript.Look.FORWARD)
+            {
+                wScript.grenadeAttackForward();
+            }
+            else
+            {
+                wScript.grenadeAttackUp();
+            }
+            status.grenades -= 1;
+            ui.setGrenadeCount(status.grenades);
         }
     }
 

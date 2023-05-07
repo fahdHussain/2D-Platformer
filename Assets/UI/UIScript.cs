@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class UIScript : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class UIScript : MonoBehaviour
     public Text keyText;
     public Text levelComplete;
     public Text needKey;
+    public TMP_Text grenadeCount;
     float timerVal = 5;
     string gameOverText = "We'll\nbe\nright\nback ";
 
@@ -51,6 +53,7 @@ public class UIScript : MonoBehaviour
         else
         {  
             healthFiller();
+            
             health = player.GetComponent<Status>().health;
             if(player.GetComponent<Status>().isAlive == true)
             { 
@@ -162,19 +165,40 @@ public class UIScript : MonoBehaviour
                 break;
         }
 
+    }
+    public void dropWeapon()
+    {
+        switch(currentWeaponSlot)
+        {
+            case 1:
+                if(weaponSlotTwo.GetComponent<WeaponUIScript>().getHasWeapon())
+                {
+                    weapon_1 = weapon_2;
+                    weaponSlotOne.GetComponent<WeaponUIScript>().weaponSelect(weapon_1);
+                    
+                    weaponSlotTwo.GetComponent<WeaponUIScript>().setHasWeapon(false);
+                    weaponSlotTwo.GetComponent<WeaponUIScript>().weaponDrop();
+                }
+                else
+                {
+                    weaponSlotOne.GetComponent<WeaponUIScript>().setHasWeapon(false);
+                    weaponSlotOne.GetComponent<WeaponUIScript>().weaponDrop();
+                    basicWeaponSlot.GetComponent<BasicWeaponUIScript>().basicSelect();
+                    currentWeaponSlot = 0;
+                }
+                break;
+            case 2:
+                weaponSlotTwo.GetComponent<WeaponUIScript>().setHasWeapon(false);
+                weaponSlotTwo.GetComponent<WeaponUIScript>().weaponDrop();
+                weaponSlotOne.GetComponent<WeaponUIScript>().weaponSelect(weapon_1);
+                currentWeaponSlot = 1;
+                break;
+        }
+    }
 
-        // if(currentWeaponSlot == 1)
-        // {
-        //     currentWeaponSlot = 0;
-        //     weaponSlotOne.GetComponent<WeaponUIScript>().weaponDeselect(weapon_1);
-        //     basicWeaponSlot.GetComponent<BasicWeaponUIScript>().basicSelect();
-        // }
-        // else
-        // {
-        //     currentWeaponSlot = 1;
-        //     weaponSlotOne.GetComponent<WeaponUIScript>().weaponSelect(weapon_1);
-        //     basicWeaponSlot.GetComponent<BasicWeaponUIScript>().basicDeselect();
-        // }
+    public void setGrenadeCount(int grenades)
+    {
+        grenadeCount.text = "x " + grenades;
     }
 
     void healthFiller()
@@ -209,6 +233,8 @@ public class UIScript : MonoBehaviour
 
         levelComplete.text = "Level Complete!\nScore: "+ score.ToString();
     }
+
+
 
     private IEnumerator NeedKeytimer(float time = 5)
     {

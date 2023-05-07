@@ -25,6 +25,7 @@ public class Status : MonoBehaviour
     public GameObject corpse;
     public SoundEffectController soundEffectController;
     public UIScript ui;
+    public int grenades;
 
 
     void Awake()
@@ -42,6 +43,9 @@ public class Status : MonoBehaviour
 
         move = GetComponent<Move>();
         jump = GetComponent<Jump>();
+
+        grenades = 5;
+        ui.setGrenadeCount(grenades);
     }
     public void takeDamage(int damage, int type)
     {
@@ -114,16 +118,18 @@ public class Status : MonoBehaviour
         StartCoroutine(resetTextTimer());
         
     }
-    public void pickUpWeapon(WeaponScript.Weapon weapon)
+    public bool pickUpWeapon(WeaponScript.Weapon weapon)
     {
-        soundEffectController.playOneShotSound(7);
-        //Add weapon limit
-        if(!weapons.Contains(weapon))
+          //Add weapon limit
+        if(!weapons.Contains(weapon) && weapons.Count < 3)
         {
+            soundEffectController.playOneShotSound(7);
             weapons.Add(weapon);
             //update ui
             ui.addWeapon(weapon);
+            return true;
         }
+        return false;
     }
     public void switchWeapon()
     {
@@ -151,7 +157,33 @@ public class Status : MonoBehaviour
         
         move.UpdateMovementType();
         jump.UpdateJumpModifiers();
+
         
+    }
+
+    public void dropWeapon()
+    {
+        if(currentWeapon != WeaponScript.Weapon.BASIC)
+        {
+            int i = weapons.IndexOf(currentWeapon);
+
+            if(weapons.Count == 3 && i == 1)
+            {
+                weapons.Remove(currentWeapon);
+                currentWeapon = weapons[i];
+                wScript.SetCurrentWeapon(weapons[i]);
+            }
+            else
+            {
+                weapons.Remove(currentWeapon);
+                currentWeapon = (weapons[i - 1]);
+                wScript.SetCurrentWeapon(weapons[i - 1]);
+            }
+            
+            animator.setSwitchWeapon(true);
+            animator.changeAnimationState(PlayerAnimator.pAnim.PLAYER_IDLE);
+            ui.dropWeapon();
+        }
     }
 
     public WeaponScript.Weapon GetCurrentWeapon()

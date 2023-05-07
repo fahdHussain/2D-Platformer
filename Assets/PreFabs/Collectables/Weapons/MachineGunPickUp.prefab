@@ -168,5 +168,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0ff1735f300afd41a0d811ea92388e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  input: {fileID: 11400000, guid: eed36fab56470c34393da9614c238f23, type: 2}
   weapon: 4
   pickupLaser: {fileID: 7138038651582018151, guid: 436b727758c5adb4389fc2620ecf544b, type: 3}

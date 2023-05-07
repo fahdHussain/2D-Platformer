@@ -55,4 +55,19 @@ public class PlayerController : InputController
     {
         return Input.GetKeyDown(KeyCode.Q);
     }
+
+    public bool RetrieveGrenadeInput()
+    {
+        return Input.GetKeyDown(KeyCode.G);
+    }
+
+    public bool RetrieveWeaponDrop()
+    {
+        return Input.GetKeyDown(KeyCode.X);
+    }
+
+    public bool RetrieveInteract()
+    {
+        return Input.GetKey(KeyCode.E);
+    }
 }

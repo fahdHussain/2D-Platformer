@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PickupWeapon : MonoBehaviour
 {
+    [SerializeField] private PlayerController input = null;
     public WeaponScript.Weapon weapon;
     public GameObject pickupLaser;
     private Animator animator;
@@ -25,15 +26,33 @@ public class PickupWeapon : MonoBehaviour
         }
     }
 
-    void OnTriggerEnter2D(Collider2D collider)
+    void OnTriggerStay2D(Collider2D collider)
     {
         if(collider.gameObject.CompareTag("Player"))
         {
-            GameObject player = GameObject.FindGameObjectWithTag("Player");
-            player.GetComponent<Status>().pickUpWeapon(weapon);
             Vector2 laserPos = new Vector2(transform.position.x, transform.position.y + 0.3f);
-            Instantiate(pickupLaser, laserPos, transform.rotation);
-            Destroy(gameObject);
+            GameObject player = GameObject.FindGameObjectWithTag("Player");
+            if(!player.GetComponent<Status>().pickUpWeapon(weapon))
+            {
+                if(input.RetrieveInteract())
+                {
+                    //drop current weapon
+                    //get new current weapon
+                    // if not basic -- > save current weapon -- > drop -- .pickup new --> pick up old
+                    //if basic -- > pickup
+                    player.GetComponent<Status>().dropWeapon();
+                    player.GetComponent<Status>().pickUpWeapon(weapon);
+                    player.GetComponent<Status>().switchWeapon();
+                    Instantiate(pickupLaser, laserPos, transform.rotation);
+                    Destroy(gameObject);
+                }
+            }
+            else
+            {   
+                Instantiate(pickupLaser, laserPos, transform.rotation);
+                Destroy(gameObject);
+            }
+            
         }
     }
 }
