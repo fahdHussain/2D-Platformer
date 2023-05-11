@@ -79,25 +79,32 @@ public class GnomeController : EnemyController
                     setStartPosition = true;
                 }
 
-                
-                //Debug.Log(checkAhead.getGroundAhead());
-                if(facingRight && this.transform.position.x < startPosition.x + distance && checkAhead.getGroundAhead())
+                // Debug.Log("Facing right: "+facingRight);
+                // Debug.Log("curPos: "+this.transform.position.x);
+                // Debug.Log("newPos: "+startPosition.x+distance);
+                // Debug.Log("ground ahead: "+checkAhead.getGroundAhead());
+
+                if(!checkAhead.getGroundAhead() || checkAhead.getBlockAhead())
                 {
+                    body.velocity = new Vector2(0,0); 
+                    StartCoroutine(waitIdle());
+                }
+                else if((facingRight && this.transform.position.x > startPosition.x + distance) || (!facingRight && this.transform.position.x < startPosition.x - distance))
+                {
+                    body.velocity = new Vector2(0,0); 
+                    StartCoroutine(waitIdle());
+                }
+                else if(facingRight && this.transform.position.x < startPosition.x + distance && checkAhead.getGroundAhead() && !checkAhead.getBlockAhead())
+                {
+                   // Debug.Log("right");
                     velocity = new Vector2(maxSpeed, 0);
                     body.velocity = velocity;
                 }
-                else if(!facingRight && this.transform.position.x > startPosition.x - distance &&checkAhead.getGroundAhead())
+                else if(!facingRight && this.transform.position.x > startPosition.x - distance &&checkAhead.getGroundAhead() && !checkAhead.getBlockAhead())
                 {
+                    //Debug.Log("left");
                     velocity = new Vector2(-maxSpeed, 0);
                     body.velocity = velocity;
-                }
-                else
-                {
-                    body.velocity = new Vector2(0,0);
-                    
-                    StartCoroutine(waitIdle());
-                    
-                    
                 }
                 
             }

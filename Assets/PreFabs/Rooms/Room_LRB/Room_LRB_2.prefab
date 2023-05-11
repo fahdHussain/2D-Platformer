@@ -147,6 +147,37 @@ MonoBehaviour:
   - {fileID: 8562404394298412270, guid: 63eac94520a53f84caa58225382aed5d, type: 3}
   - {fileID: 4419989340612725826, guid: 370c63634eea64e458ae26d970b6f17e, type: 3}
   - {fileID: 4419989340612725826, guid: 370c63634eea64e458ae26d970b6f17e, type: 3}
+--- !u!1 &628325413717561307
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3515801444130930905}
+  m_Layer: 6
+  m_Name: Hazard
+  m_TagString: Untagged
+  m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3515801444130930905
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 628325413717561307}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.45999908, y: -2.54, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1886933474511202763}
+  m_RootOrder: 46
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1441664501468774250
 GameObject:
   m_ObjectHideFlags: 0
@@ -413,6 +444,7 @@ Transform:
   - {fileID: 2834725792019930409}
   - {fileID: 897830057638034026}
   - {fileID: 5132529120592242862}
+  - {fileID: 3515801444130930905}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -431,8 +463,20 @@ MonoBehaviour:
   type: 1
   playerSpawn: {fileID: 3452153084673796379}
   exitSpawn: {fileID: 8562258494999881962}
+  keySpawn: {fileID: 0}
+  carrotSpawn: {fileID: 0}
+  gnomeSpawn: {fileID: 628325413717561307}
+  beeSpawn: {fileID: 0}
   player: {fileID: 3641761164224173358, guid: ffc44ee143d79224795e9d4aefba244f, type: 3}
   exit: {fileID: 6429097739258374283, guid: dc2eb9278385b3645865d5d48c9c3598, type: 3}
+  key: {fileID: 0}
+  carrot: {fileID: 0}
+  gnome: {fileID: 1689955541147722573, guid: a678a6741c6a97f41b3875c03b3086b6, type: 3}
+  bee: {fileID: 0}
+  beeHiveSpawn: {fileID: 0}
+  beeHive: {fileID: 0}
+  spikeSpawn: {fileID: 0}
+  spike: {fileID: 0}
 --- !u!61 &6005271161893601715
 BoxCollider2D:
   m_ObjectHideFlags: 0

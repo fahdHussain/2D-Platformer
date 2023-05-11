@@ -192,6 +192,37 @@ MonoBehaviour:
   objects:
   - {fileID: 8562404394298412270, guid: cfd954e79c6648e49ad0066b8efd2c6e, type: 3}
   - {fileID: 8562404394298412270, guid: 63eac94520a53f84caa58225382aed5d, type: 3}
+--- !u!1 &1079765353652318737
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1508793416871145791}
+  m_Layer: 6
+  m_Name: Enemy
+  m_TagString: Untagged
+  m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1508793416871145791
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1079765353652318737}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 2.540001, y: -2.54, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6743014325706504059}
+  m_RootOrder: 35
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1275978062571054364
 GameObject:
   m_ObjectHideFlags: 0
@@ -1030,6 +1061,7 @@ Transform:
   - {fileID: 6174787661473913319}
   - {fileID: 334505687498446874}
   - {fileID: 624242642297942612}
+  - {fileID: 1508793416871145791}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1048,8 +1080,20 @@ MonoBehaviour:
   type: 3
   playerSpawn: {fileID: 4340828965259067701}
   exitSpawn: {fileID: 4773855911471737696}
+  keySpawn: {fileID: 0}
+  carrotSpawn: {fileID: 0}
+  gnomeSpawn: {fileID: 1079765353652318737}
+  beeSpawn: {fileID: 0}
   player: {fileID: 3641761164224173358, guid: ffc44ee143d79224795e9d4aefba244f, type: 3}
   exit: {fileID: 6429097739258374283, guid: dc2eb9278385b3645865d5d48c9c3598, type: 3}
+  key: {fileID: 0}
+  carrot: {fileID: 0}
+  gnome: {fileID: 4046803918026115517, guid: 1dc8a7f000ef6b642bf35b9eb5359abf, type: 3}
+  bee: {fileID: 0}
+  beeHiveSpawn: {fileID: 0}
+  beeHive: {fileID: 0}
+  spikeSpawn: {fileID: 0}
+  spike: {fileID: 0}
 --- !u!61 &8941563081786296146
 BoxCollider2D:
   m_ObjectHideFlags: 0
